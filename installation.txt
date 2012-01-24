@@ -1,0 +1,234 @@
+------------------- GENERAL: ---------------------------------
+x) set paths in .bashrc
+	export LD_LIBRARY_PATH=/usr/local/lib
+	export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
+	export GST_PLUGIN_PATH=/usr/local/lib
+	export PATH=$PATH:/usr/local/lib:/usr/local
+x) packages needed for various components:
+	sudo apt-get install flex bison libx264-dev acpi  libglibmm-2.4-dev  libxml2-dev make g++
+	//also needed: alsa packages
+x) packages PROBABLY needed:
+	sudo apt-get install zlib-bin zlib-gst libasound2-dev libvorbis-dev libxv-dev libusb-dev
+x) install the mono runtime libraries
+	sudo apt-get install mono-runtime
+x) MAKE SURE TO COMPILE ALL EXTERNAL (C-) LIBRARIES ON THE TARGET MACHINE AND TO LINK THEM CORRECTLY 
+	(link to each XYZ.so file to /usr/local/lib/XYZ.so)
+-----------------------------------------------------------------
+------------------- GStreamer: ---------------------
+-----------------------------------------------------------------
+	http://gstreamer.freedesktop.org/src/
+
+x) gstreamer.dev: 
+	sudo apt-get install libgstreamer0.10-dev libgstreamer-plugins-base0.10-dev
+	sudo apt-get install gstreamer0.10-plugins-good gstreamer0.10-plugins-ugly gstreamer0.10-plugins-bad gstreamer0.10-plugins-ugly-multiverse gstreamer0.10-plugins-good-dbg
+	
+	needed: 
+	http://gstreamer.freedesktop.org/src/gstreamer/gstreamer-0.10.32.tar.gz
+	http://gstreamer.freedesktop.org/src/gst-plugins-base/gst-plugins-base-0.10.32.tar.gz
+	http://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-0.10.28.tar.bz2
+	(for the x264 encoder:)
+	http://gstreamer.freedesktop.org/src/gst-plugins-ugly/gst-plugins-ugly-0.10.18.tar.gz
+	(rtps server:)
+	http://people.freedesktop.org/~wtay/
+	
+	mabye: 
+	http://ftp.gnome.org/pub/gnome/sources/glib/2.28/glib-2.28.6.tar.bz2
+	NOT: 
+	http://liboil.freedesktop.org/download/liboil-0.3.17.tar.gz
+	http://gstreamer.freedesktop.org/src/gst-plugins/gst-plugins-0.8.12.tar.gz
+
+
+		-> add #include <sdio.h> before #include <jpeglib.h> in gstjpegdec.h and gstjpegenc.h
+	make-install
+
+	for mp3-playback: Fluendo
+	svn co https://core.fluendo.com/gstreamer/svn/trunk/
+	
+-----------------------------------------------------------------
+------------------- ARDUINO: ---------------------
+-----------------------------------------------------------------
+	http://arduino.cc/playground/Linux/All
+
+	x) Configure your UDEV by creating
+$ /etc/udev/rules.d/81_arduido.rules
+	with this content: (for arduino uno. nano has another vendor-id (23xx, i think) Find out by typing "lsusb | grep 23[0-9][0-9]" in your console)
+SUBSYSTEMS=="usb", ACTION=="add", ATTRS{idVendor}=="2341", ATTRS{idProduct}=="00[3-a][0-f]", MODE="666", SYMLINK+="arduino arduino_$attr{serial}"
+	Restart UDEV
+$ sudo udevadm control --reload-rules
+
+	x) Set the serial permissoions
+$ ls -al /dev/ttyACM0 
+		will show you what user / group that has access right for the (arduino uno) device
+$ sudo usermod -a -G <dialout-group-name> <your-user-name>
+		This will add you to the group displayed in the previous step.
+		Remember that you will have to disconnect/connect the arduino and log out/log in before any changes take effect.
+
+	Reboot your system, just to make sure...
+$ reboot
+	
+-----------------------------------------------------------------
+------------------- PHIDGETS: ---------------------
+-----------------------------------------------------------------
+x) fix the usb access as non-root users:
+	*) edit /etc/udev/rules.d/80_phidget.rules to:
+		SUBSYSTEMS=="usb", ACTION=="add", ATTRS{idVendor}=="06c2", ATTRS{idProduct}=="00[3-a][0-f]", MODE="666"
+	*) set USB_DEVFS_PATH to /dev/bus/usb by adding to ~/.bashrc:
+		export USB_DEVFS_PATH=/dev/bus/usb
+	*) restart udev by: 
+		#/sudo services udev restart
+	*) re-plug your phidged device(s)
+
+x) You might need to download the Phudget 21 Source from http://www.phidgets.com/drivers.php and compile it using
+	tar xvf libphidget_2.<version>.gz
+	cd  libphidget_2.<version>
+	./configure
+	make
+	sudo make install
+--------------FOR C (necessary):------------------
+x) download linux drivers from http://www.phidgets.com/drivers.php
+	./configure
+	make
+	sudo make install	
+
+x) Compilation: gcc example.c -o example -lphidget21
+--------------FOR C#:-------------------------
+x) download windows library files (dll's) from http://www.phidgets.com/drivers.php
+x) sudo gacutil -i Phidget21.NET.dll
+
+-------------------------------------------------------------
+----------------------- opencv -------------------------------
+sudo apt-get install libcv-dev libcvaux-dev libhighgui-dev
+------------------------------------------------------------
+-----------------------------------------------------------------
+-------------- SPHINX: ---------------
+-----------------------------------------------------------------
+x) sphinxbase: http://sourceforge.net/projects/cmusphinx/files/sphinxbase/0.6.1/
+	./configure
+	make
+	sudo make install
+
+x) http://sourceforge.net/projects/cmusphinx/files/pocketsphinx/0.6.1/
+	./configure
+	make
+	sudo make install
+(INTE FÄRDIGT PÅ NIKITA:)
+x) Logios (för att kunna kompilera dict-filer)
+	https://cmusphinx.svn.sourceforge.net/svnroot/cmusphinx/trunk/logios/
+	x) editera makeTree.sh (temp => TEMP)
+	x) ladda hem http://www.dialrc.org/tutorial/Olympus/Tools/logios/Tools/MakeDict/lib/dict/CMUdict_SPHINX_40
+		spara filen som $LOGIOS_ROOT/lib/dict/cmudict_SPHINX_40
+	x) cmuclmtk-0.7 innehåller allt- > make:install etc
+# perl make_pronunciation.pl -tools .. -dictdir test2 -words example -handdict hand.dict -dict example.dict
+
+#behövs nog inte: installeras med pocket sphinx : *) pocket sphinx gst plugin:
+#	sudo apt-get install gstreamer0.10-pocketsphinx
+
+x) måste finnas här: /usr/local/lib/sphinx_stream.so (t ex dynamiskt länkad)
+-----------------------------------------------------------------
+-------------------- pic programmer ---------------------------------
+-----------------------------------------------------------------
+tutorial: 
+	http://sync-signal.com/2010/01/getting-started-with-pickit2-on-ubuntu-9-10/
+*) install the linux/macos client (pk2cmd):
+	http://www.microchip.com/stellent/idcplg?IdcService=SS_GET_PAGE&nodeId=1406&dDocName=en023805&redirects=pickit2
+*) packages:
+ sudo apt-get install gpasm
+*) gtkextra (for simulator) 
+	http://gtkextra.sourceforge.net/
+*) readline development libraries (for simulator)
+	sudo apt-get install libreadline6
+*) gpsim (pic simulator)
+	http://www.dattalo.com/gnupic/gpsim.html
+-------------failed:------------------------
+*) if using gnome: install kde header files and libraries:
+ sudo apt-get install kdelibs libktexteditor4.1-cil
+	
+*) download the ide from http://pikdev.free.fr/
+	file: pikdev_1.2.1-1_i386.deb
+	dpkg -i --force-architecture i386 pikdev_1.2.1-1_i386.deb	
+-----------------------------------------------------------------
+-------------------- other ---------------------------------
+-----------------------------------------------------------------
+ - Camera drivers:
+x) sudo apt-get install webcam webcamd
+	if not working, try xawtv -hwscan (might need to apt-get install xawtv). 
+	Should get output like:
+	<output>
+port 310-341
+    type : Xvideo, image scaler
+    name : NV17 Video Texture
+
+/dev/video0: OK                         [ -device /dev/video0 ]
+    type : v4l2
+    name : UVC Camera (5986:0300)
+    flags:  capture  
+
+	</output>
+
+ - TTS:
+x) sudo apt-get install espeak
+
+ - Protobuf:
+x) download protobuf.net for mono and install through gac.
+	http://www.softpedia.com/dyn-postdownload.php?p=148173&t=4&i=1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Some solutions to troubles I had:
+You might need the following packages in order to re-compile the monodevelop source code (if you, like me, are running an old version of ubuntu...):
+*) install dependencies:
+sudo apt-get install gtk-sharp2 gnome-sharp2
+*) download and install the mono-addins from http://monoaddins.codeplex.com (download the source tarball for linux)
+tar xvf
+cd
+./configure
+make
+sudo make install
+*) download and install the latest monodevelop source from http://monodevelop.com/Download
+tar xvf
+cd
+./configure --prefix=/usr
+make
+sudo make install
+
+Install IronRuby
+(Instructions found at https://gist.github.com/1003052)
+*) First, one must download and install the IronRuby runtime libraries.
+git clone git://github.com/IronLanguages/main.git src
+*) install xbuild
+sudo apt-get install mono-xbuild
+*) Build the solutions needed
+cd src
+xbuild /p:Configuration=Release Solutions/Ruby.sln
+*) Add the libraries to the assembly cache
+cd bin/Release
+sudo gacutil -i IronRuby.dll

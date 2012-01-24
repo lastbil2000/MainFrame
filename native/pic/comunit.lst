@@ -1,0 +1,603 @@
+gpasm-0.13.7 beta               comunit.asm 10-23-2011  23:24:15         PAGE  1
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+ 
+               00001 ;       STOP: sudo pk2cmd -P -R
+               00002 ;       START/INSTALL: sudo pk2cmd -P PIC12f629 -M -F comunit.hex -Y -T
+               00003 ;       COMPILE: gpasm -dos -w1 comunit.asm -o comunit.hex; cat comunit.lst | grep Error
+               00004 ;       SIMULATE: gpsim -p12f629 -s comunit.cod comunit.hex
+               00005 ;
+               00006 ; interrupt:    INTCON 0-5
+               00007 ;*************************************************************************************************************
+               00008         #include    <12f629.inc>
+               00002      LIST
+               00003         LIST p = 12F629, r = dec, w = -302
+               00004         INCLUDE "P12F629.INC"   ; MPASM  Header
+Warning [231] : found lower case match for include filename
+               00001         LIST
+               00002 ; P12F629.INC  Standard Header File, Version 1.04    Microchip Technology, Inc.
+               00258         LIST
+               00005         ;__config _INTRC_OSC_NOCLKOUT & _WDT_ON & _MCLRE_OFF & _CP_OFF
+               00007         LIST
+002007 3FC2    00009         __config (_HS_OSC  & _WDT_OFF  & _MCLRE_OFF & _CP_OFF & _BODEN_ON & _PWRTE_ON )
+               00010 ;_INTRC_OSC_NOCLKOUT
+               00011 ;***** VARIABLE DEFINITIONS
+               00012 
+0000 00013 #DEFINE         _portData       0x3                             ; The input port
+0000 00014 #DEFINE         _portStatus     0x2                             ; The status port used continue transfer (checked after each transfer)
+0000 00015 #DEFINE         _portOut0       0x0                             ; Output 0
+0000 00016 #DEFINE         _portOut1       0x1                             ; Output 1
+0000 00017 #DEFINE         _headerBit      0x4                             ; the header bit (7 means 1 bit header, 0 means 8 bits of header)
+               00018 
+0000 00019 #DEFINE         _brownOutIndicatorPort 0x1
+               00020 
+               00021 cblock 0x20             ; Start of memory block
+               00022         dc1                     ; delay counter inner loop
+               00023         dc2                     ; delay counter outer loop
+               00024 
+               00025 ;************************************************************
+               00026 ;       input signals: 2 + 4 + 8 = 15 bit 
+               00027 ;       A signal is allways 2 bit port-select data, 4 bit header data and 8 bit data
+               00028 ;**************************************************************
+               00029         portCounter     ; Bit counter for serialized data
+               00030         portSelect      ; will contain the 2 bit output port selection
+               00031         portHeader      ; will contain the incoming header (currently statically set to 4 bits)
+               00032         portData        ; will be populated with incoming data
+               00033 
+               00034         tmp
+               00035 endc
+               00036 
+0000           00037     org 0x0
+               00038 
+               00039 ;************* Configuration: ******************'
+0000 00040 INIT:
+0000 0103      00041         clrw
+0001 0185      00042         clrf    GPIO
+0002 0185      00043         clrf    TRISIO
+0003 1683      00044         bsf     STATUS,RP0              ; select Register Page 1
+0004 3000      00045         movlw   b'0'
+gpasm-0.13.7 beta               comunit.asm 10-23-2011  23:24:15         PAGE  2
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+ 
+0005 0085      00046         movwf   TRISIO
+0006 1585      00047         bsf             TRISIO,_portData        ; set _portData as input
+               00048 ;tmp låt status vara utport för lampan:       
+0007 1505      00049         bsf TRISIO,_portStatus  ; set _portStatus as input
+0008 1595      00050         bsf             WPU,_portData           ; set _portData as weak pul-up
+0009 1515      00051         bsf             WPU,_portStatus         ; set _portData as weak pul-up
+000A 1283      00052         bcf     STATUS,RP0              ; back to Register Page 0
+               00053         
+               00054 ;************* Brown-out detection: ******************'
+               00055 ;       banksel         PCON
+000B 188E      00056         btfsc           PCON, NOT_POR   ; if power-on reset: check if bod
+000C 280F      00057         goto            CHK_BOD
+000D 148E      00058         bsf                     PCON,NOT_POR
+000E 140E      00059         bsf                     PCON,NOT_BOD
+               00060 
+000F 00061 CHK_BOD:
+000F 180E      00062         btfsc           PCON,NOT_BOD            ;if no brown-out detected
+0010 2813      00063         goto            MAIN
+0011 140E      00064         bsf                     PCON,NOT_BOD
+0012 1485      00065         bsf                     GPIO, _brownOutIndicatorPort
+               00066 ;************* Main program: ******************'
+               00067 
+0013 00068 MAIN:
+0013 00069 MAIN_LOOP:
+               00070 ;       bsf             GPIO,0x1        
+               00071 ;       call PAUSE_10MS 
+               00072 ;       bcf             GPIO,0x1
+               00073 ;       call    LAMPTESTET              ;tmp
+               00074 ;       call PAUSE_10MS 
+0013 2039      00075         call CHECK_FOR_SIGNAL
+0014 2813      00076         goto MAIN_LOOP
+               00077 
+               00078 ;*****************************************************************************************************************************************************************
+               00079 ;       
+               00080 ;                       DATA TRANSFER METHODS:
+               00081 ;
+               00082 ;                       output signal contains of 
+               00083 ;                       1 initialization signal (10 ms)
+               00084 ;                       4 bit header signals (4 * 100 us)
+               00085 ;                       8 bit data signal (8 * 100 us)
+               00086 ;*****************************************************************************************************************************************************************
+               00087 
+0015 00088 TRANSFER:
+               00089         ;call   LAMPTESTET              ;tmp
+0015 208D      00090         call TURN_PORT_ON               ; say hello (init transfer)
+0016 2074      00091         call PAUSE_10MS                 ; wait for receiver to accept transfer
+0017 2092      00092         call TURN_PORT_OFF
+               00093         
+0018 00094 TRANSFER_HEADER:
+0018 1A24      00095         btfsc   portHeader,0x4; skip if first header bit is zero
+0019 208D      00096         call    TURN_PORT_ON
+001A 208A      00097         call    TRANSFER_DELAY  ; wait
+001B 2092      00098         call    TURN_PORT_OFF
+001C 1AA4      00099         btfsc   portHeader,0x5  ; skip if second header bit is zero
+gpasm-0.13.7 beta               comunit.asm 10-23-2011  23:24:15         PAGE  3
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+ 
+001D 208D      00100         call    TURN_PORT_ON
+001E 208A      00101         call    TRANSFER_DELAY  ; wait
+001F 2092      00102         call    TURN_PORT_OFF
+0020 1B24      00103         btfsc   portHeader,0x6  ; skip if third header bit is zero
+0021 208D      00104         call    TURN_PORT_ON
+0022 208A      00105         call    TRANSFER_DELAY  ; wait
+0023 2092      00106         call    TURN_PORT_OFF   
+0024 1BA4      00107         btfsc   portHeader,0x7  ; skip if fourth header bit is zero
+0025 208D      00108         call    TURN_PORT_ON
+0026 208A      00109         call    TRANSFER_DELAY  ; wait
+0027 2092      00110         call    TURN_PORT_OFF
+0028 00111 TRANSFER_DATA:
+0028 0825      00112         movfw   portData
+0029 00A6      00113         movwf   tmp                             ; move portData to a temporary file
+002A 3001      00114         movlw   b'00000001'
+002B 00A2      00115         movwf   portCounter             ; make sure the counter is 1
+002C 00116 TL_DATA:
+002C 1003      00117         bcf             STATUS,0                ; clear the carry-bit
+002D 0DA6      00118         rlf             tmp                             ; rotate right
+002E 1803      00119         btfsc   STATUS,0x0              ; if carry is set (last rotation was 1)
+002F 208D      00120         call    TURN_PORT_ON    ; send signal
+0030 2084      00121         call    PAUSE_45US              ; use a slighly shorter delay...
+0031 2084      00122         call    PAUSE_45US              ; ... in order to compensate for the size of this method
+0032 2092      00123         call    TURN_PORT_OFF
+0033 1003      00124         bcf             STATUS,0                ; clear the carry-bit
+0034 0DA2      00125         rlf             portCounter,1   ; rotate portCounter left
+0035 1803      00126         btfsc   STATUS,0x0              ; if carry is set: finish transfer (full rotation)
+0036 2838      00127         goto    TRANSFER_DONE
+0037 282C      00128         goto    TL_DATA
+0038 00129 TRANSFER_DONE:
+               00130         ;goto TRANSFER_HEADER   ;tmp
+Warning [203] : Found opcode in column 1.
+0038 0008      00131 return
+               00132 
+               00133 ;***********************  
+               00134 ;       CHECK_FOR_SIGNAL
+               00135 ;       Check if data is being transfered. The first signal is allways a "wake up" signal
+               00136 ;***********************
+0039 00137 CHECK_FOR_SIGNAL:
+               00138 
+0039 0805      00139         movfw   GPIO
+003A 1985      00140         btfsc   GPIO, _portData
+003B 203D      00141         call    START_RECEIVE
+003C 0008      00142         return
+               00143 
+               00144 ;***********************  
+               00145 ;       START_RECEIVE
+               00146 ;       Handles incoming dataSignal
+               00147 ;***********************
+003D 00148 START_RECEIVE:
+               00149 
+003D 01A2      00150         clrf    portCounter             ;clear the portCounter
+003E 01A5      00151         clrf    portData
+003F 01A3      00152         clrf    portSelect
+gpasm-0.13.7 beta               comunit.asm 10-23-2011  23:24:15         PAGE  4
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+ 
+               00153 ;       clrf    portHeaderSize
+0040 01A4      00154         clrf    portHeader
+               00155 
+0041 206F      00156         call    PAUSE_HALF_SIGNAL       ; pause to get "of sync"
+0042 2071      00157         call    PAUSE_SIGNAL            ; pause and wait for the first incomming data bits
+0043 2047      00158         call    META_TRANSFER           ; fetches port select and header size
+0044 2050      00159         call    HEADER_TRANSFER         ; fetches header data
+0045 205E      00160         call    DATA_TRANSFER           ; fetches data
+               00161 
+0046 0008      00162         return
+               00163 
+               00164 ;***********************  
+               00165 ;       PORT_SELECT_TRANSFER
+               00166 ;       Initialize serialized data transfer to select servo
+               00167 ;       Only one output port may be selected
+               00168 ;***********************
+               00169 
+0047 00170 META_TRANSFER:
+               00171 
+0047 3000      00172         movlw   b'00000000'
+0048 00A3      00173         movwf   portSelect      
+               00174 
+0049 1985      00175         btfsc   GPIO,_portData  ; if signal0 is high
+004A 1423      00176         bsf             portSelect,0    ; use port0 as output
+004B 2071      00177         call PAUSE_SIGNAL               ; wait for next signal
+               00178 
+004C 1985      00179         btfsc   GPIO,_portData  ; if signal1 is high
+004D 14A3      00180         bsf             portSelect,1    ; use port1 as output
+004E 2071      00181         call PAUSE_SIGNAL               ; wait for next signal
+               00182 
+004F 0008      00183         return
+               00184 
+               00185 
+               00186 ;***********************  
+               00187 ;       HEADER_TRANSFER
+               00188 ;       Initialize serialized data transfer containing interval
+               00189 ;***********************
+0050 00190 HEADER_TRANSFER:
+0050 3000      00191         movlw   b'00000000'
+0051 00A2      00192         movwf   portCounter
+0052 1622      00193         bsf             portCounter,_headerBit  ;init the dataCounter to the header bit
+0053 00194 HEADER_TRANSFER_LOOP:
+0053 0822      00195         movf    portCounter,w   ;move counter to w
+0054 1985      00196         btfsc   GPIO,_portData  ;if signal is received
+0055 04A4      00197         iorwf   portHeader,1            ;OR the portCounter to portData
+0056 1003      00198         bcf             STATUS,0                ;clear the carry-bit
+0057 0DA2      00199         rlf             portCounter,1           ;rotate portCounter left
+0058 1803      00200         btfsc   STATUS,0x0                      ; if carry is set: finish transfer (full rotation)
+0059 285C      00201         goto    HEADER_TRANSFER_FINISHED
+005A 2071      00202         call    PAUSE_SIGNAL                    ; wait for next signal
+005B 2853      00203         goto    HEADER_TRANSFER_LOOP                    ; fetch next bit        
+005C 00204 HEADER_TRANSFER_FINISHED:
+005C 2071      00205         call    PAUSE_SIGNAL                    ; wait for next signal
+005D 0008      00206         return
+gpasm-0.13.7 beta               comunit.asm 10-23-2011  23:24:15         PAGE  5
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+ 
+               00207 
+               00208 
+               00209 
+               00210 ;***********************  
+               00211 ;       DATA_TRANSFER
+               00212 ;       Initialize serialized data transfer containing interval
+               00213 ;***********************
+005E 00214 DATA_TRANSFER:
+005E 3000      00215         movlw   b'00000000'
+005F 00A2      00216         movwf   portCounter
+0060 00A5      00217         movwf   portData
+0061 1422      00218         bsf             portCounter,0x0 ;init the dataCounter to the first bit
+0062 00219 DATA_TRANSFER_LOOP:
+0062 0822      00220         movf    portCounter,w   ;move counter to w
+0063 1985      00221         btfsc   GPIO,_portData  ;if signal is received
+0064 04A5      00222         iorwf   portData,1              ;OR the portCounter to portData
+0065 1003      00223         bcf             STATUS,0                ;clear the carry-bit
+0066 0DA2      00224         rlf             portCounter,1   ;rotate portCounter left
+               00225         
+0067 1803      00226         btfsc   STATUS,0x0                      ; if carry is set: finish transfer (full rotation)
+0068 286B      00227         goto    DATA_TRANSFER_FINISHED
+0069 2071      00228         call    PAUSE_SIGNAL                    ; wait for next signal
+006A 2862      00229         goto    DATA_TRANSFER_LOOP                      ; fetch next bit        
+006B 00230 DATA_TRANSFER_FINISHED:
+006B 2071      00231         call    PAUSE_SIGNAL                    ; wait for the phidget to set the status port
+006C 1905      00232         btfsc   GPIO,_portStatus         ; check the status port is set (indicating that the transfer was not corrupt)
+006D 2015      00233         call    TRANSFER                         ; if package was not corrupt: transfer data according to port settings 
+               00234 
+006E 0008      00235         return
+               00236 
+               00237 ;***********************  
+               00238 ;       PAUSE_SIGNAL
+               00239 ;       Pauses for the time required to receive a new signal
+               00240 ;       Optimized for a 4 MHz HC49 low profile crystal and 
+               00241 ;       2 x 22 pF ceramic capacitors
+               00242 ;***********************
+006F 00243 PAUSE_HALF_SIGNAL:
+006F 2074      00244         call PAUSE_10MS
+0070 0008      00245         return
+               00246 
+0071 00247 PAUSE_SIGNAL:
+0071 2074      00248         call PAUSE_10MS
+0072 2074      00249         call PAUSE_10MS
+0073 0008      00250         return
+               00251 
+               00252 ;***********************  
+               00253 ;       PAUSE_10MS
+               00254 ;       Pauses for 10 milliseconds. 
+               00255 ;***********************
+0074 00256 PAUSE_10MS:
+               00257 
+0074 300A      00258         movlw   d'10'
+0075 00A1      00259         movwf   dc2
+0076 00260 PAUSE_OUTER_LOOP:
+gpasm-0.13.7 beta               comunit.asm 10-23-2011  23:24:15         PAGE  6
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+ 
+0076 30FA      00261         movlw   d'250'
+0077 00A0      00262         movwf   dc1
+0078 00263 PAUSE_1MS_INNER_LOOP1:                  ;pauses for ~ 1 ms
+0078 0000      00264         nop
+0079 0BA0      00265         decfsz  dc1,1
+007A 2878      00266         goto PAUSE_1MS_INNER_LOOP1
+007B 0BA1      00267         decfsz  dc2,1
+007C 2876      00268         goto PAUSE_OUTER_LOOP
+007D 0008      00269         return
+               00270 
+007E 00271 PAUSE_50US:
+007E 300A      00272         movlw   d'10'
+007F 00A0      00273         movwf   dc1
+0080 00274 PAUSE_50US_LOOP:
+0080 0000      00275         nop
+0081 0BA0      00276         decfsz  dc1,1
+0082 2880      00277         goto PAUSE_50US_LOOP
+0083 0008      00278         return
+               00279 
+0084 00280 PAUSE_45US:
+0084 3009      00281         movlw   d'9'
+0085 00A0      00282         movwf   dc1
+0086 00283 PAUSE_45US_LOOP:
+0086 0000      00284         nop
+0087 0BA0      00285         decfsz  dc1,1
+0088 2886      00286         goto PAUSE_45US_LOOP
+0089 0008      00287         return
+               00288 
+               00289 
+008A 00290 TRANSFER_DELAY:
+               00291         ;call PAUSE_10MS
+008A 207E      00292         call PAUSE_50US
+008B 207E      00293         call PAUSE_50US
+008C 0008      00294         return
+               00295 
+               00296 ;****************************** PORT METHODS **************************
+               00297 
+008D 00298 TURN_PORT_ON:
+008D 1823      00299         btfsc   portSelect, 0x0
+008E 1405      00300         bsf             GPIO, _portOut0
+008F 18A3      00301         btfsc   portSelect, 0x1
+0090 1485      00302         bsf             GPIO, _portOut1
+               00303 
+               00304         
+               00305 ;       movfw   portSelect
+               00306 ;       iorwf   GPIO,1
+               00307 ;       bsf             GPIO,0x0
+               00308 ;       movwf   GPIO
+Warning [203] : Found opcode in column 1.
+0091 0008      00309 return
+0092 00310 TURN_PORT_OFF:
+0092 3000      00311         movlw   0x0
+0093 0085      00312         movwf   GPIO
+               00313 ;       movfw   portSelect
+gpasm-0.13.7 beta               comunit.asm 10-23-2011  23:24:15         PAGE  7
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+ 
+               00314         
+               00315 ;       bcf             GPIO,0x0
+               00316 ;       bcf             GPIO,0x1
+Warning [203] : Found opcode in column 1.
+0094 0008      00317 return
+               00318 
+               00319 
+0095 00320 LAMPTESTET:
+0095 3002      00321         movlw   0x2
+0096 0685      00322         xorwf   GPIO,1
+Warning [203] : Found opcode in column 1.
+0097 0008      00323 return
+gpasm-0.13.7 beta               comunit.asm 10-23-2011  23:24:15         PAGE  8
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+ADIE                              00000006
+ADIF                              00000006
+C                                 00000000
+CAL0                              00000002
+CAL1                              00000003
+CAL2                              00000004
+CAL3                              00000005
+CAL4                              00000006
+CAL5                              00000007
+CHECK_FOR_SIGNAL                  00000039
+CHK_BOD                           0000000F
+CINV                              00000004
+CIS                               00000003
+CM0                               00000000
+CM1                               00000001
+CM2                               00000002
+CMCON                             00000019
+CMIE                              00000003
+CMIF                              00000003
+COUT                              00000006
+DATA_TRANSFER                     0000005E
+DATA_TRANSFER_FINISHED            0000006B
+DATA_TRANSFER_LOOP                00000062
+DC                                00000001
+EEADR                             0000009B
+EECON1                            0000009C
+EECON2                            0000009D
+EEDAT                             0000009A
+EEDATA                            0000009A
+EEIE                              00000007
+EEIF                              00000007
+F                                 00000001
+FSR                               00000004
+GIE                               00000007
+GP0                               00000000
+GP1                               00000001
+GP2                               00000002
+GP3                               00000003
+GP4                               00000004
+GP5                               00000005
+GPIE                              00000003
+GPIF                              00000000
+GPIO                              00000005
+GPIO0                             00000000
+GPIO1                             00000001
+GPIO2                             00000002
+GPIO3                             00000003
+GPIO4                             00000004
+GPIO5                             00000005
+HEADER_TRANSFER                   00000050
+HEADER_TRANSFER_FINISHED          0000005C
+HEADER_TRANSFER_LOOP              00000053
+INDF                              00000000
+gpasm-0.13.7 beta               comunit.asm 10-23-2011  23:24:15         PAGE  9
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+ 
+INIT                              00000000
+INTCON                            0000000B
+INTE                              00000004
+INTEDG                            00000006
+INTF                              00000001
+IOC                               00000096
+IOC0                              00000000
+IOC1                              00000001
+IOC2                              00000002
+IOC3                              00000003
+IOC4                              00000004
+IOC5                              00000005
+IOCB                              00000096
+IOCB0                             00000000
+IOCB1                             00000001
+IOCB2                             00000002
+IOCB3                             00000003
+IOCB4                             00000004
+IOCB5                             00000005
+IRP                               00000007
+LAMPTESTET                        00000095
+MAIN                              00000013
+MAIN_LOOP                         00000013
+META_TRANSFER                     00000047
+NOT_BOD                           00000000
+NOT_GPPU                          00000007
+NOT_PD                            00000003
+NOT_POR                           00000001
+NOT_T1SYNC                        00000002
+NOT_TO                            00000004
+OPTION_REG                        00000081
+OSCCAL                            00000090
+PAUSE_10MS                        00000074
+PAUSE_1MS_INNER_LOOP1             00000078
+PAUSE_45US                        00000084
+PAUSE_45US_LOOP                   00000086
+PAUSE_50US                        0000007E
+PAUSE_50US_LOOP                   00000080
+PAUSE_HALF_SIGNAL                 0000006F
+PAUSE_OUTER_LOOP                  00000076
+PAUSE_SIGNAL                      00000071
+PCL                               00000002
+PCLATH                            0000000A
+PCON                              0000008E
+PEIE                              00000006
+PIE1                              0000008C
+PIR1                              0000000C
+PS0                               00000000
+PS1                               00000001
+PS2                               00000002
+PSA                               00000003
+RD                                00000000
+RP0                               00000005
+RP1                               00000006
+gpasm-0.13.7 beta               comunit.asm 10-23-2011  23:24:15         PAGE 10
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+ 
+START_RECEIVE                     0000003D
+STATUS                            00000003
+T0CS                              00000005
+T0IE                              00000005
+T0IF                              00000002
+T0SE                              00000004
+T1CKPS0                           00000004
+T1CKPS1                           00000005
+T1CON                             00000010
+T1IE                              00000000
+T1IF                              00000000
+T1OSCEN                           00000003
+TL_DATA                           0000002C
+TMR0                              00000001
+TMR1CS                            00000001
+TMR1GE                            00000006
+TMR1H                             0000000F
+TMR1IE                            00000000
+TMR1IF                            00000000
+TMR1L                             0000000E
+TMR1ON                            00000000
+TRANSFER                          00000015
+TRANSFER_DATA                     00000028
+TRANSFER_DELAY                    0000008A
+TRANSFER_DONE                     00000038
+TRANSFER_HEADER                   00000018
+TRISIO                            00000085
+TURN_PORT_OFF                     00000092
+TURN_PORT_ON                      0000008D
+VR0                               00000000
+VR1                               00000001
+VR2                               00000002
+VR3                               00000003
+VRCON                             00000099
+VREN                              00000007
+VRR                               00000005
+W                                 00000000
+WPU                               00000095
+WR                                00000001
+WREN                              00000002
+WRERR                             00000003
+Z                                 00000002
+_BODEN_OFF                        00003FBF
+_BODEN_ON                         00003FFF
+_CPD_OFF                          00003FFF
+_CPD_ON                           00003EFF
+_CP_OFF                           00003FFF
+_CP_ON                            00003F7F
+_EC_OSC                           00003FFB
+_EXTRC_OSC_CLKOUT                 00003FFF
+_EXTRC_OSC_NOCLKOUT               00003FFE
+_HS_OSC                           00003FFA
+_INTRC_OSC_CLKOUT                 00003FFD
+_INTRC_OSC_NOCLKOUT               00003FFC
+gpasm-0.13.7 beta               comunit.asm 10-23-2011  23:24:15         PAGE 11
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+ 
+_LP_OSC                           00003FF8
+_MCLRE_OFF                        00003FDF
+_MCLRE_ON                         00003FFF
+_PWRTE_OFF                        00003FFF
+_PWRTE_ON                         00003FEF
+_WDT_OFF                          00003FF7
+_WDT_ON                           00003FFF
+_XT_OSC                           00003FF9
+__12F629                          00000001
+dc1                               00000020
+dc2                               00000021
+portCounter                       00000022
+portData                          00000025
+portHeader                        00000024
+portSelect                        00000023
+tmp                               00000026
+_brownOutIndicatorPort            0x1
+_headerBit                        0x4
+_portData                         0x3
+_portOut0                         0x0
+_portOut1                         0x1
+_portStatus                       0x2
+
+
+MEMORY USAGE MAP ('X' = Used,  '-' = Unused)
+
+00000000 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+00000040 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+00000080 : XXXXXXXXXXXXXXXX XXXXXXXX-------- ---------------- ----------------
+00002000 : -------X-------- ---------------- ---------------- ----------------
+
+All other memory blocks unused.
+
+Program Memory Words Used: 153
+
+
+Errors   :       0
+Warnings :       5 reported,       0 suppressed
+Messages :       0 reported,      13 suppressed
+

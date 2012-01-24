@@ -1,0 +1,40 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="MainFrame/Main.cs">
+    <Files>
+      <File FileName="MainFrame/Main.cs" Line="77" Column="4" />
+      <File FileName="MainFrame/StaticRobotBuilder.cs" Line="51" Column="4" />
+      <File FileName="Communications/Robot.cs" Line="151" Column="4" />
+      <File FileName="Communications/Processes/Temporary/KeyboardProcess.cs" Line="196" Column="24" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True">
+          <Node name="LanguageParser" expanded="True" />
+          <Node name="MainFrame" expanded="True">
+            <Node name="References" expanded="True" />
+          </Node>
+          <Node name="Robot" expanded="True">
+            <Node name="References" expanded="True" />
+            <Node name="Devices" expanded="True">
+              <Node name="Arduino" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="ClassPad">
+        <State expanded="True" selected="True">
+          <Node name="MainFrame" expanded="True">
+            <Node name="MainFrame" expanded="True" />
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/home/olga/workspace/robot/MainFrame/Communications/Robot.cs" line="262" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

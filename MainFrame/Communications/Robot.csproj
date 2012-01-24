@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{999E1351-61D4-4AAD-BEA3-6C147D48E581}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AssemblyName>Communications</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <RootNamespace>Robot</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <additionalargs>/unsafe</additionalargs>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="protobuf-net, Version=1.0.0.282, Culture=neutral, PublicKeyToken=257b51d87d2e4d67">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\MainFrame\bin\Debug\protobuf-net.dll</HintPath>
+    </Reference>
+    <Reference Include="Phidget21.NET, Version=2.1.8.82, Culture=neutral, PublicKeyToken=c2b1f2a3594bce52">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\usr\lib\mono\gac\Phidget21.NET\2.1.8.82__c2b1f2a3594bce52\Phidget21.NET.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Mono.Posix" />
+    <Reference Include="Microsoft.Dynamic, Version=1.1.0.30, Culture=neutral, PublicKeyToken=7f709c5b713576e1">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\usr\lib\mono\gac\Microsoft.Dynamic\1.1.0.30__7f709c5b713576e1\Microsoft.Dynamic.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Scripting, Version=1.1.0.30, Culture=neutral, PublicKeyToken=7f709c5b713576e1">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\usr\lib\mono\gac\Microsoft.Scripting\1.1.0.30__7f709c5b713576e1\Microsoft.Scripting.dll</HintPath>
+    </Reference>
+    <Reference Include="IronRuby, Version=1.1.4.0, Culture=neutral, PublicKeyToken=7f709c5b713576e1">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\usr\lib\mono\gac\IronRuby\1.1.4.0__7f709c5b713576e1\IronRuby.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="Net\DTOConnection.cs" />
+    <Compile Include="Net\DTOConverter.cs" />
+    <Compile Include="Net\ISocketConnection.cs" />
+    <Compile Include="Net\ITriggerable.cs" />
+    <Compile Include="Net\SocketServer.cs" />
+    <Compile Include="Net\DTOClasses\IDTO.cs" />
+    <Compile Include="Net\DTOClasses\TestDTO.cs" />
+    <Compile Include="Mediator\INervousSignal.cs" />
+    <Compile Include="Mediator\INervousSystem.cs" />
+    <Compile Include="Mediator\INode.cs" />
+    <Compile Include="Mediator\IRequestable.cs" />
+    <Compile Include="Mediator\RobotNervous.cs" />
+    <Compile Include="Log\ConsoleLogger.cs" />
+    <Compile Include="Log\IMessageLogger.cs" />
+    <Compile Include="Log\StaticLogger.cs" />
+    <Compile Include="Processes\IProcess.cs" />
+    <Compile Include="Processes\ProcessContainer.cs" />
+    <Compile Include="Processes\ProcessException.cs" />
+    <Compile Include="Processes\ProcessFactory.cs" />
+    <Compile Include="Processes\Temporary\KeyboardProcess.cs" />
+    <Compile Include="Processes\Temporary\LookAtPeopleProcess.cs" />
+    <Compile Include="Processes\RubyProcess.cs" />
+    <Compile Include="Devices\DeviceException.cs" />
+    <Compile Include="Devices\IServo.cs" />
+    <Compile Include="Devices\IServoMotor.cs" />
+    <Compile Include="Devices\Legacy\IIODevice.cs" />
+    <Compile Include="Devices\Legacy\IIOBoard.cs" />
+    <Compile Include="Devices\DeviceContainer.cs" />
+    <Compile Include="Devices\IWaitFor.cs" />
+    <Compile Include="Devices\DeviceFactory.cs" />
+    <Compile Include="Devices\Legacy\Phidgets\IOBoard.cs" />
+    <Compile Include="Devices\Legacy\Phidgets\PhidgetComServo.cs" />
+    <Compile Include="Devices\PhidgetServo.cs" />
+    <Compile Include="Devices\Legacy\Phidgets\PhidgetComUnit.cs" />
+    <Compile Include="Devices\PicDevices\IComUnitPackage.cs" />
+    <Compile Include="Devices\Legacy\Phidgets\IComUnit.cs" />
+    <Compile Include="Devices\ComplexDevices\Arm3Engines.cs" />
+    <Compile Include="Devices\ComplexDevices\Head.cs" />
+    <Compile Include="Devices\ComplexDevices\IHead.cs" />
+    <Compile Include="Devices\BatteryLevelSensor.cs" />
+    <Compile Include="Mediator\Signals\RunSignal.cs" />
+    <Compile Include="Mediator\Signals\ProcessStartSignal.cs" />
+    <Compile Include="Mediator\Signals\ProcessStopSignal.cs" />
+    <Compile Include="Mediator\Signals\AddDeviceSignal.cs" />
+    <Compile Include="Mediator\Signals\GetSignal.cs" />
+    <Compile Include="Devices\IDistance.cs" />
+    <Compile Include="Robot.cs" />
+    <Compile Include="Extensions\StopWatchExtensions.cs" />
+    <Compile Include="External\SysLib.cs" />
+    <Compile Include="IDevice.cs" />
+    <Compile Include="Devices\Arduino\ArduinoServo.cs" />
+    <Compile Include="Devices\Arduino\ArduinoPackage.cs" />
+    <Compile Include="Devices\Arduino\ISerialPackage.cs" />
+    <Compile Include="Devices\Arduino\ArduinoCommunicationProcess.cs" />
+    <Compile Include="Devices\Arduino\ISerialCommunicationProcess.cs" />
+    <Compile Include="Devices\Arduino\IPinCom.cs" />
+    <Compile Include="Devices\Arduino\ArduinoPinCom.cs" />
+    <Compile Include="Devices\Arduino\IPin.cs" />
+    <Compile Include="Devices\Arduino\Pin.cs" />
+    <Compile Include="Devices\Arduino\ArduinoSRF05Sonar.cs" />
+    <Compile Include="Devices\Arduino\ArduinoEZ1Sonar.cs" />
+    <Compile Include="Devices\Arduino\ArduinoComUnit.cs" />
+    <Compile Include="Devices\Arduino\ComUnitPackage.cs" />
+    <Compile Include="Devices\Arduino\ArduinoIRSensor.cs" />
+    <Compile Include="Devices\Arduino\ArduinoEngine.cs" />
+    <Compile Include="Devices\Arduino\ArduinoMotor.cs" />
+    <Compile Include="Devices\Speech\ITTS.cs" />
+    <Compile Include="Devices\Speech\SphinxASRProcess.cs" />
+    <Compile Include="Devices\Speech\CommandInterpreter.cs" />
+    <Compile Include="Devices\Speech\SpeechInterpreter.cs" />
+    <Compile Include="Devices\Speech\LanguageEditor.cs" />
+    <Compile Include="Devices\Speech\EspeakCmdLineTTS.cs" />
+    <Compile Include="Devices\Speech\EspeakTTS.cs" />
+    <Compile Include="Devices\Speech\.svn\entries" />
+    <Compile Include="Devices\Speech\.svn\text-base\CommandInterpreter.cs.svn-base" />
+    <Compile Include="Devices\Speech\.svn\text-base\EspeakTTS.cs.svn-base" />
+    <Compile Include="Devices\Speech\.svn\text-base\ITTS.cs.svn-base" />
+    <Compile Include="Devices\Speech\.svn\text-base\SpeechInterpreter.cs.svn-base" />
+    <Compile Include="Devices\Speech\.svn\text-base\SphinxASR.cs.svn-base" />
+    <Compile Include="Devices\Speech\.svn\text-base\SphinxASRProcess.cs.svn-base" />
+    <Compile Include="Devices\Video\HaarCaptureObject.cs" />
+    <Compile Include="Devices\Video\IVideoCapture.cs" />
+    <Compile Include="Devices\Video\CvRect.cs" />
+    <Compile Include="Devices\Video\CvBitmap.cs" />
+    <Compile Include="Devices\Video\ICaptureImage.cs" />
+    <Compile Include="Devices\Video\CameraProcess.cs" />
+    <Compile Include="Devices\Video\ICamera.cs" />
+    <Compile Include="Devices\Video\CvSize.cs" />
+    <Compile Include="Devices\Video\.svn\entries" />
+    <Compile Include="Devices\Video\.svn\text-base\CameraController.cs.svn-base" />
+    <Compile Include="Devices\Video\.svn\text-base\CameraProcess.cs.svn-base" />
+    <Compile Include="Devices\Video\.svn\text-base\CvBitmap.cs.svn-base" />
+    <Compile Include="Devices\Video\.svn\text-base\CvRect.cs.svn-base" />
+    <Compile Include="Devices\Video\.svn\text-base\CvSize.cs.svn-base" />
+    <Compile Include="Devices\Video\.svn\text-base\HaarCaptureObject.cs.svn-base" />
+    <Compile Include="Devices\Video\.svn\text-base\ICamera.cs.svn-base" />
+    <Compile Include="Devices\Video\.svn\text-base\ICaptureImage.cs.svn-base" />
+    <Compile Include="Devices\Video\.svn\text-base\IVideoCapture.cs.svn-base" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Log\" />
+    <Folder Include="Processes\Temporary\" />
+    <Folder Include="Devices\Legacy\" />
+    <Folder Include="Devices\Legacy\Phidgets\" />
+    <Folder Include="Devices\PicDevices\" />
+    <Folder Include="Devices\" />
+    <Folder Include="Extensions\" />
+    <Folder Include="External\" />
+    <Folder Include="..\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+</Project>

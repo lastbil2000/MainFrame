@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<language>
+  <speech>
+    <p>
+      <q>Hello</q>
+      <q>Hi</q>
+      <a>Hello Master</a>
+      <a>I love you</a>
+      <a>hello dear, dear friend</a>
+      <a>yo, baby!</a>
+      <a>hello</a>
+    </p>
+    <p>
+      <q>How are you</q>
+      <a>I'm fine. lol</a>
+      <a>I hate my self</a>
+    </p>
+    <p>
+      <q>say something clever</q>
+      <a>it is nice to be important, but it is more important to be nice</a>
+    </p>
+    <p>
+      <q>what is jesus</q>
+      <a>jesus is christ</a>
+    </p>
+    <p>
+      <q>say hello to papa</q>
+      <a>hello ulf</a>
+    </p>
+  </speech>
+</language>

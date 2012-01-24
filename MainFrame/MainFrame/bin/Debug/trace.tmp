@@ -1,0 +1,1368 @@
+execve("./MainFrame.exe", ["./MainFrame.exe"], [/* 17 vars */]) = 0
+brk(0)                                  = 0x1840000
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+mmap(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f44ce05c000
+access("/etc/ld.so.preload", R_OK)      = -1 ENOENT (No such file or directory)
+open("/etc/ld.so.cache", O_RDONLY)      = 3
+fstat(3, {st_mode=S_IFREG|0644, st_size=172461, ...}) = 0
+mmap(NULL, 172461, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7f44ce031000
+close(3)                                = 0
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+open("/usr/lib/libperl.so.5.10", O_RDONLY) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\360\215\3\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0644, st_size=1487368, ...}) = 0
+mmap(NULL, 3583016, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7f44cdad4000
+mprotect(0x7f44cdc36000, 2097152, PROT_NONE) = 0
+mmap(0x7f44cde36000, 36864, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x162000) = 0x7f44cde36000
+close(3)                                = 0
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+open("/lib/libdl.so.2", O_RDONLY)       = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\340\r\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0644, st_size=14696, ...}) = 0
+mmap(NULL, 2109696, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7f44cd8d0000
+mprotect(0x7f44cd8d2000, 2097152, PROT_NONE) = 0
+mmap(0x7f44cdad2000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x2000) = 0x7f44cdad2000
+close(3)                                = 0
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+open("/lib/libm.so.6", O_RDONLY)        = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\360>\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0644, st_size=534832, ...}) = 0
+mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f44ce030000
+mmap(NULL, 2629864, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7f44cd64d000
+mprotect(0x7f44cd6cf000, 2093056, PROT_NONE) = 0
+mmap(0x7f44cd8ce000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x81000) = 0x7f44cd8ce000
+close(3)                                = 0
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+open("/lib/libpthread.so.0", O_RDONLY)  = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\360Y\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=135745, ...}) = 0
+mmap(NULL, 2212736, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7f44cd430000
+mprotect(0x7f44cd448000, 2093056, PROT_NONE) = 0
+mmap(0x7f44cd647000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x17000) = 0x7f44cd647000
+mmap(0x7f44cd649000, 13184, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7f44cd649000
+close(3)                                = 0
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+open("/lib/libc.so.6", O_RDONLY)        = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0`\355\1\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=1572232, ...}) = 0
+mmap(NULL, 3680296, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7f44cd0ad000
+mprotect(0x7f44cd227000, 2093056, PROT_NONE) = 0
+mmap(0x7f44cd426000, 20480, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x179000) = 0x7f44cd426000
+mmap(0x7f44cd42b000, 18472, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7f44cd42b000
+close(3)                                = 0
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+open("/lib/libcrypt.so.1", O_RDONLY)    = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0P\n\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0644, st_size=43296, ...}) = 0
+mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f44ce02f000
+mmap(NULL, 2326976, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7f44cce74000
+mprotect(0x7f44cce7d000, 2097152, PROT_NONE) = 0
+mmap(0x7f44cd07d000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x9000) = 0x7f44cd07d000
+mmap(0x7f44cd07f000, 184768, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7f44cd07f000
+close(3)                                = 0
+mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f44ce02e000
+mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f44ce02d000
+mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f44ce02c000
+arch_prctl(ARCH_SET_FS, 0x7f44ce02d700) = 0
+mprotect(0x7f44cd07d000, 4096, PROT_READ) = 0
+mprotect(0x7f44cd426000, 16384, PROT_READ) = 0
+mprotect(0x7f44cd647000, 4096, PROT_READ) = 0
+mprotect(0x7f44cd8ce000, 4096, PROT_READ) = 0
+mprotect(0x7f44cdad2000, 4096, PROT_READ) = 0
+mprotect(0x7f44cde36000, 16384, PROT_READ) = 0
+mprotect(0x601000, 4096, PROT_READ)     = 0
+mprotect(0x7f44ce05e000, 4096, PROT_READ) = 0
+munmap(0x7f44ce031000, 172461)          = 0
+set_tid_address(0x7f44ce02d9d0)         = 5966
+set_robust_list(0x7f44ce02d9e0, 0x18)   = 0
+futex(0x7fff57dae5fc, FUTEX_WAKE_PRIVATE, 1) = 0
+futex(0x7fff57dae5fc, FUTEX_WAIT_BITSET_PRIVATE|FUTEX_CLOCK_REALTIME, 1, NULL, 7f44ce02d700) = -1 EAGAIN (Resource temporarily unavailable)
+rt_sigaction(SIGRTMIN, {0x7f44cd435870, [], SA_RESTORER|SA_SIGINFO, 0x7f44cd43f8f0}, NULL, 8) = 0
+rt_sigaction(SIGRT_1, {0x7f44cd435900, [], SA_RESTORER|SA_RESTART|SA_SIGINFO, 0x7f44cd43f8f0}, NULL, 8) = 0
+rt_sigprocmask(SIG_UNBLOCK, [RTMIN RT_1], NULL, 8) = 0
+getrlimit(RLIMIT_STACK, {rlim_cur=8192*1024, rlim_max=RLIM_INFINITY}) = 0
+rt_sigaction(SIGFPE, {SIG_IGN, [FPE], SA_RESTORER|SA_RESTART, 0x7f44cd0e0af0}, {SIG_DFL, [], 0}, 8) = 0
+brk(0)                                  = 0x1840000
+brk(0x1861000)                          = 0x1861000
+getuid()                                = 0
+geteuid()                               = 0
+getgid()                                = 0
+getegid()                               = 0
+open("/usr/lib/locale/locale-archive", O_RDONLY) = -1 ENOENT (No such file or directory)
+open("/usr/share/locale/locale.alias", O_RDONLY) = 3
+fstat(3, {st_mode=S_IFREG|0644, st_size=2570, ...}) = 0
+mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f44ce05b000
+read(3, "# Locale name alias data base.\n#"..., 4096) = 2570
+read(3, "", 4096)                       = 0
+close(3)                                = 0
+munmap(0x7f44ce05b000, 4096)            = 0
+open("/usr/lib/locale/en_GB.UTF-8/LC_IDENTIFICATION", O_RDONLY) = -1 ENOENT (No such file or directory)
+open("/usr/lib/locale/en_GB.utf8/LC_IDENTIFICATION", O_RDONLY) = 3
+fstat(3, {st_mode=S_IFREG|0644, st_size=366, ...}) = 0
+mmap(NULL, 366, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7f44ce05b000
+close(3)                                = 0
+open("/usr/lib/gconv/gconv-modules.cache", O_RDONLY) = 3
+fstat(3, {st_mode=S_IFREG|0644, st_size=26048, ...}) = 0
+mmap(NULL, 26048, PROT_READ, MAP_SHARED, 3, 0) = 0x7f44ce054000
+close(3)                                = 0
+futex(0x7f44cd42af60, FUTEX_WAKE_PRIVATE, 2147483647) = 0
+open("/usr/lib/locale/en_GB.UTF-8/LC_MEASUREMENT", O_RDONLY) = -1 ENOENT (No such file or directory)
+open("/usr/lib/locale/en_GB.utf8/LC_MEASUREMENT", O_RDONLY) = 3
+fstat(3, {st_mode=S_IFREG|0644, st_size=23, ...}) = 0
+mmap(NULL, 23, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7f44ce053000
+close(3)                                = 0
+open("/usr/lib/locale/en_GB.UTF-8/LC_TELEPHONE", O_RDONLY) = -1 ENOENT (No such file or directory)
+open("/usr/lib/locale/en_GB.utf8/LC_TELEPHONE", O_RDONLY) = 3
+fstat(3, {st_mode=S_IFREG|0644, st_size=56, ...}) = 0
+mmap(NULL, 56, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7f44ce052000
+close(3)                                = 0
+open("/usr/lib/locale/en_GB.UTF-8/LC_ADDRESS", O_RDONLY) = -1 ENOENT (No such file or directory)
+open("/usr/lib/locale/en_GB.utf8/LC_ADDRESS", O_RDONLY) = 3
+fstat(3, {st_mode=S_IFREG|0644, st_size=127, ...}) = 0
+mmap(NULL, 127, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7f44ce051000
+close(3)                                = 0
+open("/usr/lib/locale/en_GB.UTF-8/LC_NAME", O_RDONLY) = -1 ENOENT (No such file or directory)
+open("/usr/lib/locale/en_GB.utf8/LC_NAME", O_RDONLY) = 3
+fstat(3, {st_mode=S_IFREG|0644, st_size=77, ...}) = 0
+mmap(NULL, 77, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7f44ce050000
+close(3)                                = 0
+open("/usr/lib/locale/en_GB.UTF-8/LC_PAPER", O_RDONLY) = -1 ENOENT (No such file or directory)
+open("/usr/lib/locale/en_GB.utf8/LC_PAPER", O_RDONLY) = 3
+fstat(3, {st_mode=S_IFREG|0644, st_size=34, ...}) = 0
+mmap(NULL, 34, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7f44ce04f000
+close(3)                                = 0
+open("/usr/lib/locale/en_GB.UTF-8/LC_MESSAGES", O_RDONLY) = -1 ENOENT (No such file or directory)
+open("/usr/lib/locale/en_GB.utf8/LC_MESSAGES", O_RDONLY) = 3
+fstat(3, {st_mode=S_IFDIR|0755, st_size=4096, ...}) = 0
+close(3)                                = 0
+open("/usr/lib/locale/en_GB.utf8/LC_MESSAGES/SYS_LC_MESSAGES", O_RDONLY) = 3
+fstat(3, {st_mode=S_IFREG|0644, st_size=52, ...}) = 0
+mmap(NULL, 52, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7f44ce04e000
+close(3)                                = 0
+open("/usr/lib/locale/en_GB.UTF-8/LC_MONETARY", O_RDONLY) = -1 ENOENT (No such file or directory)
+open("/usr/lib/locale/en_GB.utf8/LC_MONETARY", O_RDONLY) = 3
+fstat(3, {st_mode=S_IFREG|0644, st_size=290, ...}) = 0
+mmap(NULL, 290, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7f44ce04d000
+close(3)                                = 0
+open("/usr/lib/locale/en_GB.UTF-8/LC_COLLATE", O_RDONLY) = -1 ENOENT (No such file or directory)
+open("/usr/lib/locale/en_GB.utf8/LC_COLLATE", O_RDONLY) = 3
+fstat(3, {st_mode=S_IFREG|0644, st_size=1170770, ...}) = 0
+mmap(NULL, 1170770, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7f44cdf0e000
+close(3)                                = 0
+open("/usr/lib/locale/en_GB.UTF-8/LC_TIME", O_RDONLY) = -1 ENOENT (No such file or directory)
+open("/usr/lib/locale/en_GB.utf8/LC_TIME", O_RDONLY) = 3
+fstat(3, {st_mode=S_IFREG|0644, st_size=2470, ...}) = 0
+mmap(NULL, 2470, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7f44ce04c000
+close(3)                                = 0
+open("/usr/lib/locale/en_GB.UTF-8/LC_NUMERIC", O_RDONLY) = -1 ENOENT (No such file or directory)
+open("/usr/lib/locale/en_GB.utf8/LC_NUMERIC", O_RDONLY) = 3
+fstat(3, {st_mode=S_IFREG|0644, st_size=54, ...}) = 0
+mmap(NULL, 54, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7f44ce04b000
+close(3)                                = 0
+open("/usr/lib/locale/en_GB.UTF-8/LC_CTYPE", O_RDONLY) = -1 ENOENT (No such file or directory)
+open("/usr/lib/locale/en_GB.utf8/LC_CTYPE", O_RDONLY) = 3
+fstat(3, {st_mode=S_IFREG|0644, st_size=256324, ...}) = 0
+mmap(NULL, 256324, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7f44cdecf000
+close(3)                                = 0
+open("/dev/urandom", O_RDONLY)          = 3
+read(3, "\215\223\35\21", 4)            = 4
+close(3)                                = 0
+brk(0x1882000)                          = 0x1882000
+readlink("/proc/self/exe", "/usr/bin/perl", 4095) = 13
+stat("/usr/local/lib/site_perl/5.10.1/x86_64-linux-gnu-thread-multi", 0x7fff57dae260) = -1 ENOENT (No such file or directory)
+stat("/usr/local/lib/site_perl/5.10.1", 0x7fff57dae260) = -1 ENOENT (No such file or directory)
+stat("/usr/local/lib/site_perl/x86_64-linux-gnu-thread-multi", 0x7fff57dae260) = -1 ENOENT (No such file or directory)
+ioctl(0, SNDCTL_TMR_TIMEBASE or TCGETS, {B38400 opost isig icanon echo ...}) = 0
+lseek(0, 0, SEEK_CUR)                   = -1 ESPIPE (Illegal seek)
+ioctl(1, SNDCTL_TMR_TIMEBASE or TCGETS, {B38400 opost isig icanon echo ...}) = 0
+lseek(1, 0, SEEK_CUR)                   = -1 ESPIPE (Illegal seek)
+ioctl(2, SNDCTL_TMR_TIMEBASE or TCGETS, {B38400 opost isig icanon echo ...}) = 0
+lseek(2, 0, SEEK_CUR)                   = -1 ESPIPE (Illegal seek)
+open("/usr/share/binfmt-support/run-detectors", O_RDONLY) = 3
+ioctl(3, SNDCTL_TMR_TIMEBASE or TCGETS, 0x7fff57dae0f0) = -1 ENOTTY (Inappropriate ioctl for device)
+lseek(3, 0, SEEK_CUR)                   = 0
+fcntl(3, F_SETFD, FD_CLOEXEC)           = 0
+fstat(3, {st_mode=S_IFREG|0755, st_size=3625, ...}) = 0
+rt_sigaction(SIGCHLD, NULL, {SIG_DFL, [], 0}, 8) = 0
+read(3, "#! /usr/bin/perl -w\n\n# Copyright"..., 4096) = 3625
+stat("/etc/perl/strict.pmc", 0x7fff57dadcb0) = -1 ENOENT (No such file or directory)
+stat("/etc/perl/strict.pm", 0x7fff57dadc00) = -1 ENOENT (No such file or directory)
+stat("/usr/local/lib/perl/5.10.1/strict.pmc", 0x7fff57dadcb0) = -1 ENOENT (No such file or directory)
+stat("/usr/local/lib/perl/5.10.1/strict.pm", 0x7fff57dadc00) = -1 ENOENT (No such file or directory)
+stat("/usr/local/share/perl/5.10.1/strict.pmc", 0x7fff57dadcb0) = -1 ENOENT (No such file or directory)
+stat("/usr/local/share/perl/5.10.1/strict.pm", 0x7fff57dadc00) = -1 ENOENT (No such file or directory)
+stat("/usr/lib/perl5/strict.pmc", 0x7fff57dadcb0) = -1 ENOENT (No such file or directory)
+stat("/usr/lib/perl5/strict.pm", 0x7fff57dadc00) = -1 ENOENT (No such file or directory)
+stat("/usr/share/perl5/strict.pmc", 0x7fff57dadcb0) = -1 ENOENT (No such file or directory)
+stat("/usr/share/perl5/strict.pm", 0x7fff57dadc00) = -1 ENOENT (No such file or directory)
+stat("/usr/lib/perl/5.10/strict.pmc", 0x7fff57dadcb0) = -1 ENOENT (No such file or directory)
+stat("/usr/lib/perl/5.10/strict.pm", 0x7fff57dadc00) = -1 ENOENT (No such file or directory)
+stat("/usr/share/perl/5.10/strict.pmc", 0x7fff57dadcb0) = -1 ENOENT (No such file or directory)
+stat("/usr/share/perl/5.10/strict.pm", {st_mode=S_IFREG|0644, st_size=879, ...}) = 0
+open("/usr/share/perl/5.10/strict.pm", O_RDONLY) = 4
+ioctl(4, SNDCTL_TMR_TIMEBASE or TCGETS, 0x7fff57dad970) = -1 ENOTTY (Inappropriate ioctl for device)
+lseek(4, 0, SEEK_CUR)                   = 0
+read(4, "package strict;\n\n$strict::VERSIO"..., 4096) = 879
+lseek(4, 878, SEEK_SET)                 = 878
+lseek(4, 0, SEEK_CUR)                   = 878
+close(4)                                = 0
+stat("/etc/perl/Binfmt/Lib.pmc", 0x7fff57dadcb0) = -1 ENOENT (No such file or directory)
+stat("/etc/perl/Binfmt/Lib.pm", 0x7fff57dadc00) = -1 ENOENT (No such file or directory)
+stat("/usr/local/lib/perl/5.10.1/Binfmt/Lib.pmc", 0x7fff57dadcb0) = -1 ENOENT (No such file or directory)
+stat("/usr/local/lib/perl/5.10.1/Binfmt/Lib.pm", 0x7fff57dadc00) = -1 ENOENT (No such file or directory)
+stat("/usr/local/share/perl/5.10.1/Binfmt/Lib.pmc", 0x7fff57dadcb0) = -1 ENOENT (No such file or directory)
+stat("/usr/local/share/perl/5.10.1/Binfmt/Lib.pm", 0x7fff57dadc00) = -1 ENOENT (No such file or directory)
+stat("/usr/lib/perl5/Binfmt/Lib.pmc", 0x7fff57dadcb0) = -1 ENOENT (No such file or directory)
+stat("/usr/lib/perl5/Binfmt/Lib.pm", 0x7fff57dadc00) = -1 ENOENT (No such file or directory)
+stat("/usr/share/perl5/Binfmt/Lib.pmc", 0x7fff57dadcb0) = -1 ENOENT (No such file or directory)
+stat("/usr/share/perl5/Binfmt/Lib.pm", {st_mode=S_IFREG|0644, st_size=1645, ...}) = 0
+open("/usr/share/perl5/Binfmt/Lib.pm", O_RDONLY) = 4
+ioctl(4, SNDCTL_TMR_TIMEBASE or TCGETS, 0x7fff57dad970) = -1 ENOTTY (Inappropriate ioctl for device)
+lseek(4, 0, SEEK_CUR)                   = 0
+read(4, "package Binfmt::Lib;\n\n# Copyrigh"..., 4096) = 1645
+stat("/etc/perl/vars.pmc", 0x7fff57dad640) = -1 ENOENT (No such file or directory)
+stat("/etc/perl/vars.pm", 0x7fff57dad590) = -1 ENOENT (No such file or directory)
+stat("/usr/local/lib/perl/5.10.1/vars.pmc", 0x7fff57dad640) = -1 ENOENT (No such file or directory)
+stat("/usr/local/lib/perl/5.10.1/vars.pm", 0x7fff57dad590) = -1 ENOENT (No such file or directory)
+stat("/usr/local/share/perl/5.10.1/vars.pmc", 0x7fff57dad640) = -1 ENOENT (No such file or directory)
+stat("/usr/local/share/perl/5.10.1/vars.pm", 0x7fff57dad590) = -1 ENOENT (No such file or directory)
+stat("/usr/lib/perl5/vars.pmc", 0x7fff57dad640) = -1 ENOENT (No such file or directory)
+stat("/usr/lib/perl5/vars.pm", 0x7fff57dad590) = -1 ENOENT (No such file or directory)
+stat("/usr/share/perl5/vars.pmc", 0x7fff57dad640) = -1 ENOENT (No such file or directory)
+stat("/usr/share/perl5/vars.pm", 0x7fff57dad590) = -1 ENOENT (No such file or directory)
+stat("/usr/lib/perl/5.10/vars.pmc", 0x7fff57dad640) = -1 ENOENT (No such file or directory)
+stat("/usr/lib/perl/5.10/vars.pm", 0x7fff57dad590) = -1 ENOENT (No such file or directory)
+stat("/usr/share/perl/5.10/vars.pmc", 0x7fff57dad640) = -1 ENOENT (No such file or directory)
+stat("/usr/share/perl/5.10/vars.pm", {st_mode=S_IFREG|0644, st_size=1149, ...}) = 0
+open("/usr/share/perl/5.10/vars.pm", O_RDONLY) = 5
+ioctl(5, SNDCTL_TMR_TIMEBASE or TCGETS, 0x7fff57dad300) = -1 ENOTTY (Inappropriate ioctl for device)
+lseek(5, 0, SEEK_CUR)                   = 0
+read(5, "package vars;\n\nuse 5.006;\n\nour $"..., 4096) = 1149
+stat("/etc/perl/warnings/register.pmc", 0x7fff57dacfd0) = -1 ENOENT (No such file or directory)
+stat("/etc/perl/warnings/register.pm", 0x7fff57dacf20) = -1 ENOENT (No such file or directory)
+stat("/usr/local/lib/perl/5.10.1/warnings/register.pmc", 0x7fff57dacfd0) = -1 ENOENT (No such file or directory)
+stat("/usr/local/lib/perl/5.10.1/warnings/register.pm", 0x7fff57dacf20) = -1 ENOENT (No such file or directory)
+stat("/usr/local/share/perl/5.10.1/warnings/register.pmc", 0x7fff57dacfd0) = -1 ENOENT (No such file or directory)
+stat("/usr/local/share/perl/5.10.1/warnings/register.pm", 0x7fff57dacf20) = -1 ENOENT (No such file or directory)
+stat("/usr/lib/perl5/warnings/register.pmc", 0x7fff57dacfd0) = -1 ENOENT (No such file or directory)
+stat("/usr/lib/perl5/warnings/register.pm", 0x7fff57dacf20) = -1 ENOENT (No such file or directory)
+stat("/usr/share/perl5/warnings/register.pmc", 0x7fff57dacfd0) = -1 ENOENT (No such file or directory)
+stat("/usr/share/perl5/warnings/register.pm", 0x7fff57dacf20) = -1 ENOENT (No such file or directory)
+stat("/usr/lib/perl/5.10/warnings/register.pmc", 0x7fff57dacfd0) = -1 ENOENT (No such file or directory)
+stat("/usr/lib/perl/5.10/warnings/register.pm", 0x7fff57dacf20) = -1 ENOENT (No such file or directory)
+stat("/usr/share/perl/5.10/warnings/register.pmc", 0x7fff57dacfd0) = -1 ENOENT (No such file or directory)
+stat("/usr/share/perl/5.10/warnings/register.pm", {st_mode=S_IFREG|0644, st_size=732, ...}) = 0
+open("/usr/share/perl/5.10/warnings/register.pm", O_RDONLY) = 6
+ioctl(6, SNDCTL_TMR_TIMEBASE or TCGETS, 0x7fff57dacc90) = -1 ENOTTY (Inappropriate ioctl for device)
+lseek(6, 0, SEEK_CUR)                   = 0
+brk(0x18a3000)                          = 0x18a3000
+read(6, "package warnings::register;\n\nour"..., 4096) = 732
+read(6, "", 4096)                       = 0
+close(6)                                = 0
+stat("/etc/perl/warnings.pmc", 0x7fff57dacfd0) = -1 ENOENT (No such file or directory)
+stat("/etc/perl/warnings.pm", 0x7fff57dacf20) = -1 ENOENT (No such file or directory)
+stat("/usr/local/lib/perl/5.10.1/warnings.pmc", 0x7fff57dacfd0) = -1 ENOENT (No such file or directory)
+stat("/usr/local/lib/perl/5.10.1/warnings.pm", 0x7fff57dacf20) = -1 ENOENT (No such file or directory)
+stat("/usr/local/share/perl/5.10.1/warnings.pmc", 0x7fff57dacfd0) = -1 ENOENT (No such file or directory)
+stat("/usr/local/share/perl/5.10.1/warnings.pm", 0x7fff57dacf20) = -1 ENOENT (No such file or directory)
+stat("/usr/lib/perl5/warnings.pmc", 0x7fff57dacfd0) = -1 ENOENT (No such file or directory)
+stat("/usr/lib/perl5/warnings.pm", 0x7fff57dacf20) = -1 ENOENT (No such file or directory)
+stat("/usr/share/perl5/warnings.pmc", 0x7fff57dacfd0) = -1 ENOENT (No such file or directory)
+stat("/usr/share/perl5/warnings.pm", 0x7fff57dacf20) = -1 ENOENT (No such file or directory)
+stat("/usr/lib/perl/5.10/warnings.pmc", 0x7fff57dacfd0) = -1 ENOENT (No such file or directory)
+stat("/usr/lib/perl/5.10/warnings.pm", 0x7fff57dacf20) = -1 ENOENT (No such file or directory)
+stat("/usr/share/perl/5.10/warnings.pmc", 0x7fff57dacfd0) = -1 ENOENT (No such file or directory)
+stat("/usr/share/perl/5.10/warnings.pm", {st_mode=S_IFREG|0644, st_size=13272, ...}) = 0
+open("/usr/share/perl/5.10/warnings.pm", O_RDONLY) = 6
+ioctl(6, SNDCTL_TMR_TIMEBASE or TCGETS, 0x7fff57dacc90) = -1 ENOTTY (Inappropriate ioctl for device)
+lseek(6, 0, SEEK_CUR)                   = 0
+read(6, "# -*- buffer-read-only: t -*-\n# "..., 4096) = 4096
+read(6, "00\\x10\\x00\\x00\", # [38]\n    'sev"..., 4096) = 4096
+read(6, "00\\x08\\x00\", # [41]\n    'unopene"..., 4096) = 4096
+brk(0x18c4000)                          = 0x18c4000
+read(6, "\n    return vec($callers_bitmask"..., 4096) = 984
+read(6, "", 4096)                       = 0
+close(6)                                = 0
+lseek(5, 1148, SEEK_SET)                = 1148
+lseek(5, 0, SEEK_CUR)                   = 1148
+close(5)                                = 0
+stat("/etc/perl/Text/Wrap.pmc", 0x7fff57dad640) = -1 ENOENT (No such file or directory)
+stat("/etc/perl/Text/Wrap.pm", 0x7fff57dad590) = -1 ENOENT (No such file or directory)
+stat("/usr/local/lib/perl/5.10.1/Text/Wrap.pmc", 0x7fff57dad640) = -1 ENOENT (No such file or directory)
+stat("/usr/local/lib/perl/5.10.1/Text/Wrap.pm", 0x7fff57dad590) = -1 ENOENT (No such file or directory)
+stat("/usr/local/share/perl/5.10.1/Text/Wrap.pmc", 0x7fff57dad640) = -1 ENOENT (No such file or directory)
+stat("/usr/local/share/perl/5.10.1/Text/Wrap.pm", 0x7fff57dad590) = -1 ENOENT (No such file or directory)
+stat("/usr/lib/perl5/Text/Wrap.pmc", 0x7fff57dad640) = -1 ENOENT (No such file or directory)
+stat("/usr/lib/perl5/Text/Wrap.pm", 0x7fff57dad590) = -1 ENOENT (No such file or directory)
+stat("/usr/share/perl5/Text/Wrap.pmc", 0x7fff57dad640) = -1 ENOENT (No such file or directory)
+stat("/usr/share/perl5/Text/Wrap.pm", 0x7fff57dad590) = -1 ENOENT (No such file or directory)
+stat("/usr/lib/perl/5.10/Text/Wrap.pmc", 0x7fff57dad640) = -1 ENOENT (No such file or directory)
+stat("/usr/lib/perl/5.10/Text/Wrap.pm", 0x7fff57dad590) = -1 ENOENT (No such file or directory)
+stat("/usr/share/perl/5.10/Text/Wrap.pmc", 0x7fff57dad640) = -1 ENOENT (No such file or directory)
+stat("/usr/share/perl/5.10/Text/Wrap.pm", {st_mode=S_IFREG|0644, st_size=2684, ...}) = 0
+open("/usr/share/perl/5.10/Text/Wrap.pm", O_RDONLY) = 5
+ioctl(5, SNDCTL_TMR_TIMEBASE or TCGETS, 0x7fff57dad300) = -1 ENOTTY (Inappropriate ioctl for device)
+lseek(5, 0, SEEK_CUR)                   = 0
+read(5, "package Text::Wrap;\n\nuse warning"..., 4096) = 2684
+stat("/etc/perl/Text/Tabs.pmc", 0x7fff57dacfd0) = -1 ENOENT (No such file or directory)
+stat("/etc/perl/Text/Tabs.pm", 0x7fff57dacf20) = -1 ENOENT (No such file or directory)
+stat("/usr/local/lib/perl/5.10.1/Text/Tabs.pmc", 0x7fff57dacfd0) = -1 ENOENT (No such file or directory)
+stat("/usr/local/lib/perl/5.10.1/Text/Tabs.pm", 0x7fff57dacf20) = -1 ENOENT (No such file or directory)
+stat("/usr/local/share/perl/5.10.1/Text/Tabs.pmc", 0x7fff57dacfd0) = -1 ENOENT (No such file or directory)
+stat("/usr/local/share/perl/5.10.1/Text/Tabs.pm", 0x7fff57dacf20) = -1 ENOENT (No such file or directory)
+stat("/usr/lib/perl5/Text/Tabs.pmc", 0x7fff57dacfd0) = -1 ENOENT (No such file or directory)
+stat("/usr/lib/perl5/Text/Tabs.pm", 0x7fff57dacf20) = -1 ENOENT (No such file or directory)
+stat("/usr/share/perl5/Text/Tabs.pmc", 0x7fff57dacfd0) = -1 ENOENT (No such file or directory)
+stat("/usr/share/perl5/Text/Tabs.pm", 0x7fff57dacf20) = -1 ENOENT (No such file or directory)
+stat("/usr/lib/perl/5.10/Text/Tabs.pmc", 0x7fff57dacfd0) = -1 ENOENT (No such file or directory)
+stat("/usr/lib/perl/5.10/Text/Tabs.pm", 0x7fff57dacf20) = -1 ENOENT (No such file or directory)
+stat("/usr/share/perl/5.10/Text/Tabs.pmc", 0x7fff57dacfd0) = -1 ENOENT (No such file or directory)
+stat("/usr/share/perl/5.10/Text/Tabs.pm", {st_mode=S_IFREG|0644, st_size=1348, ...}) = 0
+open("/usr/share/perl/5.10/Text/Tabs.pm", O_RDONLY) = 6
+ioctl(6, SNDCTL_TMR_TIMEBASE or TCGETS, 0x7fff57dacc90) = -1 ENOTTY (Inappropriate ioctl for device)
+lseek(6, 0, SEEK_CUR)                   = 0
+read(6, "package Text::Tabs;\n\nrequire Exp"..., 4096) = 1348
+lseek(6, 1135, SEEK_SET)                = 1135
+lseek(6, 0, SEEK_CUR)                   = 1135
+close(6)                                = 0
+stat("/etc/perl/Exporter.pmc", 0x7fff57dacfd0) = -1 ENOENT (No such file or directory)
+stat("/etc/perl/Exporter.pm", 0x7fff57dacf20) = -1 ENOENT (No such file or directory)
+stat("/usr/local/lib/perl/5.10.1/Exporter.pmc", 0x7fff57dacfd0) = -1 ENOENT (No such file or directory)
+stat("/usr/local/lib/perl/5.10.1/Exporter.pm", 0x7fff57dacf20) = -1 ENOENT (No such file or directory)
+stat("/usr/local/share/perl/5.10.1/Exporter.pmc", 0x7fff57dacfd0) = -1 ENOENT (No such file or directory)
+stat("/usr/local/share/perl/5.10.1/Exporter.pm", 0x7fff57dacf20) = -1 ENOENT (No such file or directory)
+stat("/usr/lib/perl5/Exporter.pmc", 0x7fff57dacfd0) = -1 ENOENT (No such file or directory)
+stat("/usr/lib/perl5/Exporter.pm", 0x7fff57dacf20) = -1 ENOENT (No such file or directory)
+stat("/usr/share/perl5/Exporter.pmc", 0x7fff57dacfd0) = -1 ENOENT (No such file or directory)
+stat("/usr/share/perl5/Exporter.pm", 0x7fff57dacf20) = -1 ENOENT (No such file or directory)
+stat("/usr/lib/perl/5.10/Exporter.pmc", 0x7fff57dacfd0) = -1 ENOENT (No such file or directory)
+stat("/usr/lib/perl/5.10/Exporter.pm", 0x7fff57dacf20) = -1 ENOENT (No such file or directory)
+stat("/usr/share/perl/5.10/Exporter.pmc", 0x7fff57dacfd0) = -1 ENOENT (No such file or directory)
+stat("/usr/share/perl/5.10/Exporter.pm", {st_mode=S_IFREG|0644, st_size=2291, ...}) = 0
+open("/usr/share/perl/5.10/Exporter.pm", O_RDONLY) = 6
+ioctl(6, SNDCTL_TMR_TIMEBASE or TCGETS, 0x7fff57dacc90) = -1 ENOTTY (Inappropriate ioctl for device)
+lseek(6, 0, SEEK_CUR)                   = 0
+read(6, "package Exporter;\n\nrequire 5.006"..., 4096) = 2291
+brk(0x18e5000)                          = 0x18e5000
+lseek(6, 2290, SEEK_SET)                = 2290
+lseek(6, 0, SEEK_CUR)                   = 2290
+close(6)                                = 0
+stat("/etc/perl/re.pmc", 0x7fff57dacfd0) = -1 ENOENT (No such file or directory)
+stat("/etc/perl/re.pm", 0x7fff57dacf20) = -1 ENOENT (No such file or directory)
+stat("/usr/local/lib/perl/5.10.1/re.pmc", 0x7fff57dacfd0) = -1 ENOENT (No such file or directory)
+stat("/usr/local/lib/perl/5.10.1/re.pm", 0x7fff57dacf20) = -1 ENOENT (No such file or directory)
+stat("/usr/local/share/perl/5.10.1/re.pmc", 0x7fff57dacfd0) = -1 ENOENT (No such file or directory)
+stat("/usr/local/share/perl/5.10.1/re.pm", 0x7fff57dacf20) = -1 ENOENT (No such file or directory)
+stat("/usr/lib/perl5/re.pmc", 0x7fff57dacfd0) = -1 ENOENT (No such file or directory)
+stat("/usr/lib/perl5/re.pm", 0x7fff57dacf20) = -1 ENOENT (No such file or directory)
+stat("/usr/share/perl5/re.pmc", 0x7fff57dacfd0) = -1 ENOENT (No such file or directory)
+stat("/usr/share/perl5/re.pm", 0x7fff57dacf20) = -1 ENOENT (No such file or directory)
+stat("/usr/lib/perl/5.10/re.pmc", 0x7fff57dacfd0) = -1 ENOENT (No such file or directory)
+stat("/usr/lib/perl/5.10/re.pm", {st_mode=S_IFREG|0644, st_size=5201, ...}) = 0
+open("/usr/lib/perl/5.10/re.pm", O_RDONLY) = 6
+ioctl(6, SNDCTL_TMR_TIMEBASE or TCGETS, 0x7fff57dacc90) = -1 ENOTTY (Inappropriate ioctl for device)
+lseek(6, 0, SEEK_CUR)                   = 0
+read(6, "package re;\n\n# pragma for contro"..., 4096) = 4096
+read(6, "lags: \",\n                       "..., 4096) = 1105
+brk(0x1906000)                          = 0x1906000
+lseek(6, 5200, SEEK_SET)                = 5200
+lseek(6, 0, SEEK_CUR)                   = 5200
+close(6)                                = 0
+lseek(5, 2683, SEEK_SET)                = 2683
+lseek(5, 0, SEEK_CUR)                   = 2683
+close(5)                                = 0
+read(4, "", 4096)                       = 0
+close(4)                                = 0
+stat("/etc/perl/Exporter/Heavy.pmc", 0x7fff57dadcb0) = -1 ENOENT (No such file or directory)
+stat("/etc/perl/Exporter/Heavy.pm", 0x7fff57dadc00) = -1 ENOENT (No such file or directory)
+stat("/usr/local/lib/perl/5.10.1/Exporter/Heavy.pmc", 0x7fff57dadcb0) = -1 ENOENT (No such file or directory)
+stat("/usr/local/lib/perl/5.10.1/Exporter/Heavy.pm", 0x7fff57dadc00) = -1 ENOENT (No such file or directory)
+stat("/usr/local/share/perl/5.10.1/Exporter/Heavy.pmc", 0x7fff57dadcb0) = -1 ENOENT (No such file or directory)
+stat("/usr/local/share/perl/5.10.1/Exporter/Heavy.pm", 0x7fff57dadc00) = -1 ENOENT (No such file or directory)
+stat("/usr/lib/perl5/Exporter/Heavy.pmc", 0x7fff57dadcb0) = -1 ENOENT (No such file or directory)
+stat("/usr/lib/perl5/Exporter/Heavy.pm", 0x7fff57dadc00) = -1 ENOENT (No such file or directory)
+stat("/usr/share/perl5/Exporter/Heavy.pmc", 0x7fff57dadcb0) = -1 ENOENT (No such file or directory)
+stat("/usr/share/perl5/Exporter/Heavy.pm", 0x7fff57dadc00) = -1 ENOENT (No such file or directory)
+stat("/usr/lib/perl/5.10/Exporter/Heavy.pmc", 0x7fff57dadcb0) = -1 ENOENT (No such file or directory)
+stat("/usr/lib/perl/5.10/Exporter/Heavy.pm", 0x7fff57dadc00) = -1 ENOENT (No such file or directory)
+stat("/usr/share/perl/5.10/Exporter/Heavy.pmc", 0x7fff57dadcb0) = -1 ENOENT (No such file or directory)
+stat("/usr/share/perl/5.10/Exporter/Heavy.pm", {st_mode=S_IFREG|0644, st_size=6346, ...}) = 0
+open("/usr/share/perl/5.10/Exporter/Heavy.pm", O_RDONLY) = 4
+ioctl(4, SNDCTL_TMR_TIMEBASE or TCGETS, 0x7fff57dad970) = -1 ENOTTY (Inappropriate ioctl for device)
+lseek(4, 0, SEEK_CUR)                   = 0
+read(4, "package Exporter::Heavy;\n\nuse st"..., 4096) = 4096
+read(4, "nd without a leading &.\n\t    # ("..., 4096) = 2250
+brk(0x1927000)                          = 0x1927000
+read(4, "", 4096)                       = 0
+close(4)                                = 0
+stat("/etc/perl/Binfmt/Format.pmc", 0x7fff57dadcb0) = -1 ENOENT (No such file or directory)
+stat("/etc/perl/Binfmt/Format.pm", 0x7fff57dadc00) = -1 ENOENT (No such file or directory)
+stat("/usr/local/lib/perl/5.10.1/Binfmt/Format.pmc", 0x7fff57dadcb0) = -1 ENOENT (No such file or directory)
+stat("/usr/local/lib/perl/5.10.1/Binfmt/Format.pm", 0x7fff57dadc00) = -1 ENOENT (No such file or directory)
+stat("/usr/local/share/perl/5.10.1/Binfmt/Format.pmc", 0x7fff57dadcb0) = -1 ENOENT (No such file or directory)
+stat("/usr/local/share/perl/5.10.1/Binfmt/Format.pm", 0x7fff57dadc00) = -1 ENOENT (No such file or directory)
+stat("/usr/lib/perl5/Binfmt/Format.pmc", 0x7fff57dadcb0) = -1 ENOENT (No such file or directory)
+stat("/usr/lib/perl5/Binfmt/Format.pm", 0x7fff57dadc00) = -1 ENOENT (No such file or directory)
+stat("/usr/share/perl5/Binfmt/Format.pmc", 0x7fff57dadcb0) = -1 ENOENT (No such file or directory)
+stat("/usr/share/perl5/Binfmt/Format.pm", {st_mode=S_IFREG|0644, st_size=4000, ...}) = 0
+open("/usr/share/perl5/Binfmt/Format.pm", O_RDONLY) = 4
+ioctl(4, SNDCTL_TMR_TIMEBASE or TCGETS, 0x7fff57dad970) = -1 ENOTTY (Inappropriate ioctl for device)
+lseek(4, 0, SEEK_CUR)                   = 0
+read(4, "package Binfmt::Format;\n\n# Copyr"..., 4096) = 4000
+stat("/etc/perl/Errno.pmc", 0x7fff57dad640) = -1 ENOENT (No such file or directory)
+stat("/etc/perl/Errno.pm", 0x7fff57dad590) = -1 ENOENT (No such file or directory)
+stat("/usr/local/lib/perl/5.10.1/Errno.pmc", 0x7fff57dad640) = -1 ENOENT (No such file or directory)
+stat("/usr/local/lib/perl/5.10.1/Errno.pm", 0x7fff57dad590) = -1 ENOENT (No such file or directory)
+stat("/usr/local/share/perl/5.10.1/Errno.pmc", 0x7fff57dad640) = -1 ENOENT (No such file or directory)
+stat("/usr/local/share/perl/5.10.1/Errno.pm", 0x7fff57dad590) = -1 ENOENT (No such file or directory)
+stat("/usr/lib/perl5/Errno.pmc", 0x7fff57dad640) = -1 ENOENT (No such file or directory)
+stat("/usr/lib/perl5/Errno.pm", 0x7fff57dad590) = -1 ENOENT (No such file or directory)
+stat("/usr/share/perl5/Errno.pmc", 0x7fff57dad640) = -1 ENOENT (No such file or directory)
+stat("/usr/share/perl5/Errno.pm", 0x7fff57dad590) = -1 ENOENT (No such file or directory)
+stat("/usr/lib/perl/5.10/Errno.pmc", 0x7fff57dad640) = -1 ENOENT (No such file or directory)
+stat("/usr/lib/perl/5.10/Errno.pm", {st_mode=S_IFREG|0644, st_size=5995, ...}) = 0
+open("/usr/lib/perl/5.10/Errno.pm", O_RDONLY) = 5
+ioctl(5, SNDCTL_TMR_TIMEBASE or TCGETS, 0x7fff57dad300) = -1 ENOTTY (Inappropriate ioctl for device)
+lseek(5, 0, SEEK_CUR)                   = 0
+read(5, "#\n# This file is auto-generated."..., 4096) = 4096
+read(5, "T () { 93 }\nsub ESOCKTNOSUPPORT "..., 4096) = 1899
+brk(0x1948000)                          = 0x1948000
+lseek(5, 5994, SEEK_SET)                = 5994
+lseek(5, 0, SEEK_CUR)                   = 5994
+close(5)                                = 0
+read(4, "", 4096)                       = 0
+close(4)                                = 0
+read(3, "", 4096)                       = 0
+close(3)                                = 0
+open("/var/lib/binfmts", O_RDONLY|O_NONBLOCK|O_DIRECTORY|O_CLOEXEC) = 3
+fcntl(3, F_GETFD)                       = 0x1 (flags FD_CLOEXEC)
+brk(0x196f000)                          = 0x196f000
+getdents(3, /* 8 entries */, 32768)     = 224
+getdents(3, /* 0 entries */, 32768)     = 0
+stat("/var/lib/binfmts/python2.5", {st_mode=S_IFREG|0644, st_size=57, ...}) = 0
+stat("/proc/sys/fs/binfmt_misc/python2.5", {st_mode=S_IFREG|0644, st_size=0, ...}) = 0
+open("/var/lib/binfmts/python2.5", O_RDONLY) = 4
+ioctl(4, SNDCTL_TMR_TIMEBASE or TCGETS, 0x7fff57dadff0) = -1 ENOTTY (Inappropriate ioctl for device)
+lseek(4, 0, SEEK_CUR)                   = 0
+fstat(4, {st_mode=S_IFREG|0644, st_size=57, ...}) = 0
+fcntl(4, F_SETFD, FD_CLOEXEC)           = 0
+read(4, "python2.5\nmagic\n0\n\\xb3\\xf2\\x0d\\x"..., 4096) = 57
+close(4)                                = 0
+stat("/var/lib/binfmts/.", {st_mode=S_IFDIR|0755, st_size=4096, ...}) = 0
+stat("/var/lib/binfmts/python2.6", {st_mode=S_IFREG|0644, st_size=57, ...}) = 0
+stat("/proc/sys/fs/binfmt_misc/python2.6", {st_mode=S_IFREG|0644, st_size=0, ...}) = 0
+open("/var/lib/binfmts/python2.6", O_RDONLY) = 4
+ioctl(4, SNDCTL_TMR_TIMEBASE or TCGETS, 0x7fff57dadff0) = -1 ENOTTY (Inappropriate ioctl for device)
+lseek(4, 0, SEEK_CUR)                   = 0
+fstat(4, {st_mode=S_IFREG|0644, st_size=57, ...}) = 0
+fcntl(4, F_SETFD, FD_CLOEXEC)           = 0
+read(4, "python2.6\nmagic\n0\n\\xd1\\xf2\\x0d\\x"..., 4096) = 57
+close(4)                                = 0
+stat("/var/lib/binfmts/jarwrapper", {st_mode=S_IFREG|0644, st_size=64, ...}) = 0
+stat("/proc/sys/fs/binfmt_misc/jarwrapper", {st_mode=S_IFREG|0644, st_size=0, ...}) = 0
+open("/var/lib/binfmts/jarwrapper", O_RDONLY) = 4
+ioctl(4, SNDCTL_TMR_TIMEBASE or TCGETS, 0x7fff57dadff0) = -1 ENOTTY (Inappropriate ioctl for device)
+lseek(4, 0, SEEK_CUR)                   = 0
+fstat(4, {st_mode=S_IFREG|0644, st_size=64, ...}) = 0
+fcntl(4, F_SETFD, FD_CLOEXEC)           = 0
+read(4, ":\nmagic\n0\nPK\\x03\\x04\n\n/usr/bin/j"..., 4096) = 64
+close(4)                                = 0
+stat("/var/lib/binfmts/cli", {st_mode=S_IFREG|0644, st_size=70, ...}) = 0
+stat("/proc/sys/fs/binfmt_misc/cli", {st_mode=S_IFREG|0644, st_size=0, ...}) = 0
+open("/var/lib/binfmts/cli", O_RDONLY)  = 4
+ioctl(4, SNDCTL_TMR_TIMEBASE or TCGETS, 0x7fff57dadff0) = -1 ENOTTY (Inappropriate ioctl for device)
+lseek(4, 0, SEEK_CUR)                   = 0
+fstat(4, {st_mode=S_IFREG|0644, st_size=70, ...}) = 0
+fcntl(4, F_SETFD, FD_CLOEXEC)           = 0
+read(4, "mono-common\nmagic\n0\nMZ\n\n/usr/bin"..., 4096) = 70
+read(4, "", 4096)                       = 0
+close(4)                                = 0
+stat("/var/lib/binfmts/python2.4", {st_mode=S_IFREG|0644, st_size=57, ...}) = 0
+stat("/proc/sys/fs/binfmt_misc/python2.4", {st_mode=S_IFREG|0644, st_size=0, ...}) = 0
+open("/var/lib/binfmts/python2.4", O_RDONLY) = 4
+ioctl(4, SNDCTL_TMR_TIMEBASE or TCGETS, 0x7fff57dadff0) = -1 ENOTTY (Inappropriate ioctl for device)
+lseek(4, 0, SEEK_CUR)                   = 0
+fstat(4, {st_mode=S_IFREG|0644, st_size=57, ...}) = 0
+fcntl(4, F_SETFD, FD_CLOEXEC)           = 0
+read(4, "python2.4\nmagic\n0\n\\x6d\\xf2\\x0d\\x"..., 4096) = 57
+close(4)                                = 0
+stat("/var/lib/binfmts/..", {st_mode=S_IFDIR|0755, st_size=4096, ...}) = 0
+stat("/var/lib/binfmts/jar", {st_mode=S_IFREG|0644, st_size=79, ...}) = 0
+stat("/proc/sys/fs/binfmt_misc/jar", {st_mode=S_IFREG|0644, st_size=0, ...}) = 0
+open("/var/lib/binfmts/jar", O_RDONLY)  = 4
+ioctl(4, SNDCTL_TMR_TIMEBASE or TCGETS, 0x7fff57dadff0) = -1 ENOTTY (Inappropriate ioctl for device)
+lseek(4, 0, SEEK_CUR)                   = 0
+fstat(4, {st_mode=S_IFREG|0644, st_size=79, ...}) = 0
+fcntl(4, F_SETFD, FD_CLOEXEC)           = 0
+read(4, "sun-java6\nmagic\n0\nPK\\x03\\x04\n\n/u"..., 4096) = 79
+close(4)                                = 0
+brk(0x1967000)                          = 0x1967000
+close(3)                                = 0
+open("./MainFrame.exe", O_RDONLY)       = 3
+ioctl(3, SNDCTL_TMR_TIMEBASE or TCGETS, 0x7fff57dadff0) = -1 ENOTTY (Inappropriate ioctl for device)
+lseek(3, 0, SEEK_CUR)                   = 0
+fstat(3, {st_mode=S_IFREG|0755, st_size=49664, ...}) = 0
+fcntl(3, F_SETFD, FD_CLOEXEC)           = 0
+read(3, "MZ\220\0\3\0\0\0\4\0\0\0\377\377\0\0\270\0\0\0\0\0\0\0@\0\0\0\0\0\0\0"..., 4096) = 4096
+lseek(3, 4, SEEK_SET)                   = 4
+lseek(3, 0, SEEK_CUR)                   = 4
+close(3)                                = 0
+pipe([3, 4])                            = 0
+clone(child_stack=0, flags=CLONE_CHILD_CLEARTID|CLONE_CHILD_SETTID|SIGCHLD, child_tidptr=0x7f44ce02d9d0) = 5967
+close(4)                                = 0
+rt_sigaction(SIGINT, {SIG_IGN, [], SA_RESTORER, 0x7f44cd43f8f0}, {SIG_DFL, [], 0}, 8) = 0
+rt_sigaction(SIGQUIT, {SIG_IGN, [], SA_RESTORER, 0x7f44cd43f8f0}, {SIG_DFL, [], 0}, 8) = 0
+wait4(5967, [{WIFEXITED(s) && WEXITSTATUS(s) == 0}], 0, NULL) = 5967
+--- SIGCHLD (Child exited) @ 0 (0) ---
+rt_sigaction(SIGINT, {SIG_DFL, [], SA_RESTORER, 0x7f44cd43f8f0}, NULL, 8) = 0
+rt_sigaction(SIGQUIT, {SIG_DFL, [], SA_RESTORER, 0x7f44cd43f8f0}, NULL, 8) = 0
+read(3, "", 4)                          = 0
+close(3)                                = 0
+rt_sigaction(SIGFPE, {SIG_DFL, [], SA_RESTORER, 0x7f44cd43f8f0}, {SIG_IGN, [FPE], SA_RESTORER|SA_RESTART, 0x7f44cd0e0af0}, 8) = 0
+execve("/usr/bin/cli", ["/usr/bin/cli", "./MainFrame.exe"], [/* 17 vars */]) = 0
+brk(0)                                  = 0x2473000
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+mmap(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f3154fc0000
+access("/etc/ld.so.preload", R_OK)      = -1 ENOENT (No such file or directory)
+open("/etc/ld.so.cache", O_RDONLY)      = 3
+fstat(3, {st_mode=S_IFREG|0644, st_size=172461, ...}) = 0
+mmap(NULL, 172461, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7f3154f95000
+close(3)                                = 0
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+open("/usr/lib/libgthread-2.0.so.0", O_RDONLY) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\20\30\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0644, st_size=18888, ...}) = 0
+mmap(NULL, 2114136, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7f3154b9e000
+mprotect(0x7f3154ba2000, 2093056, PROT_NONE) = 0
+mmap(0x7f3154da1000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x3000) = 0x7f3154da1000
+close(3)                                = 0
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+open("/lib/libglib-2.0.so.0", O_RDONLY) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0P}\1\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0644, st_size=905480, ...}) = 0
+mmap(NULL, 3002736, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7f31548c0000
+mprotect(0x7f315499b000, 2097152, PROT_NONE) = 0
+mmap(0x7f3154b9b000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0xdb000) = 0x7f3154b9b000
+mmap(0x7f3154b9d000, 368, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7f3154b9d000
+close(3)                                = 0
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+open("/lib/librt.so.1", O_RDONLY)       = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\220!\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0644, st_size=31744, ...}) = 0
+mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f3154f94000
+mmap(NULL, 2128848, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7f31546b8000
+mprotect(0x7f31546bf000, 2093056, PROT_NONE) = 0
+mmap(0x7f31548be000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x6000) = 0x7f31548be000
+close(3)                                = 0
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+open("/lib/libdl.so.2", O_RDONLY)       = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\340\r\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0644, st_size=14696, ...}) = 0
+mmap(NULL, 2109696, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7f31544b4000
+mprotect(0x7f31544b6000, 2097152, PROT_NONE) = 0
+mmap(0x7f31546b6000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x2000) = 0x7f31546b6000
+close(3)                                = 0
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+open("/lib/libpthread.so.0", O_RDONLY)  = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\360Y\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=135745, ...}) = 0
+mmap(NULL, 2212736, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7f3154297000
+mprotect(0x7f31542af000, 2093056, PROT_NONE) = 0
+mmap(0x7f31544ae000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x17000) = 0x7f31544ae000
+mmap(0x7f31544b0000, 13184, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7f31544b0000
+close(3)                                = 0
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+open("/lib/libm.so.6", O_RDONLY)        = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\360>\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0644, st_size=534832, ...}) = 0
+mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f3154f93000
+mmap(NULL, 2629864, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7f3154014000
+mprotect(0x7f3154096000, 2093056, PROT_NONE) = 0
+mmap(0x7f3154295000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x81000) = 0x7f3154295000
+close(3)                                = 0
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+open("/lib/libc.so.6", O_RDONLY)        = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0`\355\1\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=1572232, ...}) = 0
+mmap(NULL, 3680296, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7f3153c91000
+mprotect(0x7f3153e0b000, 2093056, PROT_NONE) = 0
+mmap(0x7f315400a000, 20480, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x179000) = 0x7f315400a000
+mmap(0x7f315400f000, 18472, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7f315400f000
+close(3)                                = 0
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+open("/lib/libpcre.so.3", O_RDONLY)     = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\300\25\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0644, st_size=186440, ...}) = 0
+mmap(NULL, 2281640, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7f3153a63000
+mprotect(0x7f3153a90000, 2093056, PROT_NONE) = 0
+mmap(0x7f3153c8f000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x2c000) = 0x7f3153c8f000
+close(3)                                = 0
+mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f3154f92000
+mmap(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f3154f90000
+arch_prctl(ARCH_SET_FS, 0x7f3154f90740) = 0
+mprotect(0x7f3153c8f000, 4096, PROT_READ) = 0
+mprotect(0x7f315400a000, 16384, PROT_READ) = 0
+mprotect(0x7f3154295000, 4096, PROT_READ) = 0
+mprotect(0x7f31544ae000, 4096, PROT_READ) = 0
+mprotect(0x7f31546b6000, 4096, PROT_READ) = 0
+mprotect(0x7f31548be000, 4096, PROT_READ) = 0
+mprotect(0x7f3154b9b000, 4096, PROT_READ) = 0
+mprotect(0x7f3154da1000, 4096, PROT_READ) = 0
+mprotect(0x868000, 4096, PROT_READ)     = 0
+mprotect(0x7f3154fc2000, 4096, PROT_READ) = 0
+munmap(0x7f3154f95000, 172461)          = 0
+set_tid_address(0x7f3154f90a10)         = 5966
+set_robust_list(0x7f3154f90a20, 0x18)   = 0
+futex(0x7fff7b2ff5ac, FUTEX_WAKE_PRIVATE, 1) = 0
+futex(0x7fff7b2ff5ac, FUTEX_WAIT_BITSET_PRIVATE|FUTEX_CLOCK_REALTIME, 1, NULL, 7f3154f90740) = -1 EAGAIN (Resource temporarily unavailable)
+rt_sigaction(SIGRTMIN, {0x7f315429c870, [], SA_RESTORER|SA_SIGINFO, 0x7f31542a68f0}, NULL, 8) = 0
+rt_sigaction(SIGRT_1, {0x7f315429c900, [], SA_RESTORER|SA_RESTART|SA_SIGINFO, 0x7f31542a68f0}, NULL, 8) = 0
+rt_sigprocmask(SIG_UNBLOCK, [RTMIN RT_1], NULL, 8) = 0
+getrlimit(RLIMIT_STACK, {rlim_cur=8192*1024, rlim_max=RLIM_INFINITY}) = 0
+brk(0)                                  = 0x2473000
+brk(0x2494000)                          = 0x2494000
+open("/usr/lib/locale/locale-archive", O_RDONLY) = -1 ENOENT (No such file or directory)
+open("/usr/share/locale/locale.alias", O_RDONLY) = 3
+fstat(3, {st_mode=S_IFREG|0644, st_size=2570, ...}) = 0
+mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f3154fbf000
+read(3, "# Locale name alias data base.\n#"..., 4096) = 2570
+read(3, "", 4096)                       = 0
+close(3)                                = 0
+munmap(0x7f3154fbf000, 4096)            = 0
+open("/usr/lib/locale/en_GB.UTF-8/LC_IDENTIFICATION", O_RDONLY) = -1 ENOENT (No such file or directory)
+open("/usr/lib/locale/en_GB.utf8/LC_IDENTIFICATION", O_RDONLY) = 3
+fstat(3, {st_mode=S_IFREG|0644, st_size=366, ...}) = 0
+mmap(NULL, 366, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7f3154fbf000
+close(3)                                = 0
+open("/usr/lib/gconv/gconv-modules.cache", O_RDONLY) = 3
+fstat(3, {st_mode=S_IFREG|0644, st_size=26048, ...}) = 0
+mmap(NULL, 26048, PROT_READ, MAP_SHARED, 3, 0) = 0x7f3154fb8000
+close(3)                                = 0
+futex(0x7f315400ef60, FUTEX_WAKE_PRIVATE, 2147483647) = 0
+open("/usr/lib/locale/en_GB.UTF-8/LC_MEASUREMENT", O_RDONLY) = -1 ENOENT (No such file or directory)
+open("/usr/lib/locale/en_GB.utf8/LC_MEASUREMENT", O_RDONLY) = 3
+fstat(3, {st_mode=S_IFREG|0644, st_size=23, ...}) = 0
+mmap(NULL, 23, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7f3154fb7000
+close(3)                                = 0
+open("/usr/lib/locale/en_GB.UTF-8/LC_TELEPHONE", O_RDONLY) = -1 ENOENT (No such file or directory)
+open("/usr/lib/locale/en_GB.utf8/LC_TELEPHONE", O_RDONLY) = 3
+fstat(3, {st_mode=S_IFREG|0644, st_size=56, ...}) = 0
+mmap(NULL, 56, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7f3154fb6000
+close(3)                                = 0
+open("/usr/lib/locale/en_GB.UTF-8/LC_ADDRESS", O_RDONLY) = -1 ENOENT (No such file or directory)
+open("/usr/lib/locale/en_GB.utf8/LC_ADDRESS", O_RDONLY) = 3
+fstat(3, {st_mode=S_IFREG|0644, st_size=127, ...}) = 0
+mmap(NULL, 127, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7f3154fb5000
+close(3)                                = 0
+open("/usr/lib/locale/en_GB.UTF-8/LC_NAME", O_RDONLY) = -1 ENOENT (No such file or directory)
+open("/usr/lib/locale/en_GB.utf8/LC_NAME", O_RDONLY) = 3
+fstat(3, {st_mode=S_IFREG|0644, st_size=77, ...}) = 0
+mmap(NULL, 77, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7f3154fb4000
+close(3)                                = 0
+open("/usr/lib/locale/en_GB.UTF-8/LC_PAPER", O_RDONLY) = -1 ENOENT (No such file or directory)
+open("/usr/lib/locale/en_GB.utf8/LC_PAPER", O_RDONLY) = 3
+fstat(3, {st_mode=S_IFREG|0644, st_size=34, ...}) = 0
+mmap(NULL, 34, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7f3154fb3000
+close(3)                                = 0
+open("/usr/lib/locale/en_GB.UTF-8/LC_MESSAGES", O_RDONLY) = -1 ENOENT (No such file or directory)
+open("/usr/lib/locale/en_GB.utf8/LC_MESSAGES", O_RDONLY) = 3
+fstat(3, {st_mode=S_IFDIR|0755, st_size=4096, ...}) = 0
+close(3)                                = 0
+open("/usr/lib/locale/en_GB.utf8/LC_MESSAGES/SYS_LC_MESSAGES", O_RDONLY) = 3
+fstat(3, {st_mode=S_IFREG|0644, st_size=52, ...}) = 0
+mmap(NULL, 52, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7f3154fb2000
+close(3)                                = 0
+open("/usr/lib/locale/en_GB.UTF-8/LC_MONETARY", O_RDONLY) = -1 ENOENT (No such file or directory)
+open("/usr/lib/locale/en_GB.utf8/LC_MONETARY", O_RDONLY) = 3
+fstat(3, {st_mode=S_IFREG|0644, st_size=290, ...}) = 0
+mmap(NULL, 290, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7f3154fb1000
+close(3)                                = 0
+open("/usr/lib/locale/en_GB.UTF-8/LC_COLLATE", O_RDONLY) = -1 ENOENT (No such file or directory)
+open("/usr/lib/locale/en_GB.utf8/LC_COLLATE", O_RDONLY) = 3
+fstat(3, {st_mode=S_IFREG|0644, st_size=1170770, ...}) = 0
+mmap(NULL, 1170770, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7f3154e72000
+close(3)                                = 0
+open("/usr/lib/locale/en_GB.UTF-8/LC_TIME", O_RDONLY) = -1 ENOENT (No such file or directory)
+open("/usr/lib/locale/en_GB.utf8/LC_TIME", O_RDONLY) = 3
+fstat(3, {st_mode=S_IFREG|0644, st_size=2470, ...}) = 0
+mmap(NULL, 2470, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7f3154fb0000
+close(3)                                = 0
+open("/usr/lib/locale/en_GB.UTF-8/LC_NUMERIC", O_RDONLY) = -1 ENOENT (No such file or directory)
+open("/usr/lib/locale/en_GB.utf8/LC_NUMERIC", O_RDONLY) = 3
+fstat(3, {st_mode=S_IFREG|0644, st_size=54, ...}) = 0
+mmap(NULL, 54, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7f3154faf000
+close(3)                                = 0
+open("/usr/lib/locale/en_GB.UTF-8/LC_CTYPE", O_RDONLY) = -1 ENOENT (No such file or directory)
+open("/usr/lib/locale/en_GB.utf8/LC_CTYPE", O_RDONLY) = 3
+fstat(3, {st_mode=S_IFREG|0644, st_size=256324, ...}) = 0
+mmap(NULL, 256324, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7f3154e33000
+close(3)                                = 0
+sched_getparam(5966, { 0 })             = 0
+sched_getscheduler(5966)                = 0 (SCHED_OTHER)
+clock_getres(CLOCK_MONOTONIC, {0, 1})   = 0
+sched_get_priority_min(SCHED_OTHER)     = 0
+sched_get_priority_max(SCHED_OTHER)     = 0
+sched_get_priority_max(SCHED_OTHER)     = 0
+open("/usr/lib/charset.alias", O_RDONLY) = -1 ENOENT (No such file or directory)
+open("/usr/share/locale/locale.alias", O_RDONLY) = 3
+fstat(3, {st_mode=S_IFREG|0644, st_size=2570, ...}) = 0
+mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f3154e32000
+read(3, "# Locale name alias data base.\n#"..., 4096) = 2570
+read(3, "", 4096)                       = 0
+close(3)                                = 0
+munmap(0x7f3154e32000, 4096)            = 0
+access("/proc/self/maps", F_OK)         = 0
+mmap(NULL, 65536, PROT_READ|PROT_WRITE|PROT_EXEC, MAP_PRIVATE|MAP_ANONYMOUS|MAP_32BIT, -1, 0) = 0x41bb4000
+open("/proc/self/maps", O_RDONLY)       = 3
+getrlimit(RLIMIT_STACK, {rlim_cur=8192*1024, rlim_max=RLIM_INFINITY}) = 0
+fstat(3, {st_mode=S_IFREG|0444, st_size=0, ...}) = 0
+mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f3154fae000
+read(3, "00400000-00668000 r-xp 00000000 "..., 1024) = 1024
+read(3, "00179000 08:01 1810865          "..., 1024) = 1024
+read(3, "1544b4000-7f31544b6000 r-xp 0000"..., 1024) = 1024
+read(3, "  /lib/libglib-2.0.so.0.2400.1\n7"..., 1024) = 1024
+read(3, "0 \n7f3154faf000-7f3154fb0000 r--"..., 1024) = 1024
+read(3, "fb8000-7f3154fbf000 r--s 0000000"..., 1024) = 745
+close(3)                                = 0
+munmap(0x7f3154fae000, 4096)            = 0
+sched_getaffinity(5966, 32,  { 3 })     = 8
+rt_sigaction(SIGPWR, {0x58e8f0, ~[INT QUIT ABRT TERM RTMIN RT_1], SA_RESTORER|SA_RESTART, 0x7f31542a68f0}, NULL, 8) = 0
+rt_sigaction(SIGXCPU, {0x58e3d0, ~[INT QUIT ABRT TERM RTMIN RT_1], SA_RESTORER|SA_RESTART, 0x7f31542a68f0}, NULL, 8) = 0
+open("/proc/stat", O_RDONLY)            = 3
+read(3, "cpu  64633 1846 14631 816845 204"..., 4096) = 1185
+close(3)                                = 0
+mmap(NULL, 65536, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f3154f9f000
+mmap(0x7f3154faf000, 65536, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f3154e23000
+mmap(0x7f3154e33000, 65536, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f3154e13000
+access("/proc/xen", F_OK)               = -1 ENOENT (No such file or directory)
+open("/proc/self/maps", O_RDONLY)       = 3
+getrlimit(RLIMIT_STACK, {rlim_cur=8192*1024, rlim_max=RLIM_INFINITY}) = 0
+fstat(3, {st_mode=S_IFREG|0444, st_size=0, ...}) = 0
+mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f3154e12000
+read(3, "00400000-00668000 r-xp 00000000 "..., 1024) = 1024
+read(3, "00179000 08:01 1810865          "..., 1024) = 1024
+read(3, "1544b4000-7f31544b6000 r-xp 0000"..., 1024) = 1024
+read(3, "  /lib/libglib-2.0.so.0.2400.1\n7"..., 1024) = 1024
+read(3, "0 \n7f3154f9f000-7f3154faf000 rw-"..., 1024) = 1024
+read(3, " /usr/lib/locale/en_GB.utf8/LC_M"..., 1024) = 794
+close(3)                                = 0
+munmap(0x7f3154e12000, 4096)            = 0
+sched_getaffinity(5966, 32,  { 3 })     = 8
+mprotect(0x7fff7ab01000, 32768, PROT_NONE) = -1 ENOMEM (Cannot allocate memory)
+mmap(0x7fff7ab01000, 32768, PROT_NONE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7fff7ab01000
+mmap(NULL, 16384, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f3154e0f000
+sigaltstack({ss_sp=0x7f3154e0f000, ss_flags=SS_ONSTACK, ss_size=16384}, NULL) = 0
+rt_sigaction(SIGFPE, {0x419870, [], SA_RESTORER|SA_SIGINFO, 0x7f31542a68f0}, NULL, 8) = 0
+rt_sigaction(SIGQUIT, {0x419840, [], SA_RESTORER|SA_SIGINFO, 0x7f31542a68f0}, NULL, 8) = 0
+rt_sigaction(SIGILL, {0x419800, [], SA_RESTORER|SA_SIGINFO, 0x7f31542a68f0}, NULL, 8) = 0
+rt_sigaction(SIGBUS, {0x419680, [], SA_RESTORER|SA_SIGINFO, 0x7f31542a68f0}, NULL, 8) = 0
+rt_sigaction(SIGRT_3, NULL, {SIG_DFL, [], 0}, 8) = 0
+rt_sigaction(SIGRT_3, {0x4195c0, [], SA_RESTORER|SA_SIGINFO, 0x7f31542a68f0}, NULL, 8) = 0
+rt_sigprocmask(SIG_UNBLOCK, [RT_3], NULL, 8) = 0
+rt_sigaction(SIGPIPE, {SIG_IGN, [PIPE], SA_RESTORER|SA_RESTART, 0x7f3153cc4af0}, {SIG_DFL, [], 0}, 8) = 0
+rt_sigaction(SIGABRT, {0x419560, [], SA_RESTORER|SA_SIGINFO, 0x7f31542a68f0}, NULL, 8) = 0
+rt_sigaction(SIGSEGV, {0x419680, [], SA_RESTORER|SA_STACK|SA_SIGINFO, 0x7f31542a68f0}, NULL, 8) = 0
+open("/dev/shm/", O_RDONLY|O_NONBLOCK|O_DIRECTORY|O_CLOEXEC) = 3
+fcntl(3, F_GETFD)                       = 0x1 (flags FD_CLOEXEC)
+getdents(3, /* 9 entries */, 32768)     = 392
+kill(3834, SIGCONT)                     = 0
+kill(1860, SIGCONT)                     = 0
+getdents(3, /* 0 entries */, 32768)     = 0
+close(3)                                = 0
+statfs("/dev/shm/", {f_type=0x1021994, f_bsize=4096, f_blocks=503115, f_bfree=502951, f_bavail=502951, f_files=503115, f_ffree=503102, f_fsid={0, 0}, f_namelen=255, f_frsize=4096}) = 0
+futex(0x7f31548bf320, FUTEX_WAKE_PRIVATE, 2147483647) = 0
+open("/dev/shm/mono.5966", O_RDWR|O_CREAT|O_EXCL|O_NOFOLLOW|O_CLOEXEC, 0640) = 3
+fcntl(3, F_GETFD)                       = 0x1 (flags FD_CLOEXEC)
+ftruncate(3, 4096)                      = 0
+mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_SHARED, 3, 0) = 0x7f3154e0e000
+close(3)                                = 0
+readlink("/proc/self/exe", "/usr/bin/mono"..., 4095) = 13
+mmap(0x7f3154e23000, 65536, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f3154dfe000
+stat("./MainFrame.exe.config", 0x7fff7b2ff2c0) = -1 ENOENT (No such file or directory)
+getcwd("/home/olga/workspace/robot/MainFrame/MainFrame/bin/Debug", 4096) = 57
+open("./MainFrame.exe", O_RDONLY)       = 3
+fstat(3, {st_mode=S_IFREG|0755, st_size=49664, ...}) = 0
+mmap(NULL, 49664, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7f3154df1000
+readlink("./MainFrame.exe", 0x7fff7b2fe170, 4096) = -1 EINVAL (Invalid argument)
+getcwd("/home/olga/workspace/robot/MainFrame/MainFrame/bin/Debug", 4096) = 57
+close(3)                                = 0
+open("/usr/lib/mono/2.0/mscorlib.dll", O_RDONLY) = 3
+fstat(3, {st_mode=S_IFREG|0644, st_size=2568704, ...}) = 0
+mmap(NULL, 2568704, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7f31537ef000
+readlink("/usr/lib/mono/2.0/mscorlib.dll", 0x7fff7b2fe180, 4096) = -1 EINVAL (Invalid argument)
+close(3)                                = 0
+futex(0x7f31546b70ec, FUTEX_WAKE_PRIVATE, 2147483647) = 0
+open("/usr/lib/mono/2.0/mscorlib.dll.so", O_RDONLY) = -1 ENOENT (No such file or directory)
+open("/usr/lib/mono/2.0/mscorlib.dll.so.la", O_RDONLY) = -1 ENOENT (No such file or directory)
+open("/usr/share/locale/en_GB/LC_MESSAGES/libc.mo", O_RDONLY) = -1 ENOENT (No such file or directory)
+open("/usr/share/locale/en/LC_MESSAGES/libc.mo", O_RDONLY) = -1 ENOENT (No such file or directory)
+open("/usr/share/locale-langpack/en_GB/LC_MESSAGES/libc.mo", O_RDONLY) = 3
+fstat(3, {st_mode=S_IFREG|0644, st_size=2837, ...}) = 0
+mmap(NULL, 2837, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7f3154f9e000
+close(3)                                = 0
+open("/usr/share/locale-langpack/en/LC_MESSAGES/libc.mo", O_RDONLY) = -1 ENOENT (No such file or directory)
+open("/usr/lib/mono/2.0/mscorlib.dll.config", O_RDONLY) = -1 ENOENT (No such file or directory)
+open("/usr/share/locale/en_GB/LC_MESSAGES/messages.mo", O_RDONLY) = -1 ENOENT (No such file or directory)
+open("/usr/share/locale/en/LC_MESSAGES/messages.mo", O_RDONLY) = -1 ENOENT (No such file or directory)
+open("/usr/share/locale-langpack/en_GB/LC_MESSAGES/messages.mo", O_RDONLY) = -1 ENOENT (No such file or directory)
+open("/usr/share/locale-langpack/en/LC_MESSAGES/messages.mo", O_RDONLY) = -1 ENOENT (No such file or directory)
+open("/usr/share/locale/en_GB/LC_MESSAGES/glib20.mo", O_RDONLY) = -1 ENOENT (No such file or directory)
+open("/usr/share/locale/en/LC_MESSAGES/glib20.mo", O_RDONLY) = -1 ENOENT (No such file or directory)
+open("/usr/share/locale-langpack/en_GB/LC_MESSAGES/glib20.mo", O_RDONLY) = 3
+fstat(3, {st_mode=S_IFREG|0644, st_size=4267, ...}) = 0
+mmap(NULL, 4267, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7f3154f9c000
+close(3)                                = 0
+open("/usr/share/locale-langpack/en/LC_MESSAGES/glib20.mo", O_RDONLY) = -1 ENOENT (No such file or directory)
+socket(PF_FILE, SOCK_STREAM|SOCK_CLOEXEC|SOCK_NONBLOCK, 0) = 3
+connect(3, {sa_family=AF_FILE, path="/var/run/nscd/socket"}, 110) = -1 ENOENT (No such file or directory)
+close(3)                                = 0
+socket(PF_FILE, SOCK_STREAM|SOCK_CLOEXEC|SOCK_NONBLOCK, 0) = 3
+connect(3, {sa_family=AF_FILE, path="/var/run/nscd/socket"}, 110) = -1 ENOENT (No such file or directory)
+close(3)                                = 0
+open("/etc/nsswitch.conf", O_RDONLY)    = 3
+fstat(3, {st_mode=S_IFREG|0644, st_size=513, ...}) = 0
+mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f3154f9b000
+read(3, "# /etc/nsswitch.conf\n#\n# Example"..., 4096) = 513
+read(3, "", 4096)                       = 0
+close(3)                                = 0
+munmap(0x7f3154f9b000, 4096)            = 0
+open("/etc/ld.so.cache", O_RDONLY)      = 3
+fstat(3, {st_mode=S_IFREG|0644, st_size=172461, ...}) = 0
+mmap(NULL, 172461, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7f3154dc6000
+close(3)                                = 0
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+open("/lib/libnss_compat.so.2", O_RDONLY) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\20\23\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0644, st_size=35712, ...}) = 0
+mmap(NULL, 2131184, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7f31535e6000
+mprotect(0x7f31535ee000, 2093056, PROT_NONE) = 0
+mmap(0x7f31537ed000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x7000) = 0x7f31537ed000
+close(3)                                = 0
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+open("/lib/libnsl.so.1", O_RDONLY)      = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\300@\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0644, st_size=97256, ...}) = 0
+mmap(NULL, 2202320, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7f31533cc000
+mprotect(0x7f31533e3000, 2093056, PROT_NONE) = 0
+mmap(0x7f31535e2000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x16000) = 0x7f31535e2000
+mmap(0x7f31535e4000, 6864, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7f31535e4000
+close(3)                                = 0
+mprotect(0x7f31535e2000, 4096, PROT_READ) = 0
+mprotect(0x7f31537ed000, 4096, PROT_READ) = 0
+munmap(0x7f3154dc6000, 172461)          = 0
+open("/etc/ld.so.cache", O_RDONLY)      = 3
+fstat(3, {st_mode=S_IFREG|0644, st_size=172461, ...}) = 0
+mmap(NULL, 172461, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7f3154dc6000
+close(3)                                = 0
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+open("/lib/libnss_nis.so.2", O_RDONLY)  = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0  \0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0644, st_size=43552, ...}) = 0
+mmap(NULL, 2139320, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7f31531c1000
+mprotect(0x7f31531cb000, 2093056, PROT_NONE) = 0
+mmap(0x7f31533ca000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x9000) = 0x7f31533ca000
+close(3)                                = 0
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+open("/lib/libnss_files.so.2", O_RDONLY) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0p!\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0644, st_size=51712, ...}) = 0
+mmap(NULL, 2147720, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7f3152fb4000
+mprotect(0x7f3152fc0000, 2093056, PROT_NONE) = 0
+mmap(0x7f31531bf000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0xb000) = 0x7f31531bf000
+close(3)                                = 0
+mprotect(0x7f31531bf000, 4096, PROT_READ) = 0
+mprotect(0x7f31533ca000, 4096, PROT_READ) = 0
+munmap(0x7f3154dc6000, 172461)          = 0
+open("/etc/passwd", O_RDONLY|O_CLOEXEC) = 3
+fcntl(3, F_GETFD)                       = 0x1 (flags FD_CLOEXEC)
+lseek(3, 0, SEEK_CUR)                   = 0
+fstat(3, {st_mode=S_IFREG|0644, st_size=2458, ...}) = 0
+mmap(NULL, 2458, PROT_READ, MAP_SHARED, 3, 0) = 0x7f3154f9b000
+lseek(3, 2458, SEEK_SET)                = 2458
+munmap(0x7f3154f9b000, 2458)            = 0
+close(3)                                = 0
+getuid()                                = 0
+uname({sys="Linux", node="bogdan", ...}) = 0
+open("/etc/mono/assemblies/mscorlib/mscorlib.config", O_RDONLY) = -1 ENOENT (No such file or directory)
+open("/root/.mono/assemblies/mscorlib/mscorlib.config", O_RDONLY) = -1 ENOENT (No such file or directory)
+brk(0x24b6000)                          = 0x24b6000
+mmap(NULL, 65536, PROT_READ|PROT_WRITE|PROT_EXEC, MAP_PRIVATE|MAP_ANONYMOUS|MAP_32BIT, -1, 0) = 0x41be3000
+getrlimit(RLIMIT_NOFILE, {rlim_cur=1024, rlim_max=1024}) = 0
+uname({sys="Linux", node="bogdan", ...}) = 0
+uname({sys="Linux", node="bogdan", ...}) = 0
+uname({sys="Linux", node="bogdan", ...}) = 0
+uname({sys="Linux", node="bogdan", ...}) = 0
+getuid()                                = 0
+open("/dev/shm/mono-shared-0-shared_data-bogdan-Linux-x86_64-328-12-0", O_RDWR|O_CREAT|O_NOFOLLOW|O_CLOEXEC, 0640) = 3
+ftruncate(3, 83976)                     = 0
+fstat(3, {st_mode=S_IFREG|0640, st_size=83976, ...}) = 0
+mmap(NULL, 83976, PROT_READ|PROT_WRITE, MAP_SHARED, 3, 0) = 0x7f3154ddc000
+close(3)                                = 0
+uname({sys="Linux", node="bogdan", ...}) = 0
+uname({sys="Linux", node="bogdan", ...}) = 0
+stat("/root/.wapi/shared_data-bogdan-Linux-x86_64-328-12-0", 0x7fff7b2ff170) = -1 ENOENT (No such file or directory)
+semget(0xffffffff, 8, IPC_CREAT|IPC_EXCL|0600) = -1 EEXIST (File exists)
+semget(IPC_PRIVATE, 8, IPC_CREAT|IPC_EXCL|0600) = 950278
+semctl(950278, 0, SETALL, 0x7fff7b2ff220) = 0
+semop(950278, {{6, -1, SEM_UNDO}}, 1)   = 0
+semop(950278, {{7, 1, SEM_UNDO}}, 1)    = 0
+semop(950278, {{6, 1, SEM_UNDO}}, 1)    = 0
+munmap(0x7f3154ddc000, 83976)           = 0
+uname({sys="Linux", node="bogdan", ...}) = 0
+uname({sys="Linux", node="bogdan", ...}) = 0
+uname({sys="Linux", node="bogdan", ...}) = 0
+uname({sys="Linux", node="bogdan", ...}) = 0
+getuid()                                = 0
+open("/dev/shm/mono-shared-0-shared_data-bogdan-Linux-x86_64-328-12-0", O_RDWR|O_CREAT|O_NOFOLLOW|O_CLOEXEC, 0640) = 3
+ftruncate(3, 83976)                     = 0
+fstat(3, {st_mode=S_IFREG|0640, st_size=83976, ...}) = 0
+mmap(NULL, 83976, PROT_READ|PROT_WRITE, MAP_SHARED, 3, 0) = 0x7f3154ddc000
+close(3)                                = 0
+uname({sys="Linux", node="bogdan", ...}) = 0
+uname({sys="Linux", node="bogdan", ...}) = 0
+uname({sys="Linux", node="bogdan", ...}) = 0
+uname({sys="Linux", node="bogdan", ...}) = 0
+getuid()                                = 0
+open("/dev/shm/mono-shared-0-shared_fileshare-bogdan-Linux-x86_64-40-12-0", O_RDWR|O_CREAT|O_NOFOLLOW|O_CLOEXEC, 0640) = 3
+ftruncate(3, 4096008)                   = 0
+fstat(3, {st_mode=S_IFREG|0640, st_size=4096008, ...}) = 0
+mmap(NULL, 4096008, PROT_READ|PROT_WRITE, MAP_SHARED, 3, 0) = 0x7f3152bcb000
+close(3)                                = 0
+mmap(NULL, 16384, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS|MAP_STACK, -1, 0) = 0x7f3154f98000
+mprotect(0x7f3154f98000, 4096, PROT_NONE) = 0
+clone(child_stack=0x7f3154f9afb0, flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, parent_tidptr=0x7f3154f9b9d0, tls=0x7f3154f9b700, child_tidptr=0x7f3154f9b9d0) = 5968
+brk(0x24df000)                          = 0x24df000
+open("/proc/stat", O_RDONLY|O_CLOEXEC)  = 3
+read(3, "cpu  64633 1846 14634 816848 204"..., 8192) = 1185
+close(3)                                = 0
+semop(950278, {{3, -1, SEM_UNDO}}, 1)   = 0
+semop(950278, {{3, 1, SEM_UNDO}}, 1)    = 0
+mmap(NULL, 262144, PROT_NONE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f3152b8b000
+mprotect(0x7f3152b8b000, 4096, PROT_READ|PROT_WRITE) = 0
+mmap(0x7f3154e0e000, 65536, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f3152b7b000
+open("/proc/self/maps", O_RDONLY)       = 3
+getrlimit(RLIMIT_STACK, {rlim_cur=8192*1024, rlim_max=RLIM_INFINITY}) = 0
+fstat(3, {st_mode=S_IFREG|0444, st_size=0, ...}) = 0
+mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f3154f97000
+read(3, "00400000-00668000 r-xp 00000000 "..., 1024) = 1024
+read(3, "31c1000 rw-p 0000c000 08:01 1810"..., 1024) = 1024
+read(3, "f31537ed000 ---p 00008000 08:01 "..., 1024) = 1024
+read(3, "               /lib/libc-2.11.1."..., 1024) = 1024
+read(3, " 00000000 08:01 1810873         "..., 1024) = 1024
+read(3, "0.1\n7f3154b9c000-7f3154b9d000 rw"..., 1024) = 1024
+read(3, "-7f3154e0f000 rw-s 00000000 00:1"..., 1024) = 1024
+read(3, "        /usr/lib/locale/en_GB.ut"..., 1024) = 1024
+read(3, "/lib/locale/en_GB.utf8/LC_IDENTI"..., 1024) = 615
+close(3)                                = 0
+munmap(0x7f3154f97000, 4096)            = 0
+sched_getaffinity(5966, 32,  { 3 })     = 8
+brk(0x2500000)                          = 0x2500000
+brk(0x24ff000)                          = 0x24ff000
+brk(0x24fd000)                          = 0x24fd000
+brk(0x24fb000)                          = 0x24fb000
+brk(0x24f8000)                          = 0x24f8000
+mmap(0x7f3152b8b000, 65536, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f3154dcc000
+mmap(NULL, 2101248, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS|MAP_STACK, -1, 0) = 0x7f315297a000
+mprotect(0x7f315297a000, 4096, PROT_NONE) = 0
+clone(child_stack=0x7f3152b79fb0, flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID, parent_tidptr=0x7f3152b7a9d0, tls=0x7f3152b7a700, child_tidptr=0x7f3152b7a9d0) = 5969
+futex(0x7f3154e18e50, FUTEX_WAIT_PRIVATE, 0, NULL) = -1 EAGAIN (Resource temporarily unavailable)
+futex(0x24b2f70, FUTEX_WAKE_PRIVATE, 1) = 1
+open("/dev/null", O_RDWR)               = 3
+close(3)                                = 0
+open("/etc/mono/config", O_RDONLY)      = 3
+fstat(3, {st_mode=S_IFREG|0644, st_size=1594, ...}) = 0
+read(3, "<configuration>\n\t<dllmap dll=\"i:"..., 1594) = 1594
+close(3)                                = 0
+open("/root/.mono/config", O_RDONLY)    = -1 ENOENT (No such file or directory)
+getcwd("/home/olga/workspace/robot/MainFrame/MainFrame/bin/Debug", 4096) = 57
+getcwd("/home/olga/workspace/robot/MainFrame/MainFrame/bin/Debug", 4096) = 57
+open("/home/olga/workspace/robot/MainFrame/MainFrame/bin/Debug/MainFrame.exe.so", O_RDONLY) = -1 ENOENT (No such file or directory)
+open("/home/olga/workspace/robot/MainFrame/MainFrame/bin/Debug/MainFrame.exe.so.la", O_RDONLY) = -1 ENOENT (No such file or directory)
+open("/home/olga/workspace/robot/MainFrame/MainFrame/bin/Debug/MainFrame.exe.config", O_RDONLY) = -1 ENOENT (No such file or directory)
+open("/etc/mono/assemblies/MainFrame/MainFrame.config", O_RDONLY) = -1 ENOENT (No such file or directory)
+open("/root/.mono/assemblies/MainFrame/MainFrame.config", O_RDONLY) = -1 ENOENT (No such file or directory)
+getcwd("/home/olga/workspace/robot/MainFrame/MainFrame/bin/Debug", 4096) = 57
+open("/home/olga/workspace/robot/MainFrame/MainFrame/bin/Debug/MainFrame.exe.so", O_RDONLY) = -1 ENOENT (No such file or directory)
+open("/home/olga/workspace/robot/MainFrame/MainFrame/bin/Debug/MainFrame.exe.so.la", O_RDONLY) = -1 ENOENT (No such file or directory)
+open("/usr/lib/mono/gac/policy.2.0.mscorlib/0.0.0.0__b77a5c561934e089/policy.2.0.mscorlib.dll", O_RDONLY) = -1 ENOENT (No such file or directory)
+stat("/home/olga/workspace/robot/MainFrame/MainFrame/bin/Debug/MainFrame.exe.config", 0x7fff7b2ff2a0) = -1 ENOENT (No such file or directory)
+open("/usr/lib/mono/gac/policy.2.0.System/0.0.0.0__b77a5c561934e089/policy.2.0.System.dll", O_RDONLY) = -1 ENOENT (No such file or directory)
+stat("/home/olga/workspace/robot/MainFrame/MainFrame/bin/Debug/System.dll", 0x7fff7b2febc0) = -1 ENOENT (No such file or directory)
+stat("/home/olga/workspace/robot/MainFrame/MainFrame/bin/Debug/System.exe", 0x7fff7b2febc0) = -1 ENOENT (No such file or directory)
+stat("/home/olga/workspace/robot/MainFrame/MainFrame/bin/Debug/System/System.dll", 0x7fff7b2febc0) = -1 ENOENT (No such file or directory)
+stat("/home/olga/workspace/robot/MainFrame/MainFrame/bin/Debug/System/System.exe", 0x7fff7b2febc0) = -1 ENOENT (No such file or directory)
+open("/usr/lib/mono/gac/System/2.0.0.0__b77a5c561934e089/System.dll", O_RDONLY) = 3
+fstat(3, {st_mode=S_IFREG|0644, st_size=1650688, ...}) = 0
+mmap(NULL, 1650688, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7f31527e7000
+readlink("/usr/lib/mono/gac/System/2.0.0.0__b77a5c561934e089/System.dll", 0x7fff7b2fdb90, 4096) = -1 EINVAL (Invalid argument)
+close(3)                                = 0
+open("/usr/lib/mono/gac/System/2.0.0.0__b77a5c561934e089/System.dll.so", O_RDONLY) = -1 ENOENT (No such file or directory)
+open("/usr/lib/mono/gac/System/2.0.0.0__b77a5c561934e089/System.dll.so.la", O_RDONLY) = -1 ENOENT (No such file or directory)
+open("/usr/lib/mono/gac/System/2.0.0.0__b77a5c561934e089/System.dll.config", O_RDONLY) = -1 ENOENT (No such file or directory)
+open("/etc/mono/assemblies/System/System.config", O_RDONLY) = -1 ENOENT (No such file or directory)
+open("/root/.mono/assemblies/System/System.config", O_RDONLY) = -1 ENOENT (No such file or directory)
+brk(0x2519000)                          = 0x2519000
+brk(0x253a000)                          = 0x253a000
+brk(0x2538000)                          = 0x2538000
+mmap(0x7f3154ddc000, 65536, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f31527d7000
+brk(0x255a000)                          = 0x255a000
+brk(0x2556000)                          = 0x2556000
+brk(0x2554000)                          = 0x2554000
+brk(0x2552000)                          = 0x2552000
+brk(0x254e000)                          = 0x254e000
+uname({sys="Linux", node="bogdan", ...}) = 0
+stat("/dev", {st_mode=S_IFDIR|0755, st_size=3900, ...}) = 0
+lstat("/dev", {st_mode=S_IFDIR|0755, st_size=3900, ...}) = 0
+open("/dev", O_RDONLY|O_NONBLOCK|O_DIRECTORY|O_CLOEXEC) = 3
+getdents(3, /* 195 entries */, 32768)   = 5696
+getdents(3, /* 0 entries */, 32768)     = 0
+close(3)                                = 0
+stat("/dev/tty", {st_mode=S_IFCHR|0666, st_rdev=makedev(5, 0), ...}) = 0
+lstat("/dev/tty", {st_mode=S_IFCHR|0666, st_rdev=makedev(5, 0), ...}) = 0
+stat("/dev/tty0", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 0), ...}) = 0
+lstat("/dev/tty0", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 0), ...}) = 0
+stat("/dev/tty1", {st_mode=S_IFCHR|0600, st_rdev=makedev(4, 1), ...}) = 0
+lstat("/dev/tty1", {st_mode=S_IFCHR|0600, st_rdev=makedev(4, 1), ...}) = 0
+stat("/dev/tty10", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 10), ...}) = 0
+lstat("/dev/tty10", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 10), ...}) = 0
+stat("/dev/tty11", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 11), ...}) = 0
+lstat("/dev/tty11", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 11), ...}) = 0
+stat("/dev/tty12", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 12), ...}) = 0
+lstat("/dev/tty12", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 12), ...}) = 0
+stat("/dev/tty13", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 13), ...}) = 0
+lstat("/dev/tty13", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 13), ...}) = 0
+stat("/dev/tty14", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 14), ...}) = 0
+lstat("/dev/tty14", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 14), ...}) = 0
+stat("/dev/tty15", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 15), ...}) = 0
+lstat("/dev/tty15", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 15), ...}) = 0
+stat("/dev/tty16", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 16), ...}) = 0
+lstat("/dev/tty16", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 16), ...}) = 0
+stat("/dev/tty17", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 17), ...}) = 0
+lstat("/dev/tty17", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 17), ...}) = 0
+stat("/dev/tty18", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 18), ...}) = 0
+lstat("/dev/tty18", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 18), ...}) = 0
+stat("/dev/tty19", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 19), ...}) = 0
+lstat("/dev/tty19", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 19), ...}) = 0
+stat("/dev/tty2", {st_mode=S_IFCHR|0600, st_rdev=makedev(4, 2), ...}) = 0
+lstat("/dev/tty2", {st_mode=S_IFCHR|0600, st_rdev=makedev(4, 2), ...}) = 0
+stat("/dev/tty20", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 20), ...}) = 0
+lstat("/dev/tty20", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 20), ...}) = 0
+stat("/dev/tty21", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 21), ...}) = 0
+lstat("/dev/tty21", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 21), ...}) = 0
+stat("/dev/tty22", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 22), ...}) = 0
+lstat("/dev/tty22", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 22), ...}) = 0
+stat("/dev/tty23", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 23), ...}) = 0
+lstat("/dev/tty23", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 23), ...}) = 0
+stat("/dev/tty24", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 24), ...}) = 0
+lstat("/dev/tty24", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 24), ...}) = 0
+stat("/dev/tty25", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 25), ...}) = 0
+lstat("/dev/tty25", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 25), ...}) = 0
+stat("/dev/tty26", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 26), ...}) = 0
+lstat("/dev/tty26", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 26), ...}) = 0
+stat("/dev/tty27", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 27), ...}) = 0
+lstat("/dev/tty27", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 27), ...}) = 0
+stat("/dev/tty28", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 28), ...}) = 0
+lstat("/dev/tty28", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 28), ...}) = 0
+stat("/dev/tty29", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 29), ...}) = 0
+lstat("/dev/tty29", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 29), ...}) = 0
+stat("/dev/tty3", {st_mode=S_IFCHR|0600, st_rdev=makedev(4, 3), ...}) = 0
+lstat("/dev/tty3", {st_mode=S_IFCHR|0600, st_rdev=makedev(4, 3), ...}) = 0
+stat("/dev/tty30", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 30), ...}) = 0
+lstat("/dev/tty30", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 30), ...}) = 0
+stat("/dev/tty31", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 31), ...}) = 0
+lstat("/dev/tty31", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 31), ...}) = 0
+stat("/dev/tty32", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 32), ...}) = 0
+lstat("/dev/tty32", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 32), ...}) = 0
+stat("/dev/tty33", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 33), ...}) = 0
+lstat("/dev/tty33", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 33), ...}) = 0
+stat("/dev/tty34", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 34), ...}) = 0
+lstat("/dev/tty34", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 34), ...}) = 0
+stat("/dev/tty35", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 35), ...}) = 0
+lstat("/dev/tty35", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 35), ...}) = 0
+stat("/dev/tty36", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 36), ...}) = 0
+lstat("/dev/tty36", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 36), ...}) = 0
+stat("/dev/tty37", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 37), ...}) = 0
+lstat("/dev/tty37", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 37), ...}) = 0
+stat("/dev/tty38", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 38), ...}) = 0
+lstat("/dev/tty38", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 38), ...}) = 0
+stat("/dev/tty39", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 39), ...}) = 0
+lstat("/dev/tty39", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 39), ...}) = 0
+stat("/dev/tty4", {st_mode=S_IFCHR|0600, st_rdev=makedev(4, 4), ...}) = 0
+lstat("/dev/tty4", {st_mode=S_IFCHR|0600, st_rdev=makedev(4, 4), ...}) = 0
+stat("/dev/tty40", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 40), ...}) = 0
+lstat("/dev/tty40", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 40), ...}) = 0
+stat("/dev/tty41", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 41), ...}) = 0
+lstat("/dev/tty41", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 41), ...}) = 0
+stat("/dev/tty42", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 42), ...}) = 0
+lstat("/dev/tty42", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 42), ...}) = 0
+stat("/dev/tty43", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 43), ...}) = 0
+lstat("/dev/tty43", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 43), ...}) = 0
+stat("/dev/tty44", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 44), ...}) = 0
+lstat("/dev/tty44", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 44), ...}) = 0
+stat("/dev/tty45", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 45), ...}) = 0
+lstat("/dev/tty45", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 45), ...}) = 0
+stat("/dev/tty46", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 46), ...}) = 0
+lstat("/dev/tty46", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 46), ...}) = 0
+stat("/dev/tty47", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 47), ...}) = 0
+lstat("/dev/tty47", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 47), ...}) = 0
+stat("/dev/tty48", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 48), ...}) = 0
+lstat("/dev/tty48", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 48), ...}) = 0
+stat("/dev/tty49", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 49), ...}) = 0
+lstat("/dev/tty49", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 49), ...}) = 0
+stat("/dev/tty5", {st_mode=S_IFCHR|0600, st_rdev=makedev(4, 5), ...}) = 0
+lstat("/dev/tty5", {st_mode=S_IFCHR|0600, st_rdev=makedev(4, 5), ...}) = 0
+stat("/dev/tty50", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 50), ...}) = 0
+lstat("/dev/tty50", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 50), ...}) = 0
+stat("/dev/tty51", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 51), ...}) = 0
+lstat("/dev/tty51", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 51), ...}) = 0
+stat("/dev/tty52", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 52), ...}) = 0
+lstat("/dev/tty52", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 52), ...}) = 0
+stat("/dev/tty53", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 53), ...}) = 0
+lstat("/dev/tty53", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 53), ...}) = 0
+stat("/dev/tty54", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 54), ...}) = 0
+lstat("/dev/tty54", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 54), ...}) = 0
+stat("/dev/tty55", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 55), ...}) = 0
+lstat("/dev/tty55", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 55), ...}) = 0
+stat("/dev/tty56", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 56), ...}) = 0
+lstat("/dev/tty56", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 56), ...}) = 0
+stat("/dev/tty57", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 57), ...}) = 0
+lstat("/dev/tty57", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 57), ...}) = 0
+stat("/dev/tty58", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 58), ...}) = 0
+lstat("/dev/tty58", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 58), ...}) = 0
+stat("/dev/tty59", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 59), ...}) = 0
+lstat("/dev/tty59", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 59), ...}) = 0
+stat("/dev/tty6", {st_mode=S_IFCHR|0600, st_rdev=makedev(4, 6), ...}) = 0
+lstat("/dev/tty6", {st_mode=S_IFCHR|0600, st_rdev=makedev(4, 6), ...}) = 0
+stat("/dev/tty60", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 60), ...}) = 0
+lstat("/dev/tty60", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 60), ...}) = 0
+stat("/dev/tty61", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 61), ...}) = 0
+lstat("/dev/tty61", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 61), ...}) = 0
+stat("/dev/tty62", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 62), ...}) = 0
+lstat("/dev/tty62", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 62), ...}) = 0
+stat("/dev/tty63", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 63), ...}) = 0
+lstat("/dev/tty63", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 63), ...}) = 0
+stat("/dev/tty7", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 7), ...}) = 0
+lstat("/dev/tty7", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 7), ...}) = 0
+stat("/dev/tty8", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 8), ...}) = 0
+lstat("/dev/tty8", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 8), ...}) = 0
+stat("/dev/tty9", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 9), ...}) = 0
+lstat("/dev/tty9", {st_mode=S_IFCHR|0620, st_rdev=makedev(4, 9), ...}) = 0
+stat("/dev/ttyACM0", {st_mode=S_IFCHR|0660, st_rdev=makedev(166, 0), ...}) = 0
+lstat("/dev/ttyACM0", {st_mode=S_IFCHR|0660, st_rdev=makedev(166, 0), ...}) = 0
+stat("/dev/ttyS0", {st_mode=S_IFCHR|0660, st_rdev=makedev(4, 64), ...}) = 0
+lstat("/dev/ttyS0", {st_mode=S_IFCHR|0660, st_rdev=makedev(4, 64), ...}) = 0
+stat("/dev/ttyS1", {st_mode=S_IFCHR|0660, st_rdev=makedev(4, 65), ...}) = 0
+lstat("/dev/ttyS1", {st_mode=S_IFCHR|0660, st_rdev=makedev(4, 65), ...}) = 0
+stat("/dev/ttyS2", {st_mode=S_IFCHR|0660, st_rdev=makedev(4, 66), ...}) = 0
+lstat("/dev/ttyS2", {st_mode=S_IFCHR|0660, st_rdev=makedev(4, 66), ...}) = 0
+stat("/dev/ttyS3", {st_mode=S_IFCHR|0660, st_rdev=makedev(4, 67), ...}) = 0
+lstat("/dev/ttyS3", {st_mode=S_IFCHR|0660, st_rdev=makedev(4, 67), ...}) = 0
+brk(0x256f000)                          = 0x256f000
+brk(0x256d000)                          = 0x256d000
+brk(0x256b000)                          = 0x256b000
+brk(0x2569000)                          = 0x2569000
+brk(0x2567000)                          = 0x2567000
+brk(0x2566000)                          = 0x2566000
+brk(0x2564000)                          = 0x2564000
+brk(0x2562000)                          = 0x2562000
+brk(0x2560000)                          = 0x2560000
+brk(0x255e000)                          = 0x255e000
+brk(0x2581000)                          = 0x2581000
+brk(0x257d000)                          = 0x257d000
+brk(0x257b000)                          = 0x257b000
+brk(0x2579000)                          = 0x2579000
+brk(0x2577000)                          = 0x2577000
+brk(0x2575000)                          = 0x2575000
+brk(0x2573000)                          = 0x2573000
+brk(0x2571000)                          = 0x2571000
+brk(0x256f000)                          = 0x256f000
+brk(0x256d000)                          = 0x256d000
+brk(0x256b000)                          = 0x256b000
+mmap(0x7f31527e7000, 73728, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f31527c5000
+brk(0x258d000)                          = 0x258d000
+brk(0x2589000)                          = 0x2589000
+brk(0x2587000)                          = 0x2587000
+brk(0x2585000)                          = 0x2585000
+brk(0x2583000)                          = 0x2583000
+brk(0x2581000)                          = 0x2581000
+brk(0x257f000)                          = 0x257f000
+brk(0x257d000)                          = 0x257d000
+brk(0x2579000)                          = 0x2579000
+brk(0x259a000)                          = 0x259a000
+brk(0x2598000)                          = 0x2598000
+brk(0x2596000)                          = 0x2596000
+brk(0x2594000)                          = 0x2594000
+brk(0x2592000)                          = 0x2592000
+brk(0x2590000)                          = 0x2590000
+brk(0x258e000)                          = 0x258e000
+brk(0x258c000)                          = 0x258c000
+brk(0x258a000)                          = 0x258a000
+brk(0x2588000)                          = 0x2588000
+brk(0x2586000)                          = 0x2586000
+brk(0x25a8000)                          = 0x25a8000
+brk(0x25a4000)                          = 0x25a4000
+brk(0x25a2000)                          = 0x25a2000
+brk(0x25a0000)                          = 0x25a0000
+brk(0x25c2000)                          = 0x25c2000
+brk(0x25c0000)                          = 0x25c0000
+brk(0x25be000)                          = 0x25be000
+brk(0x25bc000)                          = 0x25bc000
+brk(0x25ba000)                          = 0x25ba000
+brk(0x25dc000)                          = 0x25dc000
+brk(0x25fe000)                          = 0x25fe000
+brk(0x2620000)                          = 0x2620000
+mmap(NULL, 65536, PROT_READ|PROT_WRITE|PROT_EXEC, MAP_PRIVATE|MAP_ANONYMOUS|MAP_32BIT, -1, 0) = 0x4021a000
+brk(0x261d000)                          = 0x261d000
+brk(0x261b000)                          = 0x261b000
+brk(0x2619000)                          = 0x2619000
+brk(0x2618000)                          = 0x2618000
+brk(0x2616000)                          = 0x2616000
+brk(0x2614000)                          = 0x2614000
+brk(0x2612000)                          = 0x2612000
+brk(0x2610000)                          = 0x2610000
+brk(0x260e000)                          = 0x260e000
+brk(0x260c000)                          = 0x260c000
+brk(0x2609000)                          = 0x2609000
+brk(0x2607000)                          = 0x2607000
+brk(0x2605000)                          = 0x2605000
+brk(0x2603000)                          = 0x2603000
+brk(0x2601000)                          = 0x2601000
+brk(0x25fe000)                          = 0x25fe000
+brk(0x25fc000)                          = 0x25fc000
+brk(0x25fa000)                          = 0x25fa000
+brk(0x25f8000)                          = 0x25f8000
+brk(0x25f6000)                          = 0x25f6000
+brk(0x25f4000)                          = 0x25f4000
+brk(0x25f2000)                          = 0x25f2000
+brk(0x25ee000)                          = 0x25ee000
+brk(0x25ec000)                          = 0x25ec000
+brk(0x25ea000)                          = 0x25ea000
+brk(0x25e8000)                          = 0x25e8000
+brk(0x25e6000)                          = 0x25e6000
+brk(0x25e4000)                          = 0x25e4000
+brk(0x25ba000)                          = 0x25ba000
+open("/etc/ld.so.cache", O_RDONLY)      = 3
+fstat(3, {st_mode=S_IFREG|0644, st_size=172461, ...}) = 0
+mmap(NULL, 172461, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7f315279a000
+close(3)                                = 0
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+open("/lib/tls/x86_64/libMonoPosixHelper.so.so", O_RDONLY) = -1 ENOENT (No such file or directory)
+stat("/lib/tls/x86_64", 0x7fff7b2fdf40) = -1 ENOENT (No such file or directory)
+open("/lib/tls/libMonoPosixHelper.so.so", O_RDONLY) = -1 ENOENT (No such file or directory)
+stat("/lib/tls", 0x7fff7b2fdf40)        = -1 ENOENT (No such file or directory)
+open("/lib/x86_64/libMonoPosixHelper.so.so", O_RDONLY) = -1 ENOENT (No such file or directory)
+stat("/lib/x86_64", 0x7fff7b2fdf40)     = -1 ENOENT (No such file or directory)
+open("/lib/libMonoPosixHelper.so.so", O_RDONLY) = -1 ENOENT (No such file or directory)
+stat("/lib", {st_mode=S_IFDIR|0755, st_size=12288, ...}) = 0
+open("/usr/lib/tls/x86_64/libMonoPosixHelper.so.so", O_RDONLY) = -1 ENOENT (No such file or directory)
+stat("/usr/lib/tls/x86_64", 0x7fff7b2fdf40) = -1 ENOENT (No such file or directory)
+open("/usr/lib/tls/libMonoPosixHelper.so.so", O_RDONLY) = -1 ENOENT (No such file or directory)
+stat("/usr/lib/tls", {st_mode=S_IFDIR|0755, st_size=4096, ...}) = 0
+open("/usr/lib/x86_64/libMonoPosixHelper.so.so", O_RDONLY) = -1 ENOENT (No such file or directory)
+stat("/usr/lib/x86_64", 0x7fff7b2fdf40) = -1 ENOENT (No such file or directory)
+open("/usr/lib/libMonoPosixHelper.so.so", O_RDONLY) = -1 ENOENT (No such file or directory)
+stat("/usr/lib", {st_mode=S_IFDIR|0755, st_size=135168, ...}) = 0
+open("/lib/x86_64-linux-gnu/tls/x86_64/libMonoPosixHelper.so.so", O_RDONLY) = -1 ENOENT (No such file or directory)
+stat("/lib/x86_64-linux-gnu/tls/x86_64", 0x7fff7b2fdf40) = -1 ENOENT (No such file or directory)
+open("/lib/x86_64-linux-gnu/tls/libMonoPosixHelper.so.so", O_RDONLY) = -1 ENOENT (No such file or directory)
+stat("/lib/x86_64-linux-gnu/tls", 0x7fff7b2fdf40) = -1 ENOENT (No such file or directory)
+open("/lib/x86_64-linux-gnu/x86_64/libMonoPosixHelper.so.so", O_RDONLY) = -1 ENOENT (No such file or directory)
+stat("/lib/x86_64-linux-gnu/x86_64", 0x7fff7b2fdf40) = -1 ENOENT (No such file or directory)
+open("/lib/x86_64-linux-gnu/libMonoPosixHelper.so.so", O_RDONLY) = -1 ENOENT (No such file or directory)
+stat("/lib/x86_64-linux-gnu", 0x7fff7b2fdf40) = -1 ENOENT (No such file or directory)
+open("/usr/lib/x86_64-linux-gnu/tls/x86_64/libMonoPosixHelper.so.so", O_RDONLY) = -1 ENOENT (No such file or directory)
+stat("/usr/lib/x86_64-linux-gnu/tls/x86_64", 0x7fff7b2fdf40) = -1 ENOENT (No such file or directory)
+open("/usr/lib/x86_64-linux-gnu/tls/libMonoPosixHelper.so.so", O_RDONLY) = -1 ENOENT (No such file or directory)
+stat("/usr/lib/x86_64-linux-gnu/tls", 0x7fff7b2fdf40) = -1 ENOENT (No such file or directory)
+open("/usr/lib/x86_64-linux-gnu/x86_64/libMonoPosixHelper.so.so", O_RDONLY) = -1 ENOENT (No such file or directory)
+stat("/usr/lib/x86_64-linux-gnu/x86_64", 0x7fff7b2fdf40) = -1 ENOENT (No such file or directory)
+open("/usr/lib/x86_64-linux-gnu/libMonoPosixHelper.so.so", O_RDONLY) = -1 ENOENT (No such file or directory)
+stat("/usr/lib/x86_64-linux-gnu", {st_mode=S_IFDIR|0755, st_size=4096, ...}) = 0
+munmap(0x7f315279a000, 172461)          = 0
+open("libMonoPosixHelper.so.so.la", O_RDONLY) = -1 ENOENT (No such file or directory)
+open("./libMonoPosixHelper.so.so", O_RDONLY) = -1 ENOENT (No such file or directory)
+open("./libMonoPosixHelper.so.so.la", O_RDONLY) = -1 ENOENT (No such file or directory)
+open("/etc/ld.so.cache", O_RDONLY)      = 3
+fstat(3, {st_mode=S_IFREG|0644, st_size=172461, ...}) = 0
+mmap(NULL, 172461, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7f315279a000
+close(3)                                = 0
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+open("/usr/lib/libMonoPosixHelper.so", O_RDONLY) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0P\205\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0644, st_size=118000, ...}) = 0
+mmap(NULL, 2215336, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7f315257d000
+mprotect(0x7f3152598000, 2097152, PROT_NONE) = 0
+mmap(0x7f3152798000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x1b000) = 0x7f3152798000
+close(3)                                = 0
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+open("/lib/libz.so.1", O_RDONLY)        = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0`\"\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0644, st_size=92752, ...}) = 0
+mmap(NULL, 2187792, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7f3152366000
+mprotect(0x7f315237c000, 2093056, PROT_NONE) = 0
+mmap(0x7f315257b000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x15000) = 0x7f315257b000
+close(3)                                = 0
+mprotect(0x7f315257b000, 4096, PROT_READ) = 0
+mprotect(0x7f3152798000, 4096, PROT_READ) = 0
+munmap(0x7f315279a000, 172461)          = 0
+open("/etc/ld.so.cache", O_RDONLY)      = 3
+fstat(3, {st_mode=S_IFREG|0644, st_size=172461, ...}) = 0
+mmap(NULL, 172461, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7f315279a000
+close(3)                                = 0
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+open("/lib/libMonoPosixHelper.so.so", O_RDONLY) = -1 ENOENT (No such file or directory)
+open("/usr/lib/tls/libMonoPosixHelper.so.so", O_RDONLY) = -1 ENOENT (No such file or directory)
+open("/usr/lib/libMonoPosixHelper.so.so", O_RDONLY) = -1 ENOENT (No such file or directory)
+open("/usr/lib/x86_64-linux-gnu/libMonoPosixHelper.so.so", O_RDONLY) = -1 ENOENT (No such file or directory)
+munmap(0x7f315279a000, 172461)          = 0
+open("libMonoPosixHelper.so.so.la", O_RDONLY) = -1 ENOENT (No such file or directory)
+open("./libMonoPosixHelper.so.so", O_RDONLY) = -1 ENOENT (No such file or directory)
+open("./libMonoPosixHelper.so.so.la", O_RDONLY) = -1 ENOENT (No such file or directory)
+open("COM4", O_RDWR|O_NOCTTY|O_NONBLOCK) = -1 ENOENT (No such file or directory)
+open("/etc/ld.so.cache", O_RDONLY)      = 3
+fstat(3, {st_mode=S_IFREG|0644, st_size=172461, ...}) = 0
+mmap(NULL, 172461, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7f315279a000
+close(3)                                = 0
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+open("/lib/libc.so.6.so", O_RDONLY)     = -1 ENOENT (No such file or directory)
+open("/usr/lib/tls/libc.so.6.so", O_RDONLY) = -1 ENOENT (No such file or directory)
+open("/usr/lib/libc.so.6.so", O_RDONLY) = -1 ENOENT (No such file or directory)
+open("/usr/lib/x86_64-linux-gnu/libc.so.6.so", O_RDONLY) = -1 ENOENT (No such file or directory)
+munmap(0x7f315279a000, 172461)          = 0
+open("libc.so.6.so.la", O_RDONLY)       = -1 ENOENT (No such file or directory)
+open("./libc.so.6.so", O_RDONLY)        = -1 ENOENT (No such file or directory)
+open("./libc.so.6.so.la", O_RDONLY)     = -1 ENOENT (No such file or directory)
+brk(0x25dc000)                          = 0x25dc000
+brk(0x25da000)                          = 0x25da000
+brk(0x25d8000)                          = 0x25d8000
+brk(0x25d6000)                          = 0x25d6000
+brk(0x25d4000)                          = 0x25d4000
+brk(0x25d2000)                          = 0x25d2000
+brk(0x25d0000)                          = 0x25d0000
+brk(0x25ce000)                          = 0x25ce000
+tgkill(5966, 5969, SIGPWR)              = 0
+tgkill(5966, 5969, SIGXCPU)             = 0
+write(2, "\nUnhandled Exception: System.IO."..., 869) = 869
+semop(950278, {{3, -1, SEM_UNDO}}, 1)   = 0
+semop(950278, {{3, 1, SEM_UNDO}}, 1)    = 0
+semop(950278, {{3, -1, SEM_UNDO}}, 1)   = 0
+semop(950278, {{3, 1, SEM_UNDO}}, 1)    = 0
+semop(950278, {{6, -1, SEM_UNDO}}, 1)   = 0
+semctl(950278, 7, GETVAL, 0xffffffffffffffff) = 1
+semctl(950278, 0, IPC_RMID, 0xffffffffffffffff) = 0
+uname({sys="Linux", node="bogdan", ...}) = 0
+uname({sys="Linux", node="bogdan", ...}) = 0
+getuid()                                = 0
+unlink("/dev/shm/mono-shared-0-shared_data-bogdan-Linux-x86_64-328-12-0") = 0
+uname({sys="Linux", node="bogdan", ...}) = 0
+uname({sys="Linux", node="bogdan", ...}) = 0
+getuid()                                = 0
+unlink("/dev/shm/mono-shared-0-shared_fileshare-bogdan-Linux-x86_64-40-12-0") = 0
+uname({sys="Linux", node="bogdan", ...}) = 0
+uname({sys="Linux", node="bogdan", ...}) = 0
+unlink("/root/.wapi/shared_data-bogdan-Linux-x86_64-328-12-0") = -1 ENOENT (No such file or directory)
+uname({sys="Linux", node="bogdan", ...}) = 0
+uname({sys="Linux", node="bogdan", ...}) = 0
+unlink("/root/.wapi/shared_fileshare-bogdan-Linux-x86_64-40-12-0") = -1 ENOENT (No such file or directory)
+unlink("/dev/shm/mono.5966")            = 0
+exit_group(1)                           = ?

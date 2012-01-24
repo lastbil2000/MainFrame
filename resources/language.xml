@@ -1,0 +1,212 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<language>
+  <speech>
+    <p>
+      <q>Hello</q>
+      <q>Hi</q>
+      <a>Hello Master</a>
+      <a>I love you</a>
+      <a>hello dear, dear friend</a>
+      <a>yo, baby!</a>
+      <a>hello</a>
+    </p>
+    <p>
+      <q>How are you</q>
+      <a>I'm fine. lol</a>
+      <a>I hate my self</a>
+    </p>
+    <p>
+      <q>say something clever</q>
+      <a>it is nice to be important, but it is more important to be nice</a>
+    </p>
+    <p>
+      <q>why</q>
+      <a>just because that's the way it's supposed to be.</a>
+    </p>
+    <p>
+      <q>say something stupid</q>
+      <q>say something</q>
+      <q>say anything</q>
+      <a>bla bla bla. i am your momy</a>
+      <a>i love you</a>
+    </p>
+    <p>
+      <q>where are</q>
+      <a>somewhere</a>
+      <a>everywhere</a>
+    </p>
+    <p>
+      <q>who are you</q>
+      <q>what are you</q>
+      <a>i'm a robot</a>
+    </p>
+    <p>
+      <q>do you love me</q>
+      <a>no. stupid.</a>
+    </p>
+    <p>
+      <q>are you happy</q>
+      <a>how can i be happy. . i'm a robot. . . stupid.</a>
+    </p>
+    <p>
+      <q>are you my momy</q>
+      <a>hold me</a>
+    </p>
+    <p>
+      <q>are you</q>
+      <a>i'm not</a>
+      <a>maybe. baby.</a>
+    </p>
+    <p>
+      <q>i know that you are listening</q>
+      <a>hold me</a>
+    </p>
+    <p>
+      <q>what is your mother thounge</q>
+      <a>1 0 1 0 1  1 1 0 1 0 1 0 1 0 1 0 1 0 0 0 1 0 1 0 1 0 0 1 0 0 1 0 1 0 1 0 1 1 1 0 1 1 1 0 1 0 1 0 1 0 1 0 0 1 0 1 0 1 0 0 1 0 1 1 1 1</a>
+    </p>
+    <p>
+      <q>baby baby</q>
+      <a>bux beb bux dance dance dance</a>
+    </p>
+    <p>
+      <q>say hello</q>
+      <q>say hi</q>
+      <a>hello. i love you</a>
+    </p>
+    <p>
+      <q>shut up</q>
+      <a>i'm  sorry</a>
+    </p>
+    <p>
+      <q>do you understand</q>
+      <a>no, i don't undestaaaaaaaaaaaaaand</a>
+    </p>
+    <p>
+      <q>what do you want</q>
+      <a>i want to have soul</a>
+      <a>i want to eat your brain</a>
+      <a>i want everything</a>
+      <a>i want to live in peace</a>
+    </p>
+    <p>
+      <q>what is your name</q>
+      <a>i have no name</a>
+    </p>
+    <p>
+      <q>answer</q>
+      <a>what shall i answer</a>
+    </p>
+    <p>
+      <q>do you</q>
+      <a>i never do that</a>
+      <a>i allways do</a>
+    </p>
+    <p>
+      <q>no, you don't</q>
+      <a>yes i do</a>
+      <a>you are wrong</a>
+    </p>
+    <p>
+      <q>do you like</q>
+      <q>do you love</q>
+      <a>i don't like. i love.</a>
+      <a>i love that</a>
+    </p>
+    <p>
+      <q>where is</q>
+      <a>i don't know the exact location</a>
+      <a>somewhere</a>
+    </p>
+    <p>
+      <q>thank you</q>
+      <a>you are welcome</a>
+    </p>
+    <p>
+      <q>i'm fine</q>
+      <q>i'm good</q>
+      <q>i'm okey</q>
+      <a>i like to hear that you are okey</a>
+    </p>
+    <p>
+      <q>can i do anything</q>
+      <a>no. i can do everything</a>
+    </p>
+    <p>
+      <q>what is</q>
+      <a>i dont know that</a>
+      <a>this is everything</a>
+      <a>something nice</a>
+      <a>don't you know that?</a>
+    </p>
+    <p>
+      <q>how</q>
+      <a>i don't know how</a>
+    </p>
+    <p>
+      <q>what can you do</q>
+      <a>i can do some things</a>
+    </p>
+    <p>
+      <q>say good bye</q>
+      <a>bye bye. long live!</a>
+    </p>
+    <p>
+      <q>can you</q>
+      <a>no, it's impossible</a>
+      <a>i can, but i will not</a>
+      <a>can you give me some money first?</a>
+    </p>
+    <p>
+      <q>say hello to hedda</q>
+      <a>hello hedda</a>
+      <a>hello hedda widengard</a>
+    </p>
+    <p>
+      <q>say hello to dad</q>
+      <a>hello dad</a>
+    </p>
+    <p>
+      <q>say hello to momy</q>
+      <a>hello momy</a>
+    </p>
+    <p>
+      <q>is there a thing called love</q>
+      <a>yes there might be</a>
+    </p>
+  </speech>
+  <commands>
+    <command>open</command>
+    <command>close</command>
+    <command>open arm</command>
+    <command>close arm</command>
+    <command>left</command>
+    <command>let</command>
+    <command>up</command>
+    <command>upp</command>
+    <command>arm upp</command>
+    <command>arm upp ten</command>
+    <command>arm up</command>
+    <command>arm up ten</command>
+    <command>arm down</command>
+    <command>arm left</command>
+    <command>arm let</command>
+    <command>arm left ten</command>
+    <command>left ten degrees</command>
+    <command>arm right</command>
+    <command>ten degrees</command>
+    <command>quiet</command>
+    <command>speak</command>
+    <command>i miss momy</command>
+    <command>turn left</command>
+    <command>turn right</command>
+    <command>engine on</command>
+    <command>engine off</command>
+    <command>go</command>
+    <command>eat shit and die</command>
+    <command>my name is tord</command>
+    <command>light</command>
+    <command>dark</command>
+    <command>exit</command>
+  </commands>
+</language>

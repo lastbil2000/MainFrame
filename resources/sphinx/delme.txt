@@ -1,0 +1,13 @@
+<s> HELLO </s>
+<s> HI </s>
+<s> HOW ARE YOU </s>
+<s> I MISS MOMY </s>
+<s> TURN LEFT </s>
+<s> TURN RIGHT </s>
+<s> STOP ENGINE </s>
+<s> START ENGINE </s>
+<s> GO </s>
+<s> EAT SHIT AND DIE </s>
+<s> MY NAME IS TORD </s>
+<s> LIGHT </s>
+<s> DARK </s>

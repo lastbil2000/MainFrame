@@ -1,0 +1,538 @@
+#############################################################################
+## Copyright (c) 1996, Carnegie Mellon University, Cambridge University,
+## Ronald Rosenfeld and Philip Clarkson
+## Version 3, Copyright (c) 2006, Carnegie Mellon University 
+## Contributors includes Wen Xu, Ananlada Chotimongkol, 
+## David Huggins-Daines, Arthur Chan and Alan Black 
+#############################################################################
+=============================================================================
+===============  This file was produced by the CMU-Cambridge  ===============
+===============     Statistical Language Modeling Toolkit     ===============
+=============================================================================
+This is a 3-gram language model, based on a vocabulary of 76 words,
+  which begins "</s>", "<s>", "AND"...
+This is a CLOSED-vocabulary model
+  (OOVs eliminated from training data and are forbidden in test data)
+Good-Turing discounting was applied.
+1-gram frequency of frequency : 
+2-gram frequency of frequency : 
+3-gram frequency of frequency : 
+1-gram discounting ratios : 
+2-gram discounting ratios : 
+3-gram discounting ratios : 
+This file is in the ARPA-standard format introduced by Doug Paul.
+
+p(wd3|wd1,wd2)= if(trigram exists)           p_3(wd1,wd2,wd3)
+                else if(bigram w1,w2 exists) bo_wt_2(w1,w2)*p(wd3|wd2)
+                else                         p(wd3|w2)
+
+p(wd2|wd1)= if(bigram exists) p_2(wd1,wd2)
+            else              bo_wt_1(wd1)*p_1(wd2)
+
+All probs and back-off weights (bo_wt) are given in log10 form.
+
+Data formats:
+
+Beginning of data mark: \data\
+ngram 1=nr            # number of 1-grams
+ngram 2=nr            # number of 2-grams
+ngram 3=nr            # number of 3-grams
+
+\1-grams:
+p_1     wd_1 bo_wt_1
+\2-grams:
+p_2     wd_1 wd_2 bo_wt_2
+\3-grams:
+p_3     wd_1 wd_2 wd_3 
+
+end of data mark: \end\
+
+\data\
+ngram 1=76
+ngram 2=163
+ngram 3=238
+
+\1-grams:
+-99.0000 </s>	-1.8751
+-99.0000 <s>	-1.6461
+-2.2380 AND	-0.4746
+-2.2380 ANSWER	-0.4771
+-1.9370 ANYTHING	-0.6021
+-1.3350 ARE	-1.0315
+-1.1967 ARM	-1.2338
+-1.9370 BABY	-0.6939
+-2.2380 BYE	-0.4771
+-1.7609 CAN	-0.7248
+-2.2380 CLEVER	-0.4771
+-1.9370 CLOSE	-0.6704
+-2.2380 DAD	-0.4771
+-2.2380 DARK	-0.4771
+-1.9370 DEGREES	-0.6021
+-2.2380 DIE	-0.4771
+-1.3350 DO	-1.0287
+-2.2380 DON'T	-0.4771
+-2.2380 DOWN	-0.4771
+-2.2380 EAT	-0.4746
+-1.9370 ENGINE	-0.6939
+-99.0000 EXIT	0.0000
+-2.2380 FINE	-0.4771
+-2.2380 GO	-0.4771
+-1.9370 GOOD	-0.6965
+-2.2380 HAPPY	-0.4771
+-2.2380 HEDDA	-0.4771
+-1.6360 HELLO	-0.8400
+-1.9370 HI	-0.6021
+-1.9370 HOW	-0.6784
+-1.7609 I	-0.8192
+-1.7609 I'M	-0.8349
+-1.5391 IS	-0.9466
+-2.2380 KNOW	-0.4746
+-1.5391 LEFT	-0.8904
+-1.9370 LET	-0.6021
+-2.2380 LIGHT	-0.4771
+-2.2380 LIKE	-0.4771
+-2.2380 LISTENING	-0.4771
+-1.9370 LOVE	-0.6965
+-2.2380 ME	-0.4771
+-2.2380 MISS	-0.4721
+-1.9370 MOMY	-0.6021
+-2.2380 MOTHER	-0.4746
+-1.9370 MY	-0.6888
+-1.9370 NAME	-0.6862
+-2.2380 NO	-0.4322
+-2.2380 OFF	-0.4771
+-2.2380 OKEY	-0.4771
+-2.2380 ON	-0.4771
+-1.9370 OPEN	-0.6704
+-2.2380 QUIET	-0.4771
+-1.9370 RIGHT	-0.6021
+-1.2838 SAY	-1.1422
+-2.2380 SHIT	-0.4746
+-2.2380 SHUT	-0.4670
+-1.7609 SOMETHING	-0.8400
+-2.2380 SPEAK	-0.4771
+-2.2380 STUPID	-0.4771
+-1.5391 TEN	-0.8980
+-2.2380 THANK	-0.4322
+-2.2380 THAT	-0.4322
+-2.2380 THOUNGE	-0.4771
+-1.9370 TO	-0.6939
+-2.2380 TORD	-0.4771
+-1.9370 TURN	-0.6810
+-2.2380 UNDERSTAND	-0.4771
+-1.6360 UP	-0.8324
+-1.7609 UPP	-0.7654
+-2.2380 WANT	-0.4771
+-1.4599 WHAT	-0.9765
+-1.9370 WHERE	-0.6650
+-2.2380 WHO	-0.4566
+-2.2380 WHY	-0.4771
+-1.0076 YOU	-1.3794
+-1.9370 YOUR	-0.6914
+
+\2-grams:
+-0.0058 </s> <s> -0.3010
+-1.7443 <s> ANSWER 0.1761
+-1.4433 <s> ARE -0.2218
+-1.0453 <s> ARM -0.3233
+-1.7443 <s> BABY -0.0792
+-1.5682 <s> CAN 0.3010
+-1.5682 <s> CLOSE 0.2218
+-1.7443 <s> DARK 0.1761
+-1.2672 <s> DO -0.3979
+-1.7443 <s> EAT 0.1761
+-1.5682 <s> ENGINE 0.2218
+-1.7443 <s> EXIT -0.3010
+-1.7443 <s> GO 0.1761
+-1.7443 <s> HELLO -0.0580
+-1.7443 <s> HI 0.3010
+-1.5682 <s> HOW 0.2218
+-1.5682 <s> I -0.1091
+-1.4433 <s> I'M 0.2430
+-1.5682 <s> LEFT 0.4260
+-1.7443 <s> LET 0.3010
+-1.7443 <s> LIGHT 0.1761
+-1.7443 <s> MY -0.0792
+-1.7443 <s> NO 0.1761
+-1.5682 <s> OPEN 0.2218
+-1.7443 <s> QUIET 0.1761
+-1.0453 <s> SAY 0.1761
+-1.7443 <s> SHUT 0.1761
+-1.7443 <s> SPEAK 0.1761
+-1.7443 <s> TEN -0.0969
+-1.7443 <s> THANK 0.1761
+-1.5682 <s> TURN 0.2218
+-1.7443 <s> UP 0.0669
+-1.7443 <s> UPP 0.0000
+-1.2002 <s> WHAT 0.1963
+-1.5682 <s> WHERE 0.2218
+-1.7443 <s> WHO 0.1761
+-1.7443 <s> WHY 0.1761
+-0.1761 AND DIE 0.1761
+-0.1761 ANSWER </s> 1.5740
+-0.1249 ANYTHING </s> 1.3979
+-0.7782 ARE </s> 1.5740
+-0.7782 ARE LISTENING 0.1761
+-0.2341 ARE YOU -0.6021
+-0.8016 ARM </s> 1.3979
+-0.9777 ARM DOWN 0.1761
+-0.8016 ARM LEFT 0.4260
+-0.9777 ARM LET 0.3010
+-0.9777 ARM RIGHT 0.3010
+-0.8016 ARM UP 0.3680
+-0.8016 ARM UPP 0.3010
+-0.3979 BABY </s> 1.5740
+-0.3979 BABY BABY -0.0792
+-0.1761 BYE </s> 1.5740
+-0.4771 CAN I -0.1549
+-0.3010 CAN YOU -0.2852
+-0.1761 CLEVER </s> 1.5740
+-0.3979 CLOSE </s> 1.5740
+-0.3979 CLOSE ARM -0.2264
+-0.1761 DAD </s> 1.5740
+-0.1761 DARK </s> 1.5740
+-0.1249 DEGREES </s> 1.3979
+-0.1761 DIE </s> 1.5740
+-0.7782 DO </s> 1.5740
+-0.7782 DO ANYTHING 0.3010
+-0.2341 DO YOU -0.4393
+-0.1761 DON'T </s> 1.5740
+-0.1761 DOWN </s> 1.5740
+-0.1761 EAT SHIT 0.1761
+-0.3979 ENGINE OFF 0.1761
+-0.3979 ENGINE ON 0.1761
+-0.1761 FINE </s> 1.5740
+-0.1761 GO </s> 1.5740
+-0.3979 GOOD </s> 1.5740
+-0.3979 GOOD BYE 0.1761
+-0.1761 HAPPY </s> 1.5740
+-0.1761 HEDDA </s> 1.5740
+-0.3680 HELLO </s> 1.3979
+-0.3680 HELLO TO 0.2218
+-0.1249 HI </s> 1.3979
+-0.3979 HOW </s> 1.5740
+-0.3979 HOW ARE 0.0792
+-0.5441 I DO -0.2218
+-0.5441 I KNOW 0.1761
+-0.5441 I MISS 0.1761
+-0.5441 I'M FINE 0.1761
+-0.5441 I'M GOOD -0.0792
+-0.5441 I'M OKEY 0.1761
+-0.4771 IS </s> 1.3979
+-0.6532 IS TORD 0.1761
+-0.4771 IS YOUR 0.2218
+-0.1761 KNOW THAT 0.1761
+-0.3010 LEFT </s> 1.2730
+-0.4260 LEFT TEN 0.4260
+-0.1249 LET </s> 1.3979
+-0.1761 LIGHT </s> 1.5740
+-0.1761 LIKE </s> 1.5740
+-0.1761 LISTENING </s> 1.5740
+-0.3979 LOVE </s> 1.5740
+-0.3979 LOVE ME 0.1761
+-0.1761 ME </s> 1.5740
+-0.1761 MISS MOMY 0.3010
+-0.1249 MOMY </s> 1.3979
+-0.1761 MOTHER THOUNGE 0.1761
+-0.3979 MY MOMY 0.3010
+-0.3979 MY NAME -0.0792
+-0.3979 NAME </s> 1.5740
+-0.3979 NAME IS -0.1919
+-0.1761 NO YOU -0.2688
+-0.1761 OFF </s> 1.5740
+-0.1761 OKEY </s> 1.5740
+-0.1761 ON </s> 1.5740
+-0.3979 OPEN </s> 1.5740
+-0.3979 OPEN ARM -0.2264
+-0.1761 QUIET </s> 1.5740
+-0.1249 RIGHT </s> 1.3979
+-0.8751 SAY ANYTHING 0.3010
+-0.8751 SAY GOOD -0.0792
+-0.5740 SAY HELLO 0.2430
+-0.8751 SAY HI 0.3010
+-0.5740 SAY SOMETHING 0.2430
+-0.1761 SHIT AND 0.1761
+-0.1761 SHUT UP 0.0669
+-0.5441 SOMETHING </s> 1.5740
+-0.5441 SOMETHING CLEVER 0.1761
+-0.5441 SOMETHING STUPID 0.1761
+-0.1761 SPEAK </s> 1.5740
+-0.1761 STUPID </s> 1.5740
+-0.3010 TEN </s> 1.2730
+-0.4260 TEN DEGREES 0.1249
+-0.1761 THANK YOU -0.1549
+-0.1761 THAT YOU -0.2688
+-0.1761 THOUNGE </s> 1.5740
+-0.3979 TO DAD 0.1761
+-0.3979 TO HEDDA 0.1761
+-0.1761 TORD </s> 1.5740
+-0.3979 TURN LEFT 0.0000
+-0.3979 TURN RIGHT 0.3010
+-0.1761 UNDERSTAND </s> 1.5740
+-0.2430 UP </s> 1.2730
+-0.5441 UP TEN 0.0000
+-0.3010 UPP </s> 1.3979
+-0.4771 UPP TEN 0.0000
+-0.1761 WANT </s> 1.5740
+-0.7404 WHAT ARE 0.0792
+-0.7404 WHAT CAN 0.0000
+-0.7404 WHAT DO 0.0792
+-0.4393 WHAT IS -0.1249
+-0.3979 WHERE ARE -0.2218
+-0.3979 WHERE IS -0.1249
+-0.1761 WHO ARE 0.0792
+-0.1761 WHY </s> 1.5740
+-0.5441 YOU </s> 0.9720
+-1.1461 YOU ARE -0.2218
+-1.1461 YOU DO -0.2218
+-1.1461 YOU DON'T 0.1761
+-1.1461 YOU HAPPY 0.1761
+-1.1461 YOU LIKE 0.1761
+-0.9700 YOU LOVE 0.2218
+-1.1461 YOU MY -0.0792
+-1.1461 YOU UNDERSTAND 0.1761
+-1.1461 YOU WANT 0.1761
+-0.3979 YOUR MOTHER 0.1761
+-0.3979 YOUR NAME -0.0792
+
+\3-grams:
+-1.8692 </s> <s> ANSWER 
+-1.3921 </s> <s> ARE 
+-0.9150 </s> <s> ARM 
+-1.8692 </s> <s> BABY 
+-1.5682 </s> <s> CAN 
+-1.5682 </s> <s> CLOSE 
+-1.8692 </s> <s> DARK 
+-1.1703 </s> <s> DO 
+-1.8692 </s> <s> EAT 
+-1.5682 </s> <s> ENGINE 
+-1.8692 </s> <s> EXIT 
+-1.8692 </s> <s> GO 
+-1.8692 </s> <s> HI 
+-1.5682 </s> <s> HOW 
+-1.5682 </s> <s> I 
+-1.3921 </s> <s> I'M 
+-1.5682 </s> <s> LEFT 
+-1.8692 </s> <s> LET 
+-1.8692 </s> <s> LIGHT 
+-1.8692 </s> <s> MY 
+-1.8692 </s> <s> NO 
+-1.5682 </s> <s> OPEN 
+-1.8692 </s> <s> QUIET 
+-0.9150 </s> <s> SAY 
+-1.8692 </s> <s> SHUT 
+-1.8692 </s> <s> SPEAK 
+-1.8692 </s> <s> TEN 
+-1.8692 </s> <s> THANK 
+-1.5682 </s> <s> TURN 
+-1.8692 </s> <s> UP 
+-1.8692 </s> <s> UPP 
+-1.0911 </s> <s> WHAT 
+-1.5682 </s> <s> WHERE 
+-1.8692 </s> <s> WHO 
+-1.8692 </s> <s> WHY 
+-0.3010 <s> ANSWER </s> 
+-0.1249 <s> ARE YOU 
+-1.0000 <s> ARM DOWN 
+-0.6990 <s> ARM LEFT 
+-1.0000 <s> ARM LET 
+-1.0000 <s> ARM RIGHT 
+-0.6990 <s> ARM UP 
+-0.6990 <s> ARM UPP 
+-0.3010 <s> BABY BABY 
+-0.4771 <s> CAN I 
+-0.4771 <s> CAN YOU 
+-0.4771 <s> CLOSE </s> 
+-0.4771 <s> CLOSE ARM 
+-0.3010 <s> DARK </s> 
+-0.0792 <s> DO YOU 
+-0.3010 <s> EAT SHIT 
+-0.4771 <s> ENGINE OFF 
+-0.4771 <s> ENGINE ON 
+-0.3010 <s> EXIT </s> 
+-0.3010 <s> GO </s> 
+-0.3010 <s> HELLO </s> 
+-0.3010 <s> HI </s> 
+-0.4771 <s> HOW </s> 
+-0.4771 <s> HOW ARE 
+-0.4771 <s> I KNOW 
+-0.4771 <s> I MISS 
+-0.6021 <s> I'M FINE 
+-0.6021 <s> I'M GOOD 
+-0.6021 <s> I'M OKEY 
+-0.4771 <s> LEFT </s> 
+-0.4771 <s> LEFT TEN 
+-0.3010 <s> LET </s> 
+-0.3010 <s> LIGHT </s> 
+-0.3010 <s> MY NAME 
+-0.3010 <s> NO YOU 
+-0.4771 <s> OPEN </s> 
+-0.4771 <s> OPEN ARM 
+-0.3010 <s> QUIET </s> 
+-1.0000 <s> SAY ANYTHING 
+-1.0000 <s> SAY GOOD 
+-0.5229 <s> SAY HELLO 
+-1.0000 <s> SAY HI 
+-0.5229 <s> SAY SOMETHING 
+-0.3010 <s> SHUT UP 
+-0.3010 <s> SPEAK </s> 
+-0.3010 <s> TEN DEGREES 
+-0.3010 <s> THANK YOU 
+-0.4771 <s> TURN LEFT 
+-0.4771 <s> TURN RIGHT 
+-0.3010 <s> UP </s> 
+-0.3010 <s> UPP </s> 
+-0.8451 <s> WHAT ARE 
+-0.8451 <s> WHAT CAN 
+-0.8451 <s> WHAT DO 
+-0.3680 <s> WHAT IS 
+-0.4771 <s> WHERE ARE 
+-0.4771 <s> WHERE IS 
+-0.3010 <s> WHO ARE 
+-0.3010 <s> WHY </s> 
+-0.3010 AND DIE </s> 
+-0.3010 ANSWER </s> <s> 
+-0.1761 ANYTHING </s> <s> 
+-0.3010 ARE </s> <s> 
+-0.3010 ARE LISTENING </s> 
+-0.2430 ARE YOU </s> 
+-0.8451 ARE YOU HAPPY 
+-0.8451 ARE YOU MY 
+-0.1761 ARM </s> <s> 
+-0.3010 ARM DOWN </s> 
+-0.4771 ARM LEFT </s> 
+-0.4771 ARM LEFT TEN 
+-0.3010 ARM LET </s> 
+-0.3010 ARM RIGHT </s> 
+-0.4771 ARM UP </s> 
+-0.4771 ARM UP TEN 
+-0.4771 ARM UPP </s> 
+-0.4771 ARM UPP TEN 
+-0.3010 BABY </s> <s> 
+-0.3010 BABY BABY </s> 
+-0.3010 BYE </s> <s> 
+-0.3010 CAN I DO 
+-0.4771 CAN YOU </s> 
+-0.4771 CAN YOU DO 
+-0.3010 CLEVER </s> <s> 
+-0.3010 CLOSE </s> <s> 
+-0.3010 CLOSE ARM </s> 
+-0.3010 DAD </s> <s> 
+-0.3010 DARK </s> <s> 
+-0.1761 DEGREES </s> <s> 
+-0.3010 DIE </s> <s> 
+-0.3010 DO </s> <s> 
+-0.3010 DO ANYTHING </s> 
+-0.8451 DO YOU </s> 
+-0.8451 DO YOU LIKE 
+-0.5441 DO YOU LOVE 
+-0.8451 DO YOU UNDERSTAND 
+-0.8451 DO YOU WANT 
+-0.3010 DON'T </s> <s> 
+-0.3010 DOWN </s> <s> 
+-0.3010 EAT SHIT AND 
+-0.3010 ENGINE OFF </s> 
+-0.3010 ENGINE ON </s> 
+-0.3010 FINE </s> <s> 
+-0.3010 GO </s> <s> 
+-0.3010 GOOD </s> <s> 
+-0.3010 GOOD BYE </s> 
+-0.3010 HAPPY </s> <s> 
+-0.3010 HEDDA </s> <s> 
+-0.1761 HELLO </s> <s> 
+-0.4771 HELLO TO DAD 
+-0.4771 HELLO TO HEDDA 
+-0.1761 HI </s> <s> 
+-0.3010 HOW </s> <s> 
+-0.3010 HOW ARE YOU 
+-0.3010 I DO ANYTHING 
+-0.3010 I KNOW THAT 
+-0.3010 I MISS MOMY 
+-0.3010 I'M FINE </s> 
+-0.3010 I'M GOOD </s> 
+-0.3010 I'M OKEY </s> 
+-0.1761 IS </s> <s> 
+-0.3010 IS TORD </s> 
+-0.4771 IS YOUR MOTHER 
+-0.4771 IS YOUR NAME 
+-0.3010 KNOW THAT YOU 
+-0.1249 LEFT </s> <s> 
+-0.4771 LEFT TEN </s> 
+-0.4771 LEFT TEN DEGREES 
+-0.1761 LET </s> <s> 
+-0.3010 LIGHT </s> <s> 
+-0.3010 LIKE </s> <s> 
+-0.3010 LISTENING </s> <s> 
+-0.3010 LOVE </s> <s> 
+-0.3010 LOVE ME </s> 
+-0.3010 ME </s> <s> 
+-0.3010 MISS MOMY </s> 
+-0.1761 MOMY </s> <s> 
+-0.3010 MOTHER THOUNGE </s> 
+-0.3010 MY MOMY </s> 
+-0.3010 MY NAME IS 
+-0.3010 NAME </s> <s> 
+-0.3010 NAME IS TORD 
+-0.3010 NO YOU DON'T 
+-0.3010 OFF </s> <s> 
+-0.3010 OKEY </s> <s> 
+-0.3010 ON </s> <s> 
+-0.3010 OPEN </s> <s> 
+-0.3010 OPEN ARM </s> 
+-0.3010 QUIET </s> <s> 
+-0.1761 RIGHT </s> <s> 
+-0.3010 SAY ANYTHING </s> 
+-0.3010 SAY GOOD BYE 
+-0.6021 SAY HELLO </s> 
+-0.3010 SAY HELLO TO 
+-0.3010 SAY HI </s> 
+-0.6021 SAY SOMETHING </s> 
+-0.6021 SAY SOMETHING CLEVER 
+-0.6021 SAY SOMETHING STUPID 
+-0.3010 SHIT AND DIE 
+-0.3010 SHUT UP </s> 
+-0.3010 SOMETHING </s> <s> 
+-0.3010 SOMETHING CLEVER </s> 
+-0.3010 SOMETHING STUPID </s> 
+-0.3010 SPEAK </s> <s> 
+-0.3010 STUPID </s> <s> 
+-0.1249 TEN </s> <s> 
+-0.1761 TEN DEGREES </s> 
+-0.3010 THANK YOU </s> 
+-0.3010 THAT YOU ARE 
+-0.3010 THOUNGE </s> <s> 
+-0.3010 TO DAD </s> 
+-0.3010 TO HEDDA </s> 
+-0.3010 TORD </s> <s> 
+-0.3010 TURN LEFT </s> 
+-0.3010 TURN RIGHT </s> 
+-0.3010 UNDERSTAND </s> <s> 
+-0.1249 UP </s> <s> 
+-0.3010 UP TEN </s> 
+-0.1761 UPP </s> <s> 
+-0.3010 UPP TEN </s> 
+-0.3010 WANT </s> <s> 
+-0.3010 WHAT ARE YOU 
+-0.3010 WHAT CAN YOU 
+-0.3010 WHAT DO YOU 
+-0.6021 WHAT IS </s> 
+-0.3010 WHAT IS YOUR 
+-0.3010 WHERE ARE </s> 
+-0.3010 WHERE IS </s> 
+-0.3010 WHO ARE YOU 
+-0.3010 WHY </s> <s> 
+-0.0580 YOU </s> <s> 
+-0.3010 YOU ARE LISTENING 
+-0.3010 YOU DO </s> 
+-0.3010 YOU DON'T </s> 
+-0.3010 YOU HAPPY </s> 
+-0.3010 YOU LIKE </s> 
+-0.4771 YOU LOVE </s> 
+-0.4771 YOU LOVE ME 
+-0.3010 YOU MY MOMY 
+-0.3010 YOU UNDERSTAND </s> 
+-0.3010 YOU WANT </s> 
+-0.3010 YOUR MOTHER THOUNGE 
+-0.3010 YOUR NAME </s> 
+
+\end\
