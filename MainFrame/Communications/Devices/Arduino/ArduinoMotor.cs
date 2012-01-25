@@ -98,7 +98,7 @@ namespace MainFrame.Devices
 		#region IDevice implementation
 		public void Start ()
 		{
-			if (!comProvider.IsReady) 
+			if (!comProvider.Ready) 
 			{
 				throw new DeviceException("ComProvider " + comProvider.ToString() + " is not ready");
 			}

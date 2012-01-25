@@ -55,7 +55,6 @@
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <Folder Include="Sensors\" />
     <Folder Include="..\" />
   </ItemGroup>
   <ItemGroup>
