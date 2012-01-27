@@ -5,3 +5,5 @@
 *.exe
 *.mdb
 *.dll
+*.userprefs
+*.pidb
