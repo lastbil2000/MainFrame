@@ -3,6 +3,7 @@ using MainFrame.Devices.Speech;
 using System;
 using MainFrame.Devices;
 using MainFrame.Communication;
+using System.Collections.Generic;
 
 namespace MainFrame.Processes
 {
@@ -49,9 +50,9 @@ namespace MainFrame.Processes
 			return new LookAtPeopleProcess(capture, head);
 		}
 		
-		public RubyProcess GetRuby(string fileName, INervousSystem mediator) 
+		public RubyProcess GetRuby(string fileName, INervousSystem mediator, ICollection<string> paths) 
 		{
-			return new RubyProcess(fileName, mediator);
+			return new RubyProcess(fileName, mediator, paths);
 		}
 
 		public void Start () {}

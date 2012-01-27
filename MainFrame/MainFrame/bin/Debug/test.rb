@@ -1,3 +1,6 @@
+require 'mscorlib'
+require 'readline'
+
 class MainClass
 	def initialize (global_object)
 		@go = global_object
@@ -6,8 +9,20 @@ class MainClass
 		puts "SETUP"
 	end
 	def loop
-		puts "LOOOOP"
+		@go.robot.get("dummy").value +=1
+		puts @go.robot.get("dummy").value
+		#puts @go.robot.get("dummy")
+		STDOUT.sync = true
+		line = gets.chomp
+
+		if line != nil && line.length > 0
+			puts "PYTSAN #{line}" 
+		end
 	end
+	def should_run
+		true
+	end
+
 end
 
 self.main_class = MainClass.new(self)

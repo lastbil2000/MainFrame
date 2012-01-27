@@ -79,12 +79,12 @@ namespace MainFrame
 			///sbin/wpa_supplicant -B -dd -D wext -i wlan0 -t -W -c/etc/wpa_supplicant/wpa_supplicant.conf
 			IRobotBuilder builder = new StaticRobotBuilder();
 			
-			builder.BuildInternals();
-			builder.BuildSensors();
-			builder.BuildArm();
-			builder.BuildHead();
-			builder.BuidEngine();
-			builder.BuildSpeech();
+			//builder.BuildInternals();
+			//builder.BuildSensors();
+			//builder.BuildArm();
+			//builder.BuildHead();
+			//builder.BuidEngine();
+			//builder.BuildSpeech();
 			//Thread.Sleep(2000);
 			builder.AttachProcesses();
 			
