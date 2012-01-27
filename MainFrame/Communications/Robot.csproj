@@ -141,6 +141,7 @@
     <Compile Include="Devices\Video\ICamera.cs" />
     <Compile Include="Devices\Video\CvSize.cs" />
     <Compile Include="Devices\Arduino\ISerialPackageFactory.cs" />
+    <Compile Include="Devices\DummyDevice.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Log\" />

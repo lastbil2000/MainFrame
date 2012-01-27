@@ -75,10 +75,10 @@ namespace MainFrame
 		}
 		
 		//returns an untyped object (process or device) if found
-		private IDevice Get (string identifier) 
+		public IDevice Get (string identifier) 
 		{
 			if (!_devices.Contains(new DeviceContainer() {Identifier = identifier}))
-				throw new ApplicationException("Unabe to stop device: Device identifier not found " + identifier);
+				return default(IDevice);
 			
 			return _devices.Find( new DeviceContainer() {Identifier = identifier}).Value.Device;
 		}

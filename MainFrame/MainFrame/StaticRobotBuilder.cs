@@ -2,6 +2,7 @@ using MainFrame.Devices;
 using MainFrame.Processes;
 using MainFrame.Communication;
 using MainFrame.Devices.Speech;
+using System.Collections.Generic;
 using System;
 
 namespace MainFrame
@@ -39,6 +40,8 @@ namespace MainFrame
 			
 			robot.AddDevice("device_factory", factory);
 			robot.AddDevice("process_factory", new ProcessFactory());
+			
+			robot.AddDevice("dummy", new DummyDevice());
 			
 		}
 
@@ -135,12 +138,19 @@ namespace MainFrame
 		
 		public void AttachProcesses() 
 		{
-			robot.AddDevice("keyboard", ProcessFactory.GetKeyboardProcess());
-			robot.StartDevice("keyboard");
+			//robot.AddDevice("keyboard", ProcessFactory.GetKeyboardProcess());
+			//robot.StartDevice("keyboard");
 			
-			//robot.AddDevice("ruby", ProcessFactory.GetRuby("test.rb", 
-			//	robot.GetDevice<INervousSystem>("mediator")));
-			//robot.StartDevice("ruby");
+			List<string>  paths = new List<string>();
+			paths.Add("/usr/local/ironruby/lib/ruby/site_ruby/1.9.1");
+			paths.Add("/usr/local/ironruby/lib/ruby/1.9.1");
+			paths.Add("/usr/lib/ironruby");
+			paths.Add("/usr/bin");
+
+			robot.AddDevice("keyboard", ProcessFactory.GetRuby("scripts/keyboard.rb", 
+				robot.GetDevice<INervousSystem>("mediator"), paths));
+			
+			robot.StartDevice("keyboard");
 		}
 		
 		public void BuildSensors () 
