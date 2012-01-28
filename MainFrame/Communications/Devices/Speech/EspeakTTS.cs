@@ -59,7 +59,7 @@ Press any key to continue...
 		}
 
 		#region ITTS implementation
-		public void StartUtterance (string text)
+		public void Say (string text)
 		{
 			lock (_lock) {
 				_currentText = text;
@@ -69,7 +69,7 @@ Press any key to continue...
 			}
 		}
 
-		public void StopUtterance ()
+		public void Quiet ()
 		{
 			_ext_pause();
 		}
@@ -121,7 +121,7 @@ Press any key to continue...
 		public T Request<T> (MainFrame.Communication.INervousSignal<T> message)
 		{
 			if (message is SpeechSignal)
-				StartUtterance(((SpeechSignal) message).Data);
+				Say(((SpeechSignal) message).Data);
 			
 			return default(T);
 		}

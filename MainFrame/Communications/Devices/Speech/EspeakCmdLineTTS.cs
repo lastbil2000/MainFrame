@@ -53,7 +53,7 @@ namespace MainFrame.Devices.Speech
 		protected Thread speekThread;
 				
 
-		public void StartUtterance(string text)
+		public void Say(string text)
 		{
 			CurrentText = text;
 			//StaticLogger.w("I REFUSE TO SAY: " + text);
@@ -96,7 +96,7 @@ namespace MainFrame.Devices.Speech
 		}
 		
 		//TODO: there must be a better way to handle this...
-		public void StopUtterance()
+		public void Quiet()
 		{
 			speekThread.Abort();
 			mediator.Request(new SphinxASRProcess.SetListenStatus() {Data = true});
@@ -106,7 +106,7 @@ namespace MainFrame.Devices.Speech
 		public T Request<T> (INervousSignal<T> message)		
 		{
 			if (message is SpeechSignal)
-				StartUtterance(((SpeechSignal) message).Data);
+				Say(((SpeechSignal) message).Data);
 			
 			return default(T);
 		}

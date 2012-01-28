@@ -9,8 +9,8 @@ namespace MainFrame.Devices
 	{
 		bool IsQuiet{get; set;}
 		string CurrentText {get;}
-		void StartUtterance(string text);
-		void StopUtterance();
+		void Say(string text);
+		void Quiet();
 		
 		
 	}

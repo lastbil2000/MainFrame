@@ -18,7 +18,6 @@ namespace MainFrame.Processes
 		public static readonly string HANDLE_SETUP = "main_class.setup";				
 		public static readonly string HANDLE_ROBOT = "robot";
 		
-		private bool _isRunning;
 		private string _fileName;
 		private ScriptEngine _engine;
 		private ScriptScope _scope;
@@ -27,6 +26,7 @@ namespace MainFrame.Processes
 		private dynamic _mainClass;
 		
 		private MainFrame.Communication.INervousSystem _mediator;
+		private static readonly object _lock = new object();
 		
 		public RubyProcess (string fileName, MainFrame.Communication.INervousSystem mediator, ICollection<string> paths)
 		{
@@ -44,27 +44,29 @@ namespace MainFrame.Processes
 		#region IProcess implementation
 		public void Start ()
 		{
-			if (IsRunning)
-				return;
-			
-			_scope.SetVariable(HANDLE_ROBOT, _mediator.Request<Robot>(new GetSignal<Robot>()));
-			_source = _engine.CreateScriptSourceFromFile(_fileName);
-			_source.Execute(_scope);
-			
-			System.Runtime.Remoting.ObjectHandle tmp;
-			
-			if (!_scope.TryGetVariableHandle(HANDLE_MAIN_CLASS, out tmp)) {
-				StaticLogger.e("ERROR: no " + HANDLE_MAIN_CLASS + " defined for Ruby process: " + _fileName);
-			}
-				
-			_mainClass = _scope.GetVariable(HANDLE_MAIN_CLASS);
-			_mainClass.@setup();
-			
-			while (false != _mainClass.@should_run()) 
+			lock (_lock) 
 			{
-				_mainClass.@loop();
+				if (IsRunning)
+					return;
+				
+				_scope.SetVariable(HANDLE_ROBOT, _mediator.Request<Robot>(new GetSignal<Robot>()));
+				_source = _engine.CreateScriptSourceFromFile(_fileName);
+				_source.Execute(_scope);
+				
+				System.Runtime.Remoting.ObjectHandle tmp;
+				
+				if (!_scope.TryGetVariableHandle(HANDLE_MAIN_CLASS, out tmp)) {
+					StaticLogger.e("ERROR: no " + HANDLE_MAIN_CLASS + " defined for Ruby process: " + _fileName);
+				}
+					
+				_mainClass = _scope.GetVariable(HANDLE_MAIN_CLASS);
+				_mainClass.@setup();
+				
+				while (false != _mainClass.@should_run()) 
+				{
+					_mainClass.@loop();
+				}
 			}
-			
 		}
 	
 		public void Stop ()

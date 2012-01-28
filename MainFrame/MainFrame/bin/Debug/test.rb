@@ -1,5 +1,6 @@
-require 'mscorlib'
-require 'readline'
+#require 'mscorlib'
+require 'curses'
+#require 'readline'
 
 class MainClass
 	def initialize (global_object)
@@ -25,5 +26,5 @@ class MainClass
 
 end
 
-self.main_class = MainClass.new(self)
+#self.main_class = MainClass.new(self)
 

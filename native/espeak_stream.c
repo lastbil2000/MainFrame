@@ -8,6 +8,11 @@ static GMainLoop *loop;
 static GstElement *bin, 	// the containing all the elements
 		*pipeline, 	 		// the pipeline for the bin
 		*espeak,
+		*convert0,
+		*convert1,
+		*convert2,
+		*effect0,			// using speed filter from gst-bad
+		*effect1,			// using audiocheblimit filter from gst-good
 		*alsa_sink;
 
 static GstBus *bus;	//the bus element te transport messages from/to the pipeline
@@ -74,7 +79,7 @@ static gboolean bus_call(GstBus *bus, GstMessage *msg, void *user_data)
 int init() {
 	gst_init (NULL, NULL);
 	pitch = 100;
-	rate = 0;
+	rate = -100;
 
 	// create the main loop
 	loop = g_main_loop_new(NULL, FALSE);
@@ -85,16 +90,41 @@ int init() {
 	//initializing elements
 	espeak = gst_element_factory_make ("espeak", "espeak_src");
 	alsa_sink = gst_element_factory_make ("alsasink", "alsasink");
+
 	if (espeak == NULL) {
 		printf ("unable to create Espeak src");
 		return 0;
 	}
 	
+	convert0 = gst_element_factory_make ("audioconvert", "converter0");
+	convert1 = gst_element_factory_make ("audioconvert", "converter1");
+	convert2 = gst_element_factory_make ("audioconvert", "converter2");
+
+	//creates and set the values for the speed filter	
+	effect0 = gst_element_factory_make ("speed", "testish");
+	g_object_set (G_OBJECT (effect0), "speed", 1.5, NULL);
+	
+	//creates and set the values for the cut off filter
+	effect1 = gst_element_factory_make ("audiocheblimit", "cheb-LPF");
+	g_object_set (G_OBJECT (effect1), "mode", 0, NULL);
+	g_object_set (G_OBJECT (effect1), "cutoff", 3500.0, NULL);
+
 	if (alsa_sink == NULL || pipeline == NULL || bin == NULL) {
 		printf ("Unable to create elements.");
 		return 0;
 	}
 
+	if (effect0 == NULL) {
+		printf ("Unable to create effect0");
+		return 0;
+	}
+
+	if (effect1 == NULL) {
+		printf ("Unable to create effect1");
+		return 0;
+	}
+	
+	//initializes the espeak src with values
 	g_object_set (G_OBJECT (espeak), "text", "", NULL);
 	g_object_set (G_OBJECT (espeak), "pitch", pitch, NULL);
 	g_object_set (G_OBJECT (espeak), "rate", rate, NULL);
@@ -110,6 +140,11 @@ int init() {
 	// Add the elements to the bin
 	gst_bin_add_many (GST_BIN (bin), 
 		espeak, 
+		convert0,
+		effect0,
+		convert1,
+		effect1,
+		convert2,
 		alsa_sink,
 	NULL);
 
@@ -118,10 +153,15 @@ int init() {
 
 	// link the elements and check for success
 	if (!gst_element_link_many (
-		espeak, 
+		espeak,
+		convert0,
+		effect0,
+		convert1, 
+		effect1,
+		convert2,
 		alsa_sink,
 	NULL)) {
-		printf ("KUNDE INTE LENKISH");
+		printf ("Unable to link elements");
 		return 0;
 	}
 

@@ -84,7 +84,7 @@ namespace MainFrame
 			//builder.BuildArm();
 			//builder.BuildHead();
 			//builder.BuidEngine();
-			//builder.BuildSpeech();
+			builder.BuildSpeech();
 			//Thread.Sleep(2000);
 			builder.AttachProcesses();
 			
