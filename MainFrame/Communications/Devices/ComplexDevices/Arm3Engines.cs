@@ -117,7 +117,7 @@ namespace MainFrame.Devices
 			
 		}
 		
-		public double Rotate
+		public double Rotation
 		{
 			get 
 			{

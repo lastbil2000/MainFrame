@@ -94,9 +94,13 @@ namespace MainFrame.Devices
 			return new ArduinoEZ1Sonar(com);
 		}
 		
+		public BatteryLevelSensor GetBattery()  {
+			return new BatteryLevelSensor();
+		}
 		public void Start () {}
 		public void Stop () {}
 		public bool Ready { get { return true; } }
+		
 		
 		//TODO: handle this in another manner...
 		/*

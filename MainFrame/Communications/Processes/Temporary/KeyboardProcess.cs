@@ -119,9 +119,9 @@ namespace MainFrame.Processes
 				}
 				else if (key.Key == ConsoleKey.F12) 
 				{
-					/*
+					
 					Robot robot = mediator.Request<Robot>(new GetSignal<Robot>());
-					robot.StopProcess("sphinx");
+					robot.StopDevice("sphinx");
 					robot.StopDevice("speech_interpreter");
 					string newQ = "xxx";
 					string newA = "yyy";
@@ -147,19 +147,19 @@ namespace MainFrame.Processes
 					
 					if (questions.Count > 0 && answers.Count > 0) 
 					{
-						MainFrame.Speech.LanguageEditor le = new MainFrame.Speech.LanguageEditor(MainClass.LanguageFile);
+						MainFrame.Devices.Speech.LanguageEditor le = new MainFrame.Devices.Speech.LanguageEditor(Robot.LanguageFile);
 						le.Insert(questions, answers);
-						le.CompileLanguageFiles(	MainClass.ScriptDirectory,
-							                        MainClass.BaseDir,
-							                        MainClass.TargetDir)
+						le.CompileLanguageFiles(	Robot.ScriptDirectory,
+							                        Robot.BaseDir,
+							                        Robot.TargetDir)
 						;
 					}
 					else
 						StaticLogger.w("Not enough questions or answers...");
 					
-					robot.StartProcess("sphinx");
+					robot.StartDevice("sphinx");
 					robot.StartDevice("speech_interpreter");
-					*/
+					
 						
 				}
 				
@@ -190,10 +190,10 @@ namespace MainFrame.Processes
 				Arm3Engines arm = mediator.Request<Arm3Engines>(new GetSignal<Arm3Engines>());
 				if (arm != null) 
 				{
-					if (key.Key == ConsoleKey.LeftArrow && arm.Rotate > 10)
-						arm.Rotate -= 10;
-					else if (key.Key == ConsoleKey.RightArrow && arm.Rotate < 180)
-						arm.Rotate += 10;
+					if (key.Key == ConsoleKey.LeftArrow && arm.Rotation > 10)
+						arm.Rotation -= 10;
+					else if (key.Key == ConsoleKey.RightArrow && arm.Rotation < 180)
+						arm.Rotation += 10;
 					else if (key.Key == ConsoleKey.DownArrow && arm.Up > 10)
 						arm.Up -=10;
 					else if (key.Key == ConsoleKey.UpArrow && arm.Up  < 180)

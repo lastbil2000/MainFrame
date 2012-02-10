@@ -61,10 +61,8 @@ namespace MainFrame.Devices
 
 		public void Stop ()
 		{
-			if(_servo.Ready) 
-				_servo.Rotation = 90;
-			if(_powerPin.Ready)
-				_powerPin.Stop();
+			//_servo.Rotation = 90;
+			_powerPin.On = false;
 		}
 
 		public bool Ready {

@@ -7,7 +7,7 @@ namespace MainFrame.Devices
 
 	public interface IHead : IDevice, IRequestable
 	{
-		double X {get; set;}
-		double Y {get; set;}
+		double Rotation {get; set;}
+		double Up {get; set;}
 	}
 }

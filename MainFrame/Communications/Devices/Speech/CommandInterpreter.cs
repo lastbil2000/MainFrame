@@ -117,9 +117,9 @@ namespace MainFrame.Devices.Speech
 				else if (command.Contains("down"))
 				    engine.Up += speed;
 				else if (command.Contains("left") || command.Contains("let"))
-				    engine.Rotate -= speed;
+				    engine.Rotation -= speed;
 				else if (command.Contains("right"))
-				    engine.Rotate += speed;
+				    engine.Rotation += speed;
 			}			
 		}
 		

@@ -26,12 +26,12 @@ namespace MainFrame.Devices
 				while (!_horizontal.Ready)
 					Thread.Sleep(100);
 				
-				_horizontal.Rotation = position.X;
+				_horizontal.Rotation = position.Rotation;
 				
 				while (!_vertical.Ready)
 					Thread.Sleep(100);
 				
-				_vertical.Rotation = position.Y;
+				_vertical.Rotation = position.Up;
 
 				while (!_vertical.Ready)
 					Thread.Sleep(100);
@@ -39,7 +39,7 @@ namespace MainFrame.Devices
 				_isRotating = false;
 			}
 			
-			return (T)(object) new HeadPosition {X = this.X, Y = this.Y, Ready = this.Ready};
+			return (T)(object) new HeadPosition {Rotation = this.Rotation, Up = this.Up, Ready = this.Ready};
 			
 		}
 		
@@ -52,27 +52,21 @@ namespace MainFrame.Devices
 			
 		}
 		
-		public double X {
+		public double Rotation {
 			get {
 				return _horizontal.Rotation;
 			}
 			set {
-				if (_horizontal.Ready)
-					_horizontal.Rotation = value;
-				else
-					throw new DeviceException("Horizontal servo is not ready.");
+				_horizontal.Rotation = value;
 			}
 		}
 		
-		public double Y {
+		public double Up {
 			get {
 				return 180 - _vertical.Rotation;
 			}
 			set {
-				if (_vertical.Ready)
-					_vertical.Rotation = 180 - value;
-				else
-					throw new DeviceException("Vertical servo is not ready.");
+				_vertical.Rotation = 180 - value;
 			}
 		}
 		
@@ -84,8 +78,8 @@ namespace MainFrame.Devices
 		
 		public struct HeadPosition 
 		{
-			public double X;
-			public double Y;
+			public double Rotation;
+			public double Up;
 			public bool Ready;
 		}
 		

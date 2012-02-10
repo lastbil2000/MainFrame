@@ -64,6 +64,12 @@ namespace MainFrame.Devices.Speech
 		[DllImport( dllPath)]
    	 	protected static extern int asr_turn_off();
 
+		[DllImport( dllPath)]
+   	 	protected static extern float amplification(float amplification);
+
+		[DllImport( dllPath)]
+   	 	protected static extern float cutoff(float cutoff);
+		
 		[DllImport(dllPath)]
    	 	protected static extern void set_is_active(bool reportMode);
 		
@@ -151,6 +157,17 @@ namespace MainFrame.Devices.Speech
 				SphinxASRProcess.asr_turn_off();
 			
 			SphinxASRinstanceHolder.ASR.IsRunning = false;
+		}
+		public float Amplification 
+		{
+			get { return amplification (0); }
+			set { amplification(value); } 
+		}
+		
+		public float Cutoff 
+		{
+			get { return cutoff (0); }
+			set { cutoff(value); } 
 		}
 		
 		public bool IsActive 

@@ -4,7 +4,7 @@ using MainFrame.Communication;
 using MainFrame.Devices.Speech;
 using System.Collections.Generic;
 using System;
-
+using MainFrame.Devices.Video;
 namespace MainFrame
 {
 
@@ -57,13 +57,13 @@ namespace MainFrame
 			
 			var arduino = ProcessFactory.GetArduino();
 			robot.AddDevice("com", arduino);
-			//robot.StartDevice("com");
+			robot.StartDevice("com");
 			
 			//arduino.WaitFor();
 			
 			robot.AddDevice ("pinCom", DeviceFactory.GetArduinoPinCom(robot.GetDevice<ISerialCommunicationProcess>("com")));
 			
-			robot.AddDevice ("servoBoard", DeviceFactory.GetPin(
+			robot.AddDevice ("servo_board", DeviceFactory.GetPin(
 				robot.GetDevice<IPinCom>("pinCom"), 0xA));
 
 			internalsDone = true;
@@ -79,22 +79,21 @@ namespace MainFrame
 			if (!internalsDone)
 				throw new ApplicationException("Internals NOT created");
 
-			robot.AddDevice("phidgetServo", DeviceFactory.GetServo(0));
-			/*
-			IServo psTest = robot.GetDevice<IServo>("phidgetServo");
+			robot.AddDevice("phidget_servo", DeviceFactory.GetServo(0));
+			robot.AddDevice("s1", DeviceFactory.GetServo(robot.GetDevice<ISerialCommunicationProcess>("com"), 0xC, 0));
+			robot.AddDevice("s2", DeviceFactory.GetServo(robot.GetDevice<ISerialCommunicationProcess>("com"), 0xC, 1));
+			robot.AddDevice("s3", DeviceFactory.GetServo(robot.GetDevice<ISerialCommunicationProcess>("com"), 0xC, 2));
+			robot.AddDevice("s4", DeviceFactory.GetServo(robot.GetDevice<ISerialCommunicationProcess>("com"), 0xB, 0));			
+			robot.AddDevice("s5", DeviceFactory.GetServo(robot.GetDevice<ISerialCommunicationProcess>("com"), 0xB, 1));
+			robot.AddDevice("s6", DeviceFactory.GetServo(robot.GetDevice<ISerialCommunicationProcess>("com"), 0xB, 2));
 			
-			psTest.Start();
-			while (!psTest.Ready)
-				System.Threading.Thread.Sleep(100);
-			psTest.Rotation = 95;
-			*/
-			robot.AddDevice("arduinoServo1", DeviceFactory.GetServo(robot.GetDevice<ISerialCommunicationProcess>("com"), 0xB, 0));
-			robot.AddDevice("arduinoServo2", DeviceFactory.GetServo(robot.GetDevice<ISerialCommunicationProcess>("com"), 0xC, 2));
+			robot.AddDevice("hand_servo", DeviceFactory.GetServo(robot.GetDevice<ISerialCommunicationProcess>("com"), 0xB, 0));
+			robot.AddDevice("rotation_servo", DeviceFactory.GetServo(robot.GetDevice<ISerialCommunicationProcess>("com"), 0xB, 1));
 			robot.AddDevice("arm", DeviceFactory.GetArm(
-				robot.GetDevice<IServo>("phidgetServo"),
-				robot.GetDevice<IServo>("arduinoServo1"),
-				robot.GetDevice<IServo>("arduinoServo2")));
-
+				robot.GetDevice<IServo>("phidget_servo"),
+				robot.GetDevice<IServo>("rotation_servo"),
+				robot.GetDevice<IServo>("hand_servo")));
+			
 			armDone = true;
 		}
 		
@@ -104,22 +103,18 @@ namespace MainFrame
 			if (!internalsDone)
 				throw new ApplicationException("Internals NOT created");
 			
-			robot.AddDevice("arduinoServoHeadX", DeviceFactory.GetServo(robot.GetDevice<ISerialCommunicationProcess>("com"), 0xC, 0));
-			robot.AddDevice("arduinoServoHeadY", DeviceFactory.GetServo(robot.GetDevice<ISerialCommunicationProcess>("com"), 0xC, 1));			
+			robot.AddDevice("head_x", DeviceFactory.GetServo(robot.GetDevice<ISerialCommunicationProcess>("com"), 0xC, 1));
+			robot.AddDevice("head_y", DeviceFactory.GetServo(robot.GetDevice<ISerialCommunicationProcess>("com"), 0xC, 0));			
 			
 			robot.AddDevice ("head", DeviceFactory.GetHead(
-				robot.GetDevice<IServo>("arduinoServoHeadX"),
-				robot.GetDevice<IServo>("arduinoServoHeadY")));
+				robot.GetDevice<IServo>("head_x"),
+				robot.GetDevice<IServo>("head_y")));
 			
 			robot.AddDevice ("laser", DeviceFactory.GetPin(
 				robot.GetDevice<IPinCom>("pinCom"), 0x9));
 
-			robot.AddDevice("video0", ProcessFactory.GetVideo(0));
-			robot.StartDevice("video0");
-			
-			robot.AddDevice("ir_meter", DeviceFactory.GetArduinoIRDistanceMeter(
-				robot.GetDevice<ISerialCommunicationProcess>("com")
-				));			
+			//robot.AddDevice("video0", ProcessFactory.GetVideo(0));
+			//robot.StartDevice("video0");	
 			
 		}
 		
@@ -141,6 +136,11 @@ namespace MainFrame
 			//robot.AddDevice("keyboard", ProcessFactory.GetKeyboardProcess());
 			//robot.StartDevice("keyboard");
 			
+			//robot.AddDevice("look",
+			//	new LookAtPeopleProcess(
+			//	robot.GetDevice<MainFrame.Devices.Video.ICamera>("video0"), 
+			//	robot.GetDevice<MainFrame.Devices.IHead>("head")));
+			
 			List<string>  paths = new List<string>();
 			paths.Add("/usr/local/ironruby/lib/ruby/site_ruby/1.9.1");
 			paths.Add("/usr/local/ironruby/lib/ruby/1.9.1");
@@ -153,17 +153,31 @@ namespace MainFrame
 				robot.GetDevice<INervousSystem>("mediator"), paths));
 			
 			robot.StartDevice("keyboard");
+			
+			
+			ICamera camera = robot.GetDevice<ICamera>("video0");
+						IVideoCapture faceObject = new DeviceFactory().GetHaarCapture(camera, "haarcascade_frontalface_alt.xml");
+						robot.AddDevice ("face_obj", faceObject);
+						faceObject.Start();
+						
+						robot.AddDevice("face_look",
+							new ProcessFactory().GetLookAtPeopleProcess(
+								robot.GetDevice<IVideoCapture>("face_obj"),
+								robot.GetDevice<IHead>("head")
+							));
 		}
 		
 		public void BuildSensors () 
 		{
 			robot.AddDevice("sonar1", DeviceFactory.GetSRF05Sonar(robot.GetDevice<ISerialCommunicationProcess>("com")));
 			robot.AddDevice("sonar2", DeviceFactory.GetEZ1Sonar(robot.GetDevice<ISerialCommunicationProcess>("com")));
+			robot.AddDevice("ir", DeviceFactory.GetArduinoIRDistanceMeter(robot.GetDevice<ISerialCommunicationProcess>("com")));
+			robot.AddDevice("battery", DeviceFactory.GetBattery());
 		}
 		
 		public void BuidEngine() 
 		{
-			var servo = DeviceFactory.GetServo (robot.GetDevice<ISerialCommunicationProcess>("com"), 0xB, 2);
+			var servo = DeviceFactory.GetServo (robot.GetDevice<ISerialCommunicationProcess>("com"), 0xC, 2);
 			var pin = DeviceFactory.GetPin (robot.GetDevice<IPinCom>("pinCom"), 0x8);
 			robot.AddDevice("engine_power", pin);
 			robot.AddDevice("engine_servo", servo);

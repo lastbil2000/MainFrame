@@ -30,6 +30,7 @@
 #define PIN_SERVO2 0x0B
 #define PIN_SERVOBOARD 0x0A    //controls wheither the servo board is on or of
 #define PIN_LASER 0x09
+#define PIN_MOTOR_POWER 0x08  //pin controlling engine power supply input port
 #define PIN_SRF05_INPUT 0x3    //echo pin
 #define PIN_SRF05_OUTPUT 0x4   //trigger pin
 #define PIN_EZ1_PW 0x5   //pulse width pin for ez1
@@ -56,6 +57,7 @@ void setup() {
   pinMode (PIN_SERVO2, OUTPUT);
   pinMode (PIN_SERVOBOARD, OUTPUT);
   pinMode (PIN_LASER, OUTPUT);
+  pinMode (PIN_MOTOR_POWER, OUTPUT);
   pinMode (PIN_SRF05_INPUT, INPUT);
   pinMode (PIN_SRF05_OUTPUT, OUTPUT);
   pinMode (PIN_EZ1_PW, INPUT);  

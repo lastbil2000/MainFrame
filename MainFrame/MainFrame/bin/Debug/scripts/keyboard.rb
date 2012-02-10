@@ -2,6 +2,8 @@ require 'mscorlib'
 #require 'curses'
 require 'readline'
 require 'System'
+#require 'IronRuby.dll'
+
 #installerade ruby med --prefix=/usr
 class MainClass
 
@@ -32,9 +34,16 @@ class MainClass
 		end
 
 	end
+
 	def loop
+
 		line = System::Console.read_line
-		interpret line
+
+		if line.length > 0
+			if (interpret line) == false
+				puts "Unknown command: " + line
+			end
+		end
 	end
 
 	def interpret (line)
@@ -53,7 +62,7 @@ class MainClass
 
 	# Execptues a custom, static command:
 	def command (line)
-		command_name = device_name = line.split(" ").first
+		command_name = line.split(" ").first
 
 		if (command_name == "restart")
 			device_name = line.split(" ").last
@@ -67,8 +76,19 @@ class MainClass
 			end
 
 			return true
-		elsif (command_name == "blabla")
-			puts "YOU ARE WRITING SHIT"
+		elsif (command_name == "looking")
+			#factory = @go.robot.get("device_factory")
+			#camera = @go.robot.get("video0")
+			#face_obj = factory.GetHaarCapture(camera, "haarcascade_frontalface_alt.xml")
+			#face_obj.start
+			#@go.robot.add_device (
+			#	"looking",
+			#	@go.robot.get("process_factory").GetLookAtPeopleProcess (
+			#		face_obj,
+			#		@go.robot.get("head")
+			#	)
+			#)
+			
 			return true
 		end
 
@@ -79,13 +99,20 @@ class MainClass
 	def evaluate (line)
 		device_name = line.split(".").first
 		device = @go.robot.get(device_name)
+		begin
 
-		if (device != nil)
-			command = line[device_name.length, line.length - device_name.length]
-			puts eval("device" + command)
-			return true
+			if (device != nil)
+				command = line[device_name.length, line.length - device_name.length]
+				puts eval("device" + command)
+				return true
+			end
+
+
+			rescue System::MissingMethodException
+				puts "MISSING METHOD ON DEVICE: " + device_name
+			rescue System::Exception
+				puts "UNABLE TO INTERPRET: " + line
 		end
-		
 		return false
 	end
 

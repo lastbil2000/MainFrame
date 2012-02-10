@@ -2,7 +2,6 @@ using System;
 using System.Threading;
 using MainFrame.Devices;
 using MainFrame.Devices.Speech;
-using MainFrame.Sensors;
 using System.Collections.Generic;
 using System.Linq;
 using MainFrame.Communication.Log;
@@ -14,6 +13,11 @@ namespace MainFrame
 
 	public class Robot : IDevice, IRequestable
 	{
+		//TEEEMP:
+		public static string BaseDir {get;  set;}
+		public static string ScriptDirectory {get;  set;}
+		public static string TargetDir {get;  set;}
+		public static string LanguageFile {get;  set;}
 		
 		private static readonly int PROCESS_STARTUP_PAUSE = 100;
 		private LinkedList<DeviceContainer> _devices;

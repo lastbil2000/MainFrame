@@ -23,10 +23,10 @@ namespace MainFrame.Processes
 			this.capture = capture;
 			this.head = head;
 			
-			head.X = 90;
+			head.Rotation = 90;
 			while (!head.Ready)
 				Thread.Sleep(50);
-			head.Y = 90;
+			head.Up = 90;
 			
 		}
 		
@@ -67,8 +67,8 @@ namespace MainFrame.Processes
 						
 						double dRotateX = - dx / xPerDegree;
 						double dRotateY = - dy / yPerDegree;
-						double rotateX = head.X + dRotateX; //fullRotationX  * (dx / (capture.ScreenSize.width / 2));
-						double rotateY = head.Y + dRotateY;//fullRotationY  * (dy / (capture.ScreenSize.height / 2));
+						double rotateX = head.Rotation + dRotateX; //fullRotationX  * (dx / (capture.ScreenSize.width / 2));
+						double rotateY = head.Up + dRotateY;//fullRotationY  * (dy / (capture.ScreenSize.height / 2));
 							//dy / yPerDegree;
 						
 						if (rotateX < 30) 
@@ -84,7 +84,7 @@ namespace MainFrame.Processes
 						
 						while (!head.Ready)
 							Thread.Sleep(50);
-						head.X = rotateX;
+						head.Rotation = rotateX;
 						ICaptureImage frame = mediator.Request<ICamera>(new GetSignal<ICamera>()).CurrentFrame;
 						
 						using (System.Drawing.Bitmap bm = frame.Bitmap) 
@@ -94,7 +94,7 @@ namespace MainFrame.Processes
 						
 						while (!head.Ready)
 							Thread.Sleep(50);
-						head.Y = rotateY;
+						head.Up = rotateY;
 						
 						
 					}

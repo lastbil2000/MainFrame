@@ -4,7 +4,7 @@ using System.ComponentModel;
 using MainFrame.Communication;
 using MainFrame.Devices;
 
-namespace MainFrame.Sensors
+namespace MainFrame.Devices
 {
 
 

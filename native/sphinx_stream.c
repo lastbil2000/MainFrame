@@ -9,21 +9,36 @@ static const char*(*text_received)(const char *message);				//delegate method fo
 static const char*(*report_error)(int type, const char *message);	//delegate method for reporting back error
 
 static bool is_active = true;
+static float _amplification = 2.0;
+static float _cutoff = 4000.0;
 
 static GMainLoop *loop;
 
 static GstElement *bin, 	// the containing all the elements
 		*pipeline, 	 		// the pipeline for the bin
 		*alsa_src, 	 		// the microphone input source
-		*audio_convert, 	// there should always be audioconvert and audioresample elements before the audio sink...
 		*audio_resample, 	// ...since the capabilities of the audio sink usually vary depending on the environment (output used, sound card, driver etc.)
 		*vader,				// for threasholding the input to the pocketsphinx
 		*asr,				// the main asr (speech to text) engine
+		*amplifier,			// audioamplify
+		*filter,			// audioiirfilter for white noise reduction
+		*conv0, 			// audioconvert0
+		*conv1,				// audioconvert1
+		*conv2,				// audioconvert2
+		*conv3,				// audioconvert3
 		*fakesink;			// a working pipe must have a source (in this case the microphone) and a sink. this case: using a dummy sink.
 
 static GstBus *bus;	//the bus element te transport messages from/to the pipeline
 
 static const char *lm_file_name, *dic_file_name, *hmm_file_name;
+
+//dealocates and shuts down
+void turn_off () {
+	g_main_loop_quit(loop);
+	gst_element_set_state(GST_ELEMENT(pipeline), GST_STATE_NULL);
+	gst_object_unref(GST_OBJECT(pipeline));
+	g_main_loop_unref (loop);
+}
 
 //the send error method WILL send errors back to the caller
 int send_error (int error_type, const char *error_message)
@@ -48,7 +63,7 @@ static gboolean bus_call(GstBus *bus, GstMessage *msg, void *user_data)
 		g_message("End-of-stream");
 		//report the end of stream
 		bool tmp = send_error(ASR_EOS, "Unexpected end of stream");
-		g_main_loop_quit(loop);
+		turn_off();
 		break;
 	}
 	case GST_MESSAGE_ERROR: {
@@ -58,7 +73,7 @@ static gboolean bus_call(GstBus *bus, GstMessage *msg, void *user_data)
 		bool tmp = send_error(ASR_ERROR_GST, err->message);
 		g_error_free(err);
 		
-		g_main_loop_quit(loop);
+		turn_off();
 		
 		break;
 	} //indicating an element specific message
@@ -75,7 +90,7 @@ static gboolean bus_call(GstBus *bus, GstMessage *msg, void *user_data)
 			}
 			else if (gst_structure_has_name(str,"turn_off"))
 			{
-				g_main_loop_quit(loop);
+				turn_off();
 				return false;
 			}
 		break;
@@ -85,7 +100,7 @@ static gboolean bus_call(GstBus *bus, GstMessage *msg, void *user_data)
 		break;
 	}
 
-		//printf("info: %i %s\n", (int)(msg->timestamp), GST_MESSAGE_TYPE_NAME (msg));
+		//printf("-------------info: %i %s\n", (int)(msg->timestamp), GST_MESSAGE_TYPE_NAME (msg));
 
 	return true;
 }
@@ -111,8 +126,8 @@ int asr_turn_off()
 	{
 		//TODO: something if post failed...
 	}
+		//unref elements
 	
-	//g_main_loop_quit(loop);
 	printf("---------------------------------turned off asr engine.");
 	return 1;
 	
@@ -166,6 +181,60 @@ void asr_result (GstElement* asr,  gchararray text, gchararray uttid, gpointer u
 		}
 }
 
+float cutoff(float new_cutoff) {
+	if (new_cutoff != 0) {
+		_cutoff = new_cutoff;
+	}
+	return _cutoff;
+}
+float amplification (float new_amplification) {
+	if (new_amplification != 0) {
+		_amplification = new_amplification;
+		g_object_set (G_OBJECT (amplifier), "amplification", _amplification, NULL);
+		g_main_loop_quit(loop);
+		gst_element_set_state(GST_ELEMENT(pipeline), GST_STATE_NULL);
+		//travers the pipe to "play state"
+		gst_element_set_state(GST_ELEMENT(pipeline), GST_STATE_PLAYING);
+		//start the main loop
+		g_main_loop_run(loop);
+	
+	}
+	return _amplification;
+	
+
+}
+
+//white noise detection bus callback
+//http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-plugins-good-plugins/html/gst-plugins-good-plugins-audioiirfilter.html
+static void
+on_rate_changed (GstElement * element, gint rate, gpointer user_data)
+{
+  GValueArray *va;
+  GValue v = { 0, };
+  gdouble x;
+
+  if (rate / 2.0 > _cutoff)
+    x = exp (-2.0 * G_PI * (_cutoff / rate));
+  else
+    x = 0.0;
+
+  va = g_value_array_new (1);
+
+  g_value_init (&v, G_TYPE_DOUBLE);
+  g_value_set_double (&v, 1.0 - x);
+  g_value_array_append (va, &v);
+  g_value_reset (&v);
+  g_object_set (G_OBJECT (element), "a", va, NULL);
+  g_value_array_free (va);
+
+  va = g_value_array_new (1);
+  g_value_set_double (&v, x);
+  g_value_array_append (va, &v);
+  g_value_reset (&v);
+  g_object_set (G_OBJECT (element), "b", va, NULL);
+  g_value_array_free (va);
+}
+
 /*	The initElements configures all the elements of the pipeline, as well as the pipline
 	and the bin it self.
 	
@@ -179,27 +248,37 @@ int init_elements (const char *lm_file, const char *dict_file, const char *hmm_f
 
 	//initializing elements
 	alsa_src = gst_element_factory_make ("alsasrc", "alsa_src");
-	audio_convert = gst_element_factory_make ("audioconvert", "audio_convert");
 	audio_resample = gst_element_factory_make ("audioresample", "audio_resample");
 	vader = gst_element_factory_make ("vader", "vader");
 	asr = gst_element_factory_make ("pocketsphinx", "asr");
 	fakesink = gst_element_factory_make ("fakesink", "fakesink");
+	amplifier = gst_element_factory_make ("audioamplify", "amp");
+	filter = gst_element_factory_make ("audioiirfilter", NULL);
+	conv0 = gst_element_factory_make ("audioconvert", "audioconvert0");
+	conv1 = gst_element_factory_make ("audioconvert", "audioconvert1");
+	conv2 = gst_element_factory_make ("audioconvert", "audioconvert2");
+	conv3 = gst_element_factory_make ("audioconvert", "audioconvert3");
 
 	//check for successfull creation of elements
 	if(!alsa_src)
 		return send_error(ASR_ERROR_INIT_ALSA_FAILED, "Unable create alsa src (microphone input) object!");
-	if(!audio_convert || !audio_resample)
-		return send_error(ASR_ERROR_INIT_CONVERTER_FAILED, "Unable create converter/resampler.");
+	if(!audio_resample)
+		return send_error(ASR_ERROR_INIT_RESAMPLER_FAILED, "Unable create resampler.");
 	if(!vader)
 		return send_error(ASR_ERROR_INIT_VADER_FAILED, "Unable create vader.");
 	if(!asr)
 		return send_error(ASR_ERROR_INIT_POCKETSPHINX_FAILED, "Unable create pocketsphinx element. Is the gstpocketsphinx installed?");
 	if(!fakesink)
 		return send_error(ASR_ERROR_INIT_SINK_FAILED, "Unable create fakesink... strange.");
+	if(!conv0 || !conv1 || !conv2 || !conv3)
+		return send_error(ASR_ERROR_INIT_CONVERTER_FAILED, "Unable create converter... strange.");
+	if(!filter)
+		return send_error(ASR_ERROR_INIT_IIRFILTER_FAILED, "Unable create audioiirfilter (white noise)... strange.");
+	if(!amplifier)
+		return send_error(ASR_ERROR_INIT_AMPLIFIER_FAILED, "Unable create audioamplify... strange.");
 
 	//set up the vader to auto-threshold:
 	g_object_set(G_OBJECT(vader), "auto_threshold", true, NULL);
-
 	//set the directory containing acoustic model parameters
 	g_object_set(G_OBJECT(asr), "hmm",  hmm_file , NULL);
 	//set the language model of the asr
@@ -208,25 +287,31 @@ int init_elements (const char *lm_file, const char *dict_file, const char *hmm_f
 	g_object_set(G_OBJECT(asr), "dict",  dict_file , NULL);
 	//set the asr to be configured before receiving data
 	g_object_set(G_OBJECT(asr), "configured",  true , NULL);
-
+	//set the default amplification
+	g_object_set (G_OBJECT (amplifier), "amplification", _amplification, NULL);
 	//add the bus message methods to the asr (complete & partial)
 	g_signal_connect (asr, "partial_result", G_CALLBACK (asr_partial_result), NULL);
 	g_signal_connect (asr, "result", G_CALLBACK (asr_result), NULL);
-
+	//buss call for white noise reduction
+	g_signal_connect (G_OBJECT (filter), "rate-changed", G_CALLBACK (on_rate_changed), NULL);
 
 	// create the bus for the pipeline:
 	bus = gst_pipeline_get_bus(GST_PIPELINE(pipeline));
 	//add the bus handler method:
 	gst_bus_add_watch(bus, bus_call, NULL);
-
+	g_signal_connect (G_OBJECT (bus), "message", G_CALLBACK (bus_call), loop);
 	gst_object_unref(bus);
 
 	// Add the elements to the bin
 	gst_bin_add_many (GST_BIN (bin), 
 		alsa_src, 
-		audio_convert, 
+//		filter,
+		conv3,
 		audio_resample,  
 		vader,
+		conv1,
+		amplifier,
+		conv2,
 		asr,
 		fakesink,
 	NULL);
@@ -235,10 +320,15 @@ int init_elements (const char *lm_file, const char *dict_file, const char *hmm_f
 	gst_bin_add (GST_BIN (pipeline), bin);
 
 	// link the elements and check for success
-	if (!gst_element_link_many (alsa_src, 
-		audio_convert, 
+	if (!gst_element_link_many (
+		alsa_src, 
+//		filter,
+		conv3,
 		audio_resample,  
 		vader,
+		conv1,
+		amplifier,
+		conv2,
 		asr,
 		fakesink,
 	NULL))
@@ -263,10 +353,6 @@ int asr_start ()
 	//start the main loop
 	g_main_loop_run(loop);
 
-	//unref elements
-	gst_element_set_state(GST_ELEMENT(pipeline), GST_STATE_NULL);
-	gst_object_unref(GST_OBJECT(pipeline));
-	g_main_loop_unref (loop);
 	
 	return 0;
 }

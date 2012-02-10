@@ -7,7 +7,6 @@ using System.Diagnostics;
 using Phidgets;
 using System.Collections.Generic;
 using System.Linq;
-using MainFrame.Sensors;
 using System.IO.Ports;
 using MainFrame.Communication.Log;
 using MainFrame.Devices.Video;
@@ -79,24 +78,28 @@ namespace MainFrame
 			///sbin/wpa_supplicant -B -dd -D wext -i wlan0 -t -W -c/etc/wpa_supplicant/wpa_supplicant.conf
 			IRobotBuilder builder = new StaticRobotBuilder();
 			
-			//builder.BuildInternals();
-			//builder.BuildSensors();
-			//builder.BuildArm();
-			//builder.BuildHead();
-			//builder.BuidEngine();
+			builder.BuildInternals();
+			builder.BuildSensors();
+			builder.BuildArm();
+			builder.BuildHead();
+			builder.BuidEngine();
 			builder.BuildSpeech();
 			//Thread.Sleep(2000);
-			builder.AttachProcesses();
+			//builder.AttachProcesses();
 			
 			Robot r = builder.GetRobot();
+			Robot.BaseDir = BaseDir;
+			Robot.ScriptDirectory = ScriptDirectory;
+			Robot.TargetDir = TargetDir;
+			Robot.LanguageFile = LanguageFile;
 			
-			/*
-			IPin servoBoard = r.GetDevice<IPin>("servoBoard");
-			while (!servoBoard.Ready)
-				Thread.Sleep (10);
+			IPin servoBoard = r.GetDevice<IPin>("servo_board");
 			
+			//while (!servoBoard.Ready) Thread.Sleep (10);
+			//Thread.Sleep(2000); 
 			servoBoard.On = true;
-			*/
+			
+			Console.WriteLine("Starting...");
 			r.Start();
 			
 			
