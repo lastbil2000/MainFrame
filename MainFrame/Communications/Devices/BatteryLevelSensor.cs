@@ -36,7 +36,12 @@ namespace MainFrame.Devices
 		{
 			public int Data {get; set;}
 			public string Identifier {get; set;}
+			public Type Type{get; set;}
 			
+			public BatteryLevelSignal () 
+			{
+				Type = typeof(BatteryLevelSensor.BatteryLevelSignal);
+			}
 		}
 		
 		public void SetMediator (INervousSystem mediator)

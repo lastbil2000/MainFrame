@@ -35,12 +35,24 @@ namespace MainFrame.Devices.Speech
 		{
 			public string Identifier {get; set;}
 			public bool Data {get; set;}
+			
+			public SetListenStatus() 
+			{
+				Type = typeof(SphinxASRProcess.SetListenStatus);
+			}
+			public Type Type{get; set;}
 		}
 		
 		public class TextReceived : INervousSignal<string>
 		{
 			public string Identifier {get; set;}
 			public string Data {get; set;}
+			
+			public TextReceived() 
+			{
+				Type = typeof(SphinxASRProcess.TextReceived);
+			}
+			public Type Type{get; set;}
 		}
 		
 		protected delegate void TextInterpretedCallBack(string message);
@@ -126,28 +138,17 @@ namespace MainFrame.Devices.Speech
 
 		public void Start() 
 		{
-			try 
-			{
-				if (IsRunning)
-					throw new ProcessException("ASR is already running...");
-				
-				IsRunning = true;
-				
-				//starting the asr_loop:
-				if (asr_start() == 1)
-					throw new ProcessException("Unable to start asr!");
-				
-			}
-			catch (Exception ex)
-			{
-				StaticLogger.x(ex);
-			}
-			finally 
-			{
-				IsRunning = false;
-			}
-				
-			Console.WriteLine(".. ASR terminated");
+
+			if (IsRunning)
+				throw new ProcessException("ASR is already running...");
+			
+			IsRunning = true;
+			
+			//starting the asr_loop:
+			if (asr_start() == 1)
+				throw new ProcessException("Unable to start asr!");
+			
+			IsRunning = false;
 		}
 		
 		public void Stop ()
@@ -194,14 +195,12 @@ namespace MainFrame.Devices.Speech
 
 		public void StopListening (object sender, EventArgs e)
 		{
-			Console.WriteLine("xx");
 			SphinxASRinstanceHolder.ASR.IsActive = false;
 		}
 		
 		public void StartListening (object sender, EventArgs e)
 		{
 			Thread.Sleep(1000);
-			Console.WriteLine("yy");
 			SphinxASRinstanceHolder.ASR.IsActive = true;
 		}
 		

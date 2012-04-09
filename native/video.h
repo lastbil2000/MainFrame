@@ -18,7 +18,7 @@ typedef struct CaptureObject {
 	int hasCapturedImage;					//if there is any captured image
 	IplImage *capturedImage;				//capturedImage (if any) stored in RGBA format
 	int capturedImageWidth;					//the size of the captured image
-	int capturedImageHeight;				// width...
+	int capturedImageHeight;				// height...
 	int shouldCapture;						//if set, this object should capture
 
 } CaptureObject;

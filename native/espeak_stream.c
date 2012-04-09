@@ -124,6 +124,10 @@ int init() {
 		return 0;
 	}
 	
+	if (convert0 == NULL || convert1 == NULL || convert2 == NULL) {
+		printf("Unable to create converters!");
+		return 0;
+	}
 	//initializes the espeak src with values
 	g_object_set (G_OBJECT (espeak), "text", "", NULL);
 	g_object_set (G_OBJECT (espeak), "pitch", pitch, NULL);

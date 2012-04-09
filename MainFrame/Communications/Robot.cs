@@ -115,8 +115,9 @@ namespace MainFrame
 			if (process != null &&
 				!process.IsRunning)
 				StaticLogger.w("Can not stop Process: " + device.ToString() + " is not running.");
-			else
+			else {
 				device.Stop();
+			}
 		}
 		
 		public void StopDevice (string identifier) 
@@ -128,6 +129,10 @@ namespace MainFrame
 			IDevice device = _devices.Find( new DeviceContainer() {Identifier = identifier}).Value.Device;
 			
 			StopDevice(device);
+			
+			//Thread.Sleep(1000);
+			//device = null;
+			//_devices.Remove (new DeviceContainer() {Identifier = identifier});
 
 		}
 
@@ -136,7 +141,7 @@ namespace MainFrame
 			IRequestable requestable = device as IRequestable;
 			
 			if (requestable != null &&
-				!Mediator.Contains(requestable))	
+				!Mediator.Contains(requestable))
 				Mediator.Register(requestable);			
 			
 			IProcess process = device as IProcess;
@@ -146,6 +151,8 @@ namespace MainFrame
 					StaticLogger.w("Process allready running: " + process.ToString());
 				else {
 					ThreadPool.QueueUserWorkItem( delegate (object obj) { process.Start(); });
+					//while (!process.IsRunning)
+					//	Thread.Yield();
 					if ((process as IWaitFor) != null)
 						(process as IWaitFor).WaitFor();
 				}
@@ -254,7 +261,9 @@ namespace MainFrame
 				processEnumerator.Current.Process.Stop();
 			}
 			*/
-			Console.WriteLine("NUMBE OF DEVICES: " +   _devices.Reverse().Count() + " " +   _devices.Count);
+			
+			
+			Console.WriteLine("NUMBE OF DEVICES: " +   _devices.Count);
 			var enumerator = _devices.Reverse().GetEnumerator();
 			int i = 0;
 			while (enumerator.MoveNext()) 
@@ -262,9 +271,14 @@ namespace MainFrame
 				
 				StaticLogger.d("[" + i++ + "] stopping device: " + enumerator.Current.Identifier);		    
 				StopDevice(enumerator.Current.Device);
+				
+				Thread.Sleep(10);
 			}
 			
+			
 			_isReady = false;
+			
+			
 		}
 		
 		public bool Ready {get {return _isReady;} }

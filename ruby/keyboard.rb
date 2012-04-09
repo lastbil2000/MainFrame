@@ -64,13 +64,24 @@ class MainClass
 	def command (line)
 		command_name = line.split(" ").first
 
-		if (command_name == "restart")
+		
+		if (command_name == "restart" || 
+		    command_name == "start" || 
+			command_name == "stop")
 			device_name = line.split(" ").last
 			device = @go.robot.get(device_name)
 			if (device != nil)
-				puts "restarting: #{device_name}" 
-				device.stop
-				device.start
+				if (command_name == "restart")
+					puts "restarting: #{device_name}" 
+					device.stop
+					device.start
+				elsif (command_name == "start")
+					puts "starting: #{device_name}"
+					@go.robot.start_device (device_name)
+				elsif (command_name == "stop")
+					puts "stopping: #{device_name}"
+					@go.robot.stop_device (device_name)
+				end
 			else
 				puts "no device named: #{device_name}"
 			end
@@ -90,6 +101,15 @@ class MainClass
 			#)
 			
 			return true
+		elsif (command_name == "rload")
+			device_name = line.split(" ").last
+			factory = @go.robot.get("process_factory")
+			#rubyp = 
+			puts "Starting device: #{device_name}"
+			@go.robot.add_device(device_name, factory.get_ruby("scripts/" + device_name + ".rb"))
+			@go.robot.start_device (device_name)
+			return true
+			
 		end
 
 		return false
@@ -123,9 +143,20 @@ class MainClass
 	def should_run
 		return @should_run
 	end
+	
+	def mediator_types
+		return []
+	end
+
+	def request (messageType, message)
+		if messageType == "Speech.SphinxASRProcess+TextReceived"
+			puts "I got this message: " + message.data
+		end
+	end
 
 
 end
 
 self.main_class = MainClass.new(self)
+self.mediator_types = self.main_class.mediator_types
 

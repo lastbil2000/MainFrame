@@ -85,8 +85,13 @@ namespace MainFrame.Devices
 		
 		public class HeadPositionSignal : INervousSignal<Head.HeadPosition> 
 		{
+			public HeadPositionSignal() 
+			{
+				Type = typeof(HeadPositionSignal);
+			}
 			public string Identifier {get; set;}
 			public Head.HeadPosition Data {get; set;}
+			public Type Type{get; set;}
 		}
 		
 		public System.Collections.Generic.IEnumerable<Type> Subjects {

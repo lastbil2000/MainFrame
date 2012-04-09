@@ -50,9 +50,16 @@ namespace MainFrame.Processes
 			return new LookAtPeopleProcess(capture, head);
 		}
 		
-		public RubyProcess GetRuby(string fileName, INervousSystem mediator, ICollection<string> paths) 
+		public RubyProcess GetRuby(string fileName) 
 		{
-			return new RubyProcess(fileName, mediator, paths);
+			List<string>  paths = new List<string>();
+			paths.Add("/usr/local/ironruby/lib/ruby/site_ruby/1.9.1");
+			paths.Add("/usr/local/ironruby/lib/ruby/1.9.1");
+			paths.Add("/usr/local/ironruby/lib/ironruby");
+			paths.Add("/usr/bin");
+			paths.Add("/usr/lib/ruby/1.9.1/x86_64-linux");
+			paths.Add("/usr/lib/ruby/1.9.1");
+			return new RubyProcess(fileName, paths);
 		}
 
 		public void Start () {}

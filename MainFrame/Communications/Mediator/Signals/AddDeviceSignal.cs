@@ -10,5 +10,11 @@ namespace MainFrame
 	{
 		public string Identifier {get; set;}
 		public DeviceContainer Data {get; set;}
+		
+		public AddDeviceSignal() 
+		{
+			Type = typeof(AddDeviceSignal);
+		}
+		public Type Type{get; set;}
 	}
 }

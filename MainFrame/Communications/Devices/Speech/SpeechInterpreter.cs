@@ -14,34 +14,34 @@ namespace MainFrame.Devices.Speech
 	public class SpeechInterpreter  : IRequestable, IDevice
 	{
 
-		protected Random randomISH;
+		private Random _randomISH;
 		
-		protected INervousSystem mediator;
-		protected bool isReady;
-		protected string xmlLanguageFile;
-		protected List<string> paragraphs;
-		System.Collections.Hashtable paragraphsU;
+		private INervousSystem _mediator;
+		private bool _isReady;
+		private string _xmlLanguageFile;
+		private List<string> _paragraphs;
+		private System.Collections.Hashtable _paragraphsU;
 		
 		public SpeechInterpreter (string xmlLanguageFile)
 		{
-			randomISH = new Random ( );
-			this.xmlLanguageFile = xmlLanguageFile;
+			_randomISH = new Random ( );
+			this._xmlLanguageFile = xmlLanguageFile;
 		}
 
 		
 		public string GetReply(string text)
 		{
 			
-			foreach (string paragraph in paragraphs)
+			foreach (string paragraph in _paragraphs)
 			{
 				if (new Regex("^" + paragraph).IsMatch(text.ToLower()))
 				{
 					
-					foreach (string ss in (List<string>)paragraphsU[paragraph])
+					foreach (string ss in (List<string>)_paragraphsU[paragraph])
 						Console.WriteLine( " -- " + ss);
-					int i = randomISH.Next(((List<string>)paragraphsU[paragraph]).Count);
+					int i = _randomISH.Next(((List<string>)_paragraphsU[paragraph]).Count);
 					Console.WriteLine("regexp:{0} matches:{1}", paragraph.ToLower(), text.ToLower());
-					string reply = ((List<string>)paragraphsU[paragraph])[i];
+					string reply = ((List<string>)_paragraphsU[paragraph])[i];
 					
 					return reply;
 				}
@@ -51,36 +51,42 @@ namespace MainFrame.Devices.Speech
 		}
 		#region IRequestable implementation
 		public T Request<T> (INervousSignal<T> message)
-		
 		{
-			if (isReady) 
-			{
-				isReady = false;
-				CommandInterpreter.CommandNotInterpretedSignal signal = message as CommandInterpreter.CommandNotInterpretedSignal;
+			CommandInterpreter.CommandNotInterpretedSignal signal = message as CommandInterpreter.CommandNotInterpretedSignal;
 				
-				if (signal != null)
-				{
-					string reply = GetReply(signal.Data);
-					
-					if (reply != null)
-						mediator.Request(new EspeakTTS.SpeechSignal() { Data = reply });
-				}
-				isReady = true;
+			if (signal != null)
+			{
+				TryInterpret(signal.Data);
 			}
 			return default (T);
+		}
+		
+		public void TryInterpret (string text) 
+		{
+			if (_isReady) 
+			{
+				_isReady = false;
+				
+					string reply = GetReply(text);
+					
+					if (reply != null)
+						_mediator.Request(new EspeakTTS.SpeechSignal() { Data = reply });
+				
+				_isReady = true;
+			}			
 		}
 		
 		#endregion
 		#region INode implementation
 		public void SetMediator (INervousSystem mediator)
 		{
-			this.mediator = mediator;
+			this._mediator = mediator;
 		}
 		
 		
 		public IEnumerable<Type> Subjects {
 			get {
-				if (isReady)
+				if (_isReady)
 					yield return typeof (CommandInterpreter.CommandNotInterpretedSignal);
 				else
 					yield break;
@@ -92,12 +98,12 @@ namespace MainFrame.Devices.Speech
 		public void Start ()
 		{
 						//TODO: handle double question entries
-			XPathDocument source = new XPathDocument (xmlLanguageFile);
+			XPathDocument source = new XPathDocument (_xmlLanguageFile);
 			XPathNodeIterator paragraphIterator = source.CreateNavigator().Select("//speech/p");
 			
-			paragraphsU = new System.Collections.Hashtable();
+			_paragraphsU = new System.Collections.Hashtable();
 			//paragraphs = new Dictionary<string, List<string>>();
-			paragraphs = new List<string>();
+			_paragraphs = new List<string>();
 			//List<string> unsortedP = new List<string>();
 
 			while (paragraphIterator.MoveNext())
@@ -112,17 +118,17 @@ namespace MainFrame.Devices.Speech
 				XPathNodeIterator questionIterator = (XPathNodeIterator) paragraphIterator.Current.Select("q");
 				while (questionIterator.MoveNext())
 				{
-					paragraphsU.Add(questionIterator.Current.Value.ToLower(), answers);
+					_paragraphsU.Add(questionIterator.Current.Value.ToLower(), answers);
 					//Console.WriteLine(questionIterator.Current.Value);
 				}
 				
 			}
 			
-			foreach (string key in from s in paragraphsU.Keys.Cast<string>() orderby s.Length descending select s)
+			foreach (string key in from s in _paragraphsU.Keys.Cast<string>() orderby s.Length descending select s)
 			{
 				
 				//paragraphs.Add(key.ToLower(),(List<string>)paragraphsU[key]);
-				paragraphs.Add(key);
+				_paragraphs.Add(key);
 			}
 			/*
 			foreach (string key in paragraphs)
@@ -132,19 +138,19 @@ namespace MainFrame.Devices.Speech
 					Console.WriteLine (" -- " + ss);
 			}
 			*/
-			isReady = true;
+			_isReady = true;
 		}
 		
 		
 		public void Stop ()
 		{
-			isReady = false;
+			_isReady = false;
 		}
 		
 		
 		public bool Ready {
 			get {
-				return isReady;
+				return _isReady;
 			}
 		}
 		

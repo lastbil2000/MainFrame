@@ -48,7 +48,6 @@ namespace MainFrame
 		
 		public static void Main (string[] args) 
 		{
-
 			if (args.Length < 1) {
 				BaseDir = "/home/olga/workspace/robot";
 				
@@ -79,13 +78,15 @@ namespace MainFrame
 			IRobotBuilder builder = new StaticRobotBuilder();
 			
 			builder.BuildInternals();
+			builder.AttachProcesses();
 			builder.BuildSensors();
 			builder.BuildArm();
 			builder.BuildHead();
 			builder.BuidEngine();
 			builder.BuildSpeech();
+			
 			//Thread.Sleep(2000);
-			//builder.AttachProcesses();
+			
 			
 			Robot r = builder.GetRobot();
 			Robot.BaseDir = BaseDir;

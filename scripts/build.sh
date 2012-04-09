@@ -11,6 +11,11 @@ fi
 # compiling the native espeak/TTS library...
 echo "Compiling the espeak library"
 ./compile_espeak.sh $BASE_DIR/native $BASE_DIR/native
+if [ $? -eq 1 ]; 
+then
+	echo "espeak library compilation failed"
+	exit -1
+fi
 
 
 # compiling the native face detection library...

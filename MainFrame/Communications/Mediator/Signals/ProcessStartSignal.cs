@@ -10,6 +10,12 @@ namespace MainFrame
 	{
 		public string Identifier {get; set;}
 		public ProcessContainer Data {get; set;}
+		
+		public ProcessStartSignal() 
+		{
+			Type = typeof(ProcessStartSignal);
+		}
+		public Type Type{get; set;}
 
 	}
 }

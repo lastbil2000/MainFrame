@@ -23,6 +23,11 @@ namespace MainFrame.Devices.Speech
 		{
 			public string Identifier {get; set;}
 			public string Data {get; set;}
+			public SpeechSignal() 
+			{
+				Type = typeof(EspeakCmdLineTTS.SpeechSignal);
+			}
+			public Type Type{get; set;}			
 		}
 
 		public EspeakCmdLineTTS () {

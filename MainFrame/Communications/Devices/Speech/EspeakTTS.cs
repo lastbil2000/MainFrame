@@ -12,6 +12,11 @@ namespace MainFrame.Devices.Speech
 		{
 			public string Identifier {get; set;}
 			public string Data {get; set;}
+			public Type Type {get; set;}
+			public SpeechSignal() 
+			{
+				Type = typeof(EspeakTTS.SpeechSignal);
+			}
 		}
 		
 		private const string dllPath = "espeak_stream.so";

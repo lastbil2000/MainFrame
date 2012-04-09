@@ -22,6 +22,12 @@ namespace MainFrame.Devices.Speech
 		{
 			public string Identifier {get; set;}
 			public string Data{get; set;}
+			
+			public CommandNotInterpretedSignal() 
+			{
+				Type = typeof(CommandInterpreter.CommandNotInterpretedSignal);
+			}
+			public Type Type{get; set;}
 		}
 		
 		public CommandInterpreter ( string xmlLanguageFile)

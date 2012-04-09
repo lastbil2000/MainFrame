@@ -122,9 +122,10 @@ namespace MainFrame
 		{
 			robot.AddDevice("sphinx", ProcessFactory.GetASR());
 			robot.StartDevice("sphinx");
+			System.Threading.Thread.Sleep(500);
 			robot.AddDevice("voice", DeviceFactory.GetVoice());
-			//robot.StartDevice("voice");
-			robot.AddDevice("command_interpreter", DeviceFactory.GetDevice<CommandInterpreter>(MainClass.LanguageFile));
+			System.Threading.Thread.Sleep(500);
+			//robot.AddDevice("command_interpreter", DeviceFactory.GetDevice<CommandInterpreter>(MainClass.LanguageFile));
 			robot.AddDevice("speech_interpreter", DeviceFactory.GetDevice<SpeechInterpreter>(MainClass.LanguageFile));
 			
 				
@@ -141,30 +142,24 @@ namespace MainFrame
 			//	robot.GetDevice<MainFrame.Devices.Video.ICamera>("video0"), 
 			//	robot.GetDevice<MainFrame.Devices.IHead>("head")));
 			
-			List<string>  paths = new List<string>();
-			paths.Add("/usr/local/ironruby/lib/ruby/site_ruby/1.9.1");
-			paths.Add("/usr/local/ironruby/lib/ruby/1.9.1");
-			paths.Add("/usr/local/ironruby/lib/ironruby");
-			paths.Add("/usr/bin");
-			paths.Add("/usr/lib/ruby/1.9.1/x86_64-linux");
-			paths.Add("/usr/lib/ruby/1.9.1");
-
-			robot.AddDevice("keyboard", ProcessFactory.GetRuby("scripts/keyboard.rb", 
-				robot.GetDevice<INervousSystem>("mediator"), paths));
 			
-			robot.StartDevice("keyboard");
+			robot.AddDevice("command", ProcessFactory.GetRuby("scripts/command.rb"));
+			robot.AddDevice("keyboard", ProcessFactory.GetRuby("scripts/keyboard.rb"));
+			//robot.StartDevice("keyboard");
 			
-			
+			/*
 			ICamera camera = robot.GetDevice<ICamera>("video0");
 						IVideoCapture faceObject = new DeviceFactory().GetHaarCapture(camera, "haarcascade_frontalface_alt.xml");
 						robot.AddDevice ("face_obj", faceObject);
 						faceObject.Start();
-						
+			*/
+						/*
 						robot.AddDevice("face_look",
 							new ProcessFactory().GetLookAtPeopleProcess(
 								robot.GetDevice<IVideoCapture>("face_obj"),
 								robot.GetDevice<IHead>("head")
 							));
+						*/
 		}
 		
 		public void BuildSensors () 
