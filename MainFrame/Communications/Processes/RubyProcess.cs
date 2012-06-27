@@ -6,7 +6,7 @@ using Microsoft.Scripting.Hosting;
 using Microsoft.Scripting.Runtime;
 using System.Collections.Generic;
 using IronRuby;
-using MainFrame.Communication.Log;
+using MainFrame.Core.Logger;
 using Microsoft.CSharp.RuntimeBinder;
 
 namespace MainFrame.Processes
@@ -68,13 +68,13 @@ namespace MainFrame.Processes
 				}
 				catch (IronRuby.Builtins.SyntaxError ex) {
 					_hasSyntaxErrors = true;
-					StaticLogger.e ("Script: " + _fileName + " contains syntax error and will not be started: " + ex.Message);
+					Log.e ("Script: " + _fileName + " contains syntax error and will not be started: " + ex.Message);
 					return;
 				}
 				System.Runtime.Remoting.ObjectHandle tmp;
 				
 				if (!_scope.TryGetVariableHandle(HANDLE_MAIN_CLASS, out tmp)) {
-					StaticLogger.e("ERROR: no " + HANDLE_MAIN_CLASS + " defined for Ruby process: " + _fileName);
+					Log.e("ERROR: no " + HANDLE_MAIN_CLASS + " defined for Ruby process: " + _fileName);
 				}
 					
 				_mainClass = _scope.GetVariable(HANDLE_MAIN_CLASS);
@@ -104,7 +104,7 @@ namespace MainFrame.Processes
 				}
 				catch (Exception ex) 
 				{
-					StaticLogger.e(ex.StackTrace);
+					Log.e(ex.StackTrace);
 				}
 			}
 		}

@@ -2,7 +2,7 @@ using System;
 using System.Threading;
 using Mono.Unix;
 using MainFrame.Communication;
-using MainFrame.Communication.Log;
+using MainFrame.Core.Logger;
 using MainFrame.Devices.Speech;
 
 namespace MainFrame.Devices.Speech
@@ -61,7 +61,7 @@ namespace MainFrame.Devices.Speech
 		public void Say(string text)
 		{
 			CurrentText = text;
-			//StaticLogger.w("I REFUSE TO SAY: " + text);
+			//Log.w("I REFUSE TO SAY: " + text);
 			//return;
 			speekThread = new Thread(Speak);
 			speekThread.IsBackground = true;
@@ -72,7 +72,7 @@ namespace MainFrame.Devices.Speech
 		protected static void Speak ()
 		{
 			if (EspeakTTSHolder.TTS.isSpeaking) {
-				StaticLogger.w("Espeak is told to speak in parallel. argh");
+				Log.w("Espeak is told to speak in parallel. argh");
 				return;
 			}
 			

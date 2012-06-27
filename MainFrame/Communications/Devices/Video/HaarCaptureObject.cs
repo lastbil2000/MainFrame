@@ -1,4 +1,4 @@
-using MainFrame.Communication.Log;
+using MainFrame.Core.Logger;
 using System;
 
 namespace MainFrame.Devices.Video

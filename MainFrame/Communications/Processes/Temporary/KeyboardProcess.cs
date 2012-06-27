@@ -1,4 +1,4 @@
-using MainFrame.Communication.Log;
+using MainFrame.Core.Logger;
 using MainFrame.Communication;
 using System;
 using MainFrame;
@@ -131,7 +131,7 @@ namespace MainFrame.Processes
 						
 					while (newQ.Trim() != "") 
 					{
-						StaticLogger.d ("Enter a new Question (enter to skip)");
+						Log.d ("Enter a new Question (enter to skip)");
 						newQ = Console.ReadLine();
 						if (newQ.Trim() != "")
 							questions.Add(newQ);
@@ -139,7 +139,7 @@ namespace MainFrame.Processes
 
 					while (newA.Trim() != "") 
 					{
-						StaticLogger.d ("Enter a new Answers (enter to skip)");
+						Log.d ("Enter a new Answers (enter to skip)");
 						newA = Console.ReadLine();
 						if (newA.Trim() != "")
 							answers.Add(newA);
@@ -155,7 +155,7 @@ namespace MainFrame.Processes
 						;
 					}
 					else
-						StaticLogger.w("Not enough questions or answers...");
+						Log.w("Not enough questions or answers...");
 					
 					robot.StartDevice("sphinx");
 					robot.StartDevice("speech_interpreter");
@@ -181,10 +181,10 @@ namespace MainFrame.Processes
 								robot.GetDevice<IHead>("head")
 							));
 						robot.StartDevice("face_look");
-						StaticLogger.d("EHM");
+						Log.d("EHM");
 					}
 					else
-						StaticLogger.w("Face stuff already added...");
+						Log.w("Face stuff already added...");
 				}
 
 				Arm3Engines arm = mediator.Request<Arm3Engines>(new GetSignal<Arm3Engines>());
@@ -211,7 +211,7 @@ namespace MainFrame.Processes
 		  }
 		  catch (Exception ex)
 		  {
-				StaticLogger.x(ex);
+				Log.x(ex);
 				mediator.Request(new RunSignal() {Data = false, Identifier = "robot"});
 				shouldRun = false;
 

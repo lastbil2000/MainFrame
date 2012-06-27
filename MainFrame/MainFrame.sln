@@ -7,12 +7,24 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LanguageParser", "LanguageP
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Robot", "Communications\Robot.csproj", "{999E1351-61D4-4AAD-BEA3-6C147D48E581}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Network", "Network\Network.csproj", "{34666BC3-53D4-41BA-9F7A-5498BD096268}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{0916F29A-D11A-4973-8AC8-0516406E2FCC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0916F29A-D11A-4973-8AC8-0516406E2FCC}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{0916F29A-D11A-4973-8AC8-0516406E2FCC}.Debug|x86.Build.0 = Debug|Any CPU
+		{0916F29A-D11A-4973-8AC8-0516406E2FCC}.Release|x86.ActiveCfg = Release|Any CPU
+		{0916F29A-D11A-4973-8AC8-0516406E2FCC}.Release|x86.Build.0 = Release|Any CPU
+		{34666BC3-53D4-41BA-9F7A-5498BD096268}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{34666BC3-53D4-41BA-9F7A-5498BD096268}.Debug|x86.Build.0 = Debug|Any CPU
+		{34666BC3-53D4-41BA-9F7A-5498BD096268}.Release|x86.ActiveCfg = Release|Any CPU
+		{34666BC3-53D4-41BA-9F7A-5498BD096268}.Release|x86.Build.0 = Release|Any CPU
 		{999E1351-61D4-4AAD-BEA3-6C147D48E581}.Debug|x86.ActiveCfg = Debug|Any CPU
 		{999E1351-61D4-4AAD-BEA3-6C147D48E581}.Debug|x86.Build.0 = Debug|Any CPU
 		{999E1351-61D4-4AAD-BEA3-6C147D48E581}.Release|x86.ActiveCfg = Release|Any CPU

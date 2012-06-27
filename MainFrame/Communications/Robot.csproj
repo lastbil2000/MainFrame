@@ -72,9 +72,6 @@
     <Compile Include="Mediator\INode.cs" />
     <Compile Include="Mediator\IRequestable.cs" />
     <Compile Include="Mediator\RobotNervous.cs" />
-    <Compile Include="Log\ConsoleLogger.cs" />
-    <Compile Include="Log\IMessageLogger.cs" />
-    <Compile Include="Log\StaticLogger.cs" />
     <Compile Include="Processes\IProcess.cs" />
     <Compile Include="Processes\ProcessContainer.cs" />
     <Compile Include="Processes\ProcessException.cs" />
@@ -144,7 +141,6 @@
     <Compile Include="Devices\DummyDevice.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Log\" />
     <Folder Include="Processes\Temporary\" />
     <Folder Include="Devices\Legacy\" />
     <Folder Include="Devices\Legacy\Phidgets\" />
@@ -155,4 +151,14 @@
     <Folder Include="..\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{0916F29A-D11A-4973-8AC8-0516406E2FCC}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Network\Network.csproj">
+      <Project>{34666BC3-53D4-41BA-9F7A-5498BD096268}</Project>
+      <Name>Network</Name>
+    </ProjectReference>
+  </ItemGroup>
 </Project>

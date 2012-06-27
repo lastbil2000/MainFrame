@@ -2,7 +2,7 @@ using System;
 using System.Runtime.InteropServices;
 using System.Threading;
 using MainFrame.Communication; 
-using MainFrame.Communication.Log;
+using MainFrame.Core.Logger;
 using MainFrame.Processes;
 namespace MainFrame.Devices.Speech
 {
@@ -130,7 +130,7 @@ namespace MainFrame.Devices.Speech
 		
 		protected static void DefaultErrorReceived (int errorType, string errorMessage)
 		{
-			StaticLogger.e("ASR ERROR: " + errorMessage + " type: " + errorType.ToString());
+			Log.e("ASR ERROR: " + errorMessage + " type: " + errorType.ToString());
 			
 		}
 		

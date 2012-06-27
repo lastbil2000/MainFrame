@@ -130,15 +130,28 @@ x) måste finnas här: /usr/local/lib/sphinx_stream.so (t ex dynamiskt länkad)
 tutorial: 
 	http://sync-signal.com/2010/01/getting-started-with-pickit2-on-ubuntu-9-10/
 *) install the linux/macos client (pk2cmd):
-	http://www.microchip.com/stellent/idcplg?IdcService=SS_GET_PAGE&nodeId=1406&dDocName=en023805&redirects=pickit2
+	*) download the sources http://www.microchip.com/stellent/idcplg?IdcService=SS_GET_PAGE&nodeId=1406&dDocName=en023805&redirects=pickit2
+	i downloaded: http://ww1.microchip.com/downloads/en/DeviceDoc/pk2cmdv1.20LinuxMacSource.tar.gz
+	*) extract
+	*) make linux
+ 	*) sudo make install
+	*) sudo cp PK2DeviceFile.dat /usr/local/bin/
 *) packages:
  sudo apt-get install gpasm
 *) gtkextra (for simulator) 
 	http://gtkextra.sourceforge.net/
+	i use: gtk+extra-2.1.2 and extracted it
+	*) ./configure
+	*) Maybe: in file gtkextra/gtkitementry.c on line 134, 1758 change "static void gtk_entry_reset_im_context.." to "void gtk_entry_reset_im_context.."
+	*) ./make 	å
+	*) sudo make install
+	
+
 *) readline development libraries (for simulator)
-	sudo apt-get install libreadline6
+	sudo apt-get install libreadline6  libreadline6-dev libpopt-dev
 *) gpsim (pic simulator)
-	http://www.dattalo.com/gnupic/gpsim.html
+	http://gpsim.sourceforge.net/
+	i downloaded gpsim-0.26.1 and extracted it
 -------------failed:------------------------
 *) if using gnome: install kde header files and libraries:
  sudo apt-get install kdelibs libktexteditor4.1-cil

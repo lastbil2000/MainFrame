@@ -3,7 +3,7 @@ using System;
 using System.Linq;
 using System.IO.Ports;
 using System.IO;
-using MainFrame.Communication.Log;
+using MainFrame.Core.Logger;
 
 namespace MainFrame.Devices
 {
@@ -140,7 +140,7 @@ namespace MainFrame.Devices
 			catch (Exception ex)
 			{
 				_isListening = false;
-				StaticLogger.x(ex);
+				Log.x(ex);
 				
 			}
 			
@@ -193,7 +193,7 @@ namespace MainFrame.Devices
 			
 			if (writeThread.IsAlive) {
 				writeThread.Abort();
-				StaticLogger.e("UNABLE TO SEND BYTES TO SERIAL PORT. Aborting and returning null, with a potentially dangerous outcome. The therad might still be alive out there...");
+				Log.e("UNABLE TO SEND BYTES TO SERIAL PORT. Aborting and returning null, with a potentially dangerous outcome. The therad might still be alive out there...");
 				return default(byte[]);
 			}
 			
@@ -210,12 +210,12 @@ namespace MainFrame.Devices
 				if (bytesRead != bytesToRead) 
 				{
 					//Strange:
-					StaticLogger.e("ARDUINO TANSFER ERROR: Expected " + bytesToRead + " bytes, but got: " + bytesRead);
+					Log.e("ARDUINO TANSFER ERROR: Expected " + bytesToRead + " bytes, but got: " + bytesRead);
 				}
 				else if (returnData[bytesRead - 1] != OPERATION_COMPLETE_MESSAGE_FLAG)
 				{
 					//Operation must end with PERATION_COMPLETE_MESSAGE_FLAG
-					StaticLogger.e("ARDUINO TANSFER ERROR: Unexpected end byte: " + (int)returnData[bytesRead - 1] );
+					Log.e("ARDUINO TANSFER ERROR: Unexpected end byte: " + (int)returnData[bytesRead - 1] );
 				}
 				else if (bytesRead > 1)
 				{
@@ -247,7 +247,7 @@ namespace MainFrame.Devices
 					throw new ApplicationException("Serial port is not open");
 				
 				if (!_serialPort.BaseStream.CanWrite)
-					StaticLogger.e("Can't write to port!");
+					Log.e("Can't write to port!");
 				
 			/*	Console.Write("Writing ");
 				
@@ -323,21 +323,21 @@ namespace MainFrame.Devices
 							if (statusByte == ERROR_MESSAGE_FLAG)
 							{
 								message = _serialPort.ReadExisting();
-								StaticLogger.e("__serial: " + message);
+								Log.e("__serial: " + message);
 							}
 							else if (statusByte == WARNING_MESSAGE_FLAG)
 							{
 								message = _serialPort.ReadExisting();
-								StaticLogger.w("__serial: " + message);
+								Log.w("__serial: " + message);
 							}
 							else 
 							{
 								message = _serialPort.ReadExisting();
-								StaticLogger.d("__serial: " + new String((char) statusByte,1) + message);
+								Log.d("__serial: " + new String((char) statusByte,1) + message);
 							}
 						}
 						else
-							StaticLogger.w("__serial: No bytes to read.");
+							Log.w("__serial: No bytes to read.");
 						
 						
 					}
@@ -352,11 +352,11 @@ namespace MainFrame.Devices
 							foreach (byte b in serialData)
 								logMessage  += "[" + (int)b + "] ";
 							
-							StaticLogger.d(logMessage);
+							Log.d(logMessage);
 							
 						}
 						else
-							StaticLogger.w("__serial warning: no bytes to read.");
+							Log.w("__serial warning: no bytes to read.");
 					}
 					
 				}
@@ -368,7 +368,7 @@ namespace MainFrame.Devices
 		
 		private void serial_ErrorReceived(object sender,  SerialErrorReceivedEventArgs e) 
 		{
-			StaticLogger.e("Serial communication error: " + e.EventType.ToString());
+			Log.e("Serial communication error: " + e.EventType.ToString());
 		}
 				
 		public void WaitFor (int milliSeconds = 1000)

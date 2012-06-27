@@ -62,5 +62,13 @@
       <Project>{999E1351-61D4-4AAD-BEA3-6C147D48E581}</Project>
       <Name>Robot</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{0916F29A-D11A-4973-8AC8-0516406E2FCC}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Network\Network.csproj">
+      <Project>{34666BC3-53D4-41BA-9F7A-5498BD096268}</Project>
+      <Name>Network</Name>
+    </ProjectReference>
   </ItemGroup>
 </Project>

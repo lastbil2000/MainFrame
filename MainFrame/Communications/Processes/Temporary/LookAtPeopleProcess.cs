@@ -1,7 +1,7 @@
 using MainFrame.Devices.Video;
 using System;
 using System.Threading;
-using MainFrame.Communication.Log;
+using MainFrame.Core.Logger;
 using MainFrame.Devices;
 using MainFrame.Communication;
 
@@ -51,7 +51,7 @@ namespace MainFrame.Processes
 				while (isRunning) 
 				{
 					if (!capture.Ready) 
-						StaticLogger.w("Capture not ready!");
+						Log.w("Capture not ready!");
 					
 					
 					
@@ -79,8 +79,8 @@ namespace MainFrame.Processes
 							rotateY = 0;
 						if (rotateY > 180)
 							rotateY = 180;
-						StaticLogger.w("Capture area: " + capture.Area.x + "," + capture.Area.y + ","+ capture.Area.width + ","+ capture.Area.height + " (" +  capture.ScreenSize.width + ","  + capture.ScreenSize.height + " )" );
-						StaticLogger.w("Trying to rotate to.. " + rotateX + ", " + rotateY + " dx: " + (int) dx + " dy: " + (int)dy + " dRx: " + dRotateX + " drY: " + dRotateY);
+						Log.w("Capture area: " + capture.Area.x + "," + capture.Area.y + ","+ capture.Area.width + ","+ capture.Area.height + " (" +  capture.ScreenSize.width + ","  + capture.ScreenSize.height + " )" );
+						Log.w("Trying to rotate to.. " + rotateX + ", " + rotateY + " dx: " + (int) dx + " dy: " + (int)dy + " dRx: " + dRotateX + " drY: " + dRotateY);
 						
 						while (!head.Ready)
 							Thread.Sleep(50);
@@ -107,7 +107,7 @@ namespace MainFrame.Processes
 			}
 			catch (Exception ex)
 			{
-				StaticLogger.x(ex);
+				Log.x(ex);
 			}
 			finally
 			{

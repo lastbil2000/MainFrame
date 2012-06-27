@@ -2,7 +2,7 @@ using System;
 using Phidgets;
 using Phidgets.Events; 
 using System.Threading;
-using MainFrame.Communication.Log;
+using MainFrame.Core.Logger;
 
 namespace MainFrame.Devices
 {
@@ -97,28 +97,28 @@ namespace MainFrame.Devices
 		  //Attach event handler...Display te serial number of the attached servo device
         private void servo_Attach(object sender, AttachEventArgs e)
         {
-			StaticLogger.d ("servo " + index + " is attached");
+			Log.d ("servo " + index + " is attached");
 			initialized = true;
         }
 
         //Detach event handler...Display the serial number of the detached servo device
         private void servo_Detach(object sender, DetachEventArgs e)
         {
-			StaticLogger.d ("servo " + index + " deattached");
+			Log.d ("servo " + index + " deattached");
 			initialized = false;
         }
 
         //Error event handler....Display the error description to the console
         private void servo_Error(object sender, ErrorEventArgs e)
         {
-            StaticLogger.e(e.Description);
+            Log.e(e.Description);
         }
 
         //Position CHange event handler...display which motor changed position and 
         //its new position value to the console
         private void servo_PositionChange(object sender, PositionChangeEventArgs e)
         {
-			StaticLogger.d ("servo " + index + " changed position to: " + e.Position);
+			Log.d ("servo " + index + " changed position to: " + e.Position);
         }
 	}
 }

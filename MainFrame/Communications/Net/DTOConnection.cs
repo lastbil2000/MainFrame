@@ -128,6 +128,7 @@ namespace MainFrame.Communication.Net
 				int DTOSize = (int)DTOWriteStream.Length;
 				for (int i = 0; i < sizeof(int); i++)
 					header[i + kHeaderDescriptorSize] = BitConverter.GetBytes(DTOSize)[i];
+			
 				networkStream.Write(header,0,kHeaderSize);
 				networkStream.Write(DTOWriteStream.GetBuffer(),0,(int)DTOSize);
 				

@@ -33,7 +33,8 @@ fi
 
 # compiling the native gst sphinx library...
 echo "Compiling the sphinx library"
-sphinx/compile_sphinx_plugn.sh $BASE_DIR/native $BASE_DIR/native
+#sphinx/compile_sphinx_plugn.sh $BASE_DIR/native $BASE_DIR/native
+sphinx/compile_sphinx_server.sh $BASE_DIR/native $BASE_DIR/native
 
 if [ $? -ne 1 ]; 
 then

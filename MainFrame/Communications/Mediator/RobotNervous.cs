@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System;
 using System.Reflection;
-using MainFrame.Communication.Log;
+using MainFrame.Core.Logger;
 
 namespace MainFrame.Communication
 {
@@ -73,7 +73,7 @@ namespace MainFrame.Communication
 							return client.Request<T>(message);
 						}
 			
-			StaticLogger.w ("WARNING: unheard signal: " + message.GetType());
+			Log.w ("WARNING: unheard signal: " + message.GetType());
 			return default(T);
 		}
 	

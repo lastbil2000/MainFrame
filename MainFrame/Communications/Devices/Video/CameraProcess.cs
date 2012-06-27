@@ -4,7 +4,7 @@ using System;
 using MainFrame.Devices;
 using MainFrame.Processes;
 using System.Drawing;
-using MainFrame.Communication.Log;
+using MainFrame.Core.Logger;
 using MainFrame.Communication;
 
 namespace MainFrame.Devices.Video
@@ -115,7 +115,7 @@ namespace MainFrame.Devices.Video
 				}
 			}
 			
-			StaticLogger.w("WARNING: Unable to create IVideoCapture: all slots taken.");
+			Log.w("WARNING: Unable to create IVideoCapture: all slots taken.");
 			
 			return null;
 		}
@@ -143,7 +143,7 @@ namespace MainFrame.Devices.Video
 			try
 			{
 				
-				StaticLogger.d("Starting video capture on " + cameraDevice.ToString());
+				Log.d("Starting video capture on " + cameraDevice.ToString());
 				
 				
 				//Thread frameCaptureThread = new Thread(captureFrame);
@@ -162,7 +162,7 @@ namespace MainFrame.Devices.Video
 			}
 			catch (Exception ex)
 			{
-				StaticLogger.x(ex);
+				Log.x(ex);
 			}
 			finally 
 			{
@@ -205,7 +205,7 @@ namespace MainFrame.Devices.Video
 		
 		public void Stop ()
 		{
-			StaticLogger.d("Stopping video capture on " + cameraDevice.ToString());
+			Log.d("Stopping video capture on " + cameraDevice.ToString());
 			isReady = false;
 		}
 		

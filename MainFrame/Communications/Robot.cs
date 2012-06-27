@@ -4,7 +4,7 @@ using MainFrame.Devices;
 using MainFrame.Devices.Speech;
 using System.Collections.Generic;
 using System.Linq;
-using MainFrame.Communication.Log;
+using MainFrame.Core.Logger;
 using MainFrame.Communication;
 using MainFrame.Processes;
 
@@ -114,7 +114,7 @@ namespace MainFrame
 			
 			if (process != null &&
 				!process.IsRunning)
-				StaticLogger.w("Can not stop Process: " + device.ToString() + " is not running.");
+				Log.w("Can not stop Process: " + device.ToString() + " is not running.");
 			else {
 				device.Stop();
 			}
@@ -148,7 +148,7 @@ namespace MainFrame
 			
 			if (process != null) {
 				if (process.IsRunning)
-					StaticLogger.w("Process allready running: " + process.ToString());
+					Log.w("Process allready running: " + process.ToString());
 				else {
 					ThreadPool.QueueUserWorkItem( delegate (object obj) { process.Start(); });
 					//while (!process.IsRunning)
@@ -190,7 +190,7 @@ namespace MainFrame
 			if (_devices.Contains(new DeviceContainer() {Identifier = identifier}) )
 				return  (T) _devices.Find( new DeviceContainer() {Identifier = identifier}).Value.Device;
 			else
-				StaticLogger.w("Warning: device with id: " + identifier + " is not found");
+				Log.w("Warning: device with id: " + identifier + " is not found");
 			return default(T);
 				
 		}
@@ -211,7 +211,7 @@ namespace MainFrame
 					!process.IsRunning) //This is a process that is not running:
 				{
 					
-					StaticLogger.d("starting process " + deviceEnumerator.Current.Identifier);
+					Log.d("starting process " + deviceEnumerator.Current.Identifier);
 					StartDevice(deviceEnumerator.Current.Device);
 					while (!deviceEnumerator.Current.Device.Ready)
 						Thread.Sleep(PROCESS_STARTUP_PAUSE);
@@ -219,7 +219,7 @@ namespace MainFrame
 				else if (process == null)  //This is a device:
 				{
 					
-					StaticLogger.d("starting device " + deviceEnumerator.Current.Identifier);
+					Log.d("starting device " + deviceEnumerator.Current.Identifier);
 					StartDevice(deviceEnumerator.Current.Device);
 				}
 				*/
@@ -228,7 +228,7 @@ namespace MainFrame
 					
 			}
 			
-			//StaticLogger.d("Attaching all processes...");
+			//Log.d("Attaching all processes...");
 			
 			while (_isReady) 
 			{
@@ -257,7 +257,7 @@ namespace MainFrame
 			var processEnumerator = _processes.GetEnumerator();
 			while (processEnumerator.MoveNext()) 
 			{
-				StaticLogger.d("stopping process: " + processEnumerator.Current.Identifier);
+				Log.d("stopping process: " + processEnumerator.Current.Identifier);
 				processEnumerator.Current.Process.Stop();
 			}
 			*/
@@ -269,7 +269,7 @@ namespace MainFrame
 			while (enumerator.MoveNext()) 
 			{
 				
-				StaticLogger.d("[" + i++ + "] stopping device: " + enumerator.Current.Identifier);		    
+				Log.d("[" + i++ + "] stopping device: " + enumerator.Current.Identifier);		    
 				StopDevice(enumerator.Current.Device);
 				
 				Thread.Sleep(10);

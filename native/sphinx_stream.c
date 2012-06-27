@@ -1,7 +1,9 @@
 #include "sphinx_stream.h"
 #include <string.h>
 
-#define MODELDIR "./language"
+//#define MODELDIR "./language"
+//#define MODELDIR "/home/olga/workspace/robot/native/language"
+#define MODELDIR ""
 #define NATIVE_MODELDIR "/usr/local/share/pocketsphinx/model"
 
 
@@ -14,7 +16,8 @@ static float _cutoff = 4000.0;
 
 static GMainLoop *loop;
 
-static GstElement *bin, 	// the containing all the elements
+static GstElement 
+		//*bin, 	// the containing all the elements
 		*pipeline, 	 		// the pipeline for the bin
 		*alsa_src, 	 		// the microphone input source
 		*audio_resample, 	// ...since the capabilities of the audio sink usually vary depending on the environment (output used, sound card, driver etc.)
@@ -28,9 +31,17 @@ static GstElement *bin, 	// the containing all the elements
 		*conv3,				// audioconvert3
 		*fakesink;			// a working pipe must have a source (in this case the microphone) and a sink. this case: using a dummy sink.
 
+static GstElement
+		*filesrc, 
+		*demuxer,
+		*faad,
+		*faac,
+		*decodebin,
+		*autoaudiosink;
 static GstBus *bus;	//the bus element te transport messages from/to the pipeline
 
 static const char *lm_file_name, *dic_file_name, *hmm_file_name;
+
 
 //dealocates and shuts down
 void turn_off () {
@@ -43,8 +54,10 @@ void turn_off () {
 //the send error method WILL send errors back to the caller
 int send_error (int error_type, const char *error_message)
 {
-	if (report_error != NULL)
+	if (report_error != NULL) {
 		report_error(error_type, error_message);
+	}
+	printf ("-------------------------- ERROR: '%s', code: %i\n", error_message, error_type);
 	return true;
 }
 
@@ -73,7 +86,7 @@ static gboolean bus_call(GstBus *bus, GstMessage *msg, void *user_data)
 		bool tmp = send_error(ASR_ERROR_GST, err->message);
 		g_error_free(err);
 		
-		turn_off();
+		//turn_off();
 		
 		break;
 	} //indicating an element specific message
@@ -82,10 +95,13 @@ static gboolean bus_call(GstBus *bus, GstMessage *msg, void *user_data)
 		str = gst_message_get_structure (msg);
 			if (gst_structure_has_name(str,"partial_result"));
 				//TODO: do something on partial results?
-			else if (gst_structure_has_name(str,"result") && text_received != NULL)
+			else if (gst_structure_has_name(str,"result"))
 			{
 				//trigger the text_received method with the hypothesis as input
-				text_received (gst_structure_get_string(str,"hyp"));
+				if (text_received != NULL)
+					text_received (gst_structure_get_string(str,"hyp"));
+				else
+					printf ("WARNING: (text_received not set): %s\n", gst_structure_get_string(str,"hyp"));
 								
 			}
 			else if (gst_structure_has_name(str,"turn_off"))
@@ -240,11 +256,33 @@ on_rate_changed (GstElement * element, gint rate, gpointer user_data)
 	
 	it also configures the element/pipeline bus message methods
 */
+
+static void
+on_pad_added (GstElement *element,
+              GstPad     *pad,
+              gpointer    data)
+{
+  GstPad *sinkpad;
+  GstElement *decoder = (GstElement *) data;
+
+  /* We can now link this pad with the vorbis-decoder sink pad */
+  g_print ("Dynamic pad created, linking demuxer/decoder\n");
+
+  sinkpad = gst_element_get_static_pad (decoder, "sink");
+
+  gst_pad_link (pad, sinkpad);
+
+  gst_object_unref (sinkpad);
+}
+
 int init_elements (const char *lm_file, const char *dict_file, const char *hmm_file)
 {
 
+	// create the main loop
+	loop = g_main_loop_new(NULL, FALSE);
+
 	pipeline = gst_pipeline_new ("asr_pipeline");
-	bin = gst_bin_new ("asr_bin");
+	//bin = gst_bin_new ("asr_bin");
 
 	//initializing elements
 	alsa_src = gst_element_factory_make ("alsasrc", "alsa_src");
@@ -258,6 +296,20 @@ int init_elements (const char *lm_file, const char *dict_file, const char *hmm_f
 	conv1 = gst_element_factory_make ("audioconvert", "audioconvert1");
 	conv2 = gst_element_factory_make ("audioconvert", "audioconvert2");
 	conv3 = gst_element_factory_make ("audioconvert", "audioconvert3");
+
+	//playback test:
+	filesrc = gst_element_factory_make ("filesrc", "file_src");
+	demuxer = gst_element_factory_make ("qtdemux", "demuxer");
+	faad = gst_element_factory_make ("faad", "faad");
+	autoaudiosink =gst_element_factory_make ("autoaudiosink", "autoaudiosink");
+	faac = gst_element_factory_make ("faac", "faac");
+	decodebin =gst_element_factory_make ("decodebin", "decodebin");
+
+
+	if (!filesrc || !demuxer || !faad || !autoaudiosink || !decodebin || !faac)
+		return send_error(42, "Unable to create tmp playback test");
+
+	g_object_set(G_OBJECT(filesrc), "location", "test.m4a", NULL);
 
 	//check for successfull creation of elements
 	if(!alsa_src)
@@ -279,6 +331,7 @@ int init_elements (const char *lm_file, const char *dict_file, const char *hmm_f
 
 	//set up the vader to auto-threshold:
 	g_object_set(G_OBJECT(vader), "auto_threshold", true, NULL);
+
 	//set the directory containing acoustic model parameters
 	g_object_set(G_OBJECT(asr), "hmm",  hmm_file , NULL);
 	//set the language model of the asr
@@ -298,41 +351,52 @@ int init_elements (const char *lm_file, const char *dict_file, const char *hmm_f
 	// create the bus for the pipeline:
 	bus = gst_pipeline_get_bus(GST_PIPELINE(pipeline));
 	//add the bus handler method:
-	gst_bus_add_watch(bus, bus_call, NULL);
+	gst_bus_add_watch(bus, bus_call, loop);
+	//OLD: 	gst_bus_add_watch(bus, bus_call, NULL);
 	g_signal_connect (G_OBJECT (bus), "message", G_CALLBACK (bus_call), loop);
 	gst_object_unref(bus);
 
 	// Add the elements to the bin
-	gst_bin_add_many (GST_BIN (bin), 
-		alsa_src, 
+	gst_bin_add_many (GST_BIN (pipeline), 
+		filesrc, demuxer, faad,
+//a		alsa_src, 
 //		filter,
 		conv3,
 		audio_resample,  
 		vader,
-//		conv1,
-//		amplifier,
-//		conv2,
+//x		conv1,
+//x		amplifier,
+//x		conv2,
 		asr,
 		fakesink,
+//			autoaudiosink,
 	NULL);
 
 	// add the bin to the pipeline 
-	gst_bin_add (GST_BIN (pipeline), bin);
+	//OLD: gst_bin_add (GST_BIN (pipeline), bin);
+
+	//link the source the demuxer:
+	gst_element_link (filesrc,demuxer);
 
 	// link the elements and check for success
 	if (!gst_element_link_many (
-		alsa_src, 
+		faad,
+//a		alsa_src, 
 //		filter,
 		conv3,
 		audio_resample,  
 		vader,
-//		conv1,
-//		amplifier,
-//		conv2,
+//x		conv1,
+//x		amplifier,
+//x		conv2,
 		asr,
 		fakesink,
+//			autoaudiosink,
 	NULL))
-		return send_error(ASR_ERROR_LINK_FAILED, "Unable to link elements!");
+	 	return send_error(ASR_ERROR_LINK_FAILED, "Unable to link elements!");
+
+	//set up the dynamic pad callback for the demuxerer
+	g_signal_connect (demuxer, "pad-added", G_CALLBACK (on_pad_added), faad);
 
 	//creation successfull
 	return 0;
@@ -340,12 +404,14 @@ int init_elements (const char *lm_file, const char *dict_file, const char *hmm_f
 
 int asr_start ()
 {
-	//try to create the elements and initialize them
-	if (init_elements(lm_file_name , dic_file_name, hmm_file_name) != 0)
-		return 1;
 
-	// create the main loop
-	loop = g_main_loop_new(NULL, FALSE);
+	//try to create the elements and initialize them
+	int init_elements_result = init_elements(lm_file_name , dic_file_name, hmm_file_name);
+	if (init_elements_result  != 0) {		
+		return 1;
+	}
+	
+	printf ("--------------------- THIS WAS GOOD");		
 
 	//travers the pipe to "play state"
 	gst_element_set_state(GST_ELEMENT(pipeline), GST_STATE_PLAYING);
@@ -426,8 +492,10 @@ int main (int argc, char *argv[])
 {
 
 	if (asr_init (0,0,
-			MODELDIR "/4734.lm", 
-			MODELDIR "/4734.dic",
+//			MODELDIR "/4734.lm", 
+//			MODELDIR "/4734.dic",
+			"language.arpa",
+			"language.dict",
 			NATIVE_MODELDIR "/hmm/en_US/hub4wsj_sc_8k" ) == 0)
 		asr_start ();
 	else

@@ -1,4 +1,4 @@
-gpasm-0.13.7 beta               servo.asm   11-20-2011  14:24:48         PAGE  1
+gpasm-0.13.7 beta               servo.asm   5-19-2012  16:57:52          PAGE  1
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -58,7 +58,7 @@ Warning [231] : found lower case match for include filename
                00043 ;       A signal is allways 10 bit, where the 2 first represents
                00044 ;       The servo to use and the remainding 8 represents the value 
                00045 ;       to be transfered to the servo.
-gpasm-0.13.7 beta               servo.asm   11-20-2011  14:24:48         PAGE  2
+gpasm-0.13.7 beta               servo.asm   5-19-2012  16:57:52          PAGE  2
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -118,7 +118,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
                00097 
                00098 ;***********************  
                00099 ;       SET_SERVO methods
-gpasm-0.13.7 beta               servo.asm   11-20-2011  14:24:48         PAGE  3
+gpasm-0.13.7 beta               servo.asm   5-19-2012  16:57:52          PAGE  3
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -178,7 +178,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
 0040 20B7      00151         call PAUSE_50US
 0041 20B2      00152         call PAUSE_200US
 0042 20B2      00153         call PAUSE_200US
-gpasm-0.13.7 beta               servo.asm   11-20-2011  14:24:48         PAGE  4
+gpasm-0.13.7 beta               servo.asm   5-19-2012  16:57:52          PAGE  4
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -238,7 +238,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
 005B 0008      00205         return
                00206 
                00207 ;***********************  
-gpasm-0.13.7 beta               servo.asm   11-20-2011  14:24:48         PAGE  5
+gpasm-0.13.7 beta               servo.asm   5-19-2012  16:57:52          PAGE  5
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -298,7 +298,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
 007F 1A2C      00259         btfsc   portSelect,_servo3Port  ;chick if servo1 was selected
 0080 00A5      00260         movwf   servo3I                                 ;copy to servo
 0081 082C      00261         movfw   portSelect
-gpasm-0.13.7 beta               servo.asm   11-20-2011  14:24:48         PAGE  6
+gpasm-0.13.7 beta               servo.asm   5-19-2012  16:57:52          PAGE  6
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -358,7 +358,7 @@ Warning [203] : Found opcode in column 1.
 00A0 289A      00312         goto PAUSE_OUTER_LOOP
 00A1 0008      00313         return
                00314 
-gpasm-0.13.7 beta               servo.asm   11-20-2011  14:24:48         PAGE  7
+gpasm-0.13.7 beta               servo.asm   5-19-2012  16:57:52          PAGE  7
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -418,7 +418,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
                00366 
 00C3 00367 TRANSFER_DELAY:
                00368         ;call PAUSE_10MS
-gpasm-0.13.7 beta               servo.asm   11-20-2011  14:24:48         PAGE  8
+gpasm-0.13.7 beta               servo.asm   5-19-2012  16:57:52          PAGE  8
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -442,7 +442,7 @@ Warning [203] : Found opcode in column 1.
 Warning [203] : Found opcode in column 1.
 00CB 0008      00383 return
                00384 
-gpasm-0.13.7 beta               servo.asm   11-20-2011  14:24:48         PAGE  9
+gpasm-0.13.7 beta               servo.asm   5-19-2012  16:57:52          PAGE  9
 
 
 SYMBOL TABLE
@@ -501,7 +501,7 @@ INIT                              00000000
 INTCON                            0000000B
 INTE                              00000004
 INTEDG                            00000006
-gpasm-0.13.7 beta               servo.asm   11-20-2011  14:24:48         PAGE 10
+gpasm-0.13.7 beta               servo.asm   5-19-2012  16:57:52          PAGE 10
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -561,7 +561,7 @@ RP0                               00000005
 RP1                               00000006
 SERVO_SELECT_TRANSFER             0000005C
 SET_SERVO                         00000039
-gpasm-0.13.7 beta               servo.asm   11-20-2011  14:24:48         PAGE 11
+gpasm-0.13.7 beta               servo.asm   5-19-2012  16:57:52          PAGE 11
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -621,7 +621,7 @@ _CP_OFF                           00003FFF
 _CP_ON                            00003F7F
 _EC_OSC                           00003FFB
 _EXTRC_OSC_CLKOUT                 00003FFF
-gpasm-0.13.7 beta               servo.asm   11-20-2011  14:24:48         PAGE 12
+gpasm-0.13.7 beta               servo.asm   5-19-2012  16:57:52          PAGE 12
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
